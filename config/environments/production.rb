@@ -76,4 +76,7 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+  config.action_mailer.default_url_options = { :host => 'nucleus.com.ua' }
+  config.action_controller.asset_host = "http://nucleus.com.ua"
+  Rails.application.routes.default_url_options[:host] = 'nucleus.com.ua'
 end
