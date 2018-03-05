@@ -29,6 +29,10 @@ gem "font-awesome-rails"
 gem 'haml-rails'
 gem 'bootstrap', '~> 4.0.0'
 gem 'metamagic'
+gem 'friendly_id', '~> 5.0.0'
+gem 'babosa'
+gem 'carrierwave'
+gem 'mini_magick'
 
 group :test, :development do
   gem "rspec-rails", "~> 3.6"

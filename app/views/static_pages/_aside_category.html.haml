@@ -1,0 +1,6 @@
+- @categories.each_with_index do |category, index|
+  %a{:href=>"#menu#{index}", "data-toggle"=>"collapse", "data-parent"=>"#sidebar", "aria-expanded"=>"false", :class=>"list-group-item #{active_class(show_category_path(category))} collapsed"}
+    %span
+      = category.title
+  .collapse{:id=>"menu#{index}"}
+    = link_to category.title, show_category_path(category), :class=>"list-group-item", "data-parent"=>"#menu1"

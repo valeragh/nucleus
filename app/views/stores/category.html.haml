@@ -1,7 +1,7 @@
 .container
-  %h1.text-orange Каталог 
   .row
     .col-12.col-lg-4#sidebar.mb-4
+      %h2.text-orange.my-4 Каталог 
       .list-group
         = render "static_pages/aside_category"
 
@@ -26,16 +26,44 @@
                             
 
     .col-12.col-lg-8
+      %h1.text-orange
+        = @category.title
       .row
-        - @categories.each do |category|
-          .col-3
-            = link_to show_category_path(category), class: "product-link" do
-              .card.product.mb-2.bg-orange
-                = image_tag category.image_url.category, class: "card-img-top", title: "#{category.title}"
-                .card-block.d-flex.align-items-center.align-self-center
-                  %h6.p-2.card-title.text-center.mb-0
-                    = category.title
-        
+        .col-3
+          = link_to root_path, class: "product-link" do
+            .card.product.mb-2.bg-orange
+              = image_tag "homemini.jpeg", class: "card-img-top", title: "product"
+              .card-block.d-flex.align-items-center.align-self-center
+                %h6.p-2.card-title.text-center.mb-0
+                  Летковый заградитель круглый  диаметр 70 оцинкованный
+        .col-3
+          = link_to root_path, class: "product-link" do
+            .card.product.mb-2.bg-orange
+              = image_tag "homemini.jpeg", class: "card-img-top", title: "product"
+              .card-block.d-flex.align-items-center.align-self-center
+                %h6.p-2.card-title.text-center.mb-0
+                  Маркеры
+        .col-3
+          = link_to root_path, class: "product-link" do
+            .card.product.mb-2.bg-orange
+              = image_tag "homemini.jpeg", class: "card-img-top", title: "product"
+              .card-block.d-flex.align-items-center.align-self-center
+                %h6.p-2.card-title.text-center.mb-0
+                  Скреп ременной 3,3 м
+        .col-3
+          = link_to root_path, class: "product-link" do
+            .card.product.mb-2.bg-orange
+              = image_tag "homemini.jpeg", class: "card-img-top", title: "product"
+              .card-block.d-flex.align-items-center.align-self-center
+                %h6.p-2.card-title.text-center.mb-0
+                  Летковый заградитель метал. 3-х эл. нижний
+        .col-3
+          = link_to root_path, class: "product-link" do
+            .card.product.mb-2.bg-orange
+              = image_tag "homemini.jpeg", class: "card-img-top", title: "product"
+              .card-block.d-flex.align-items-center.align-self-center
+                %h6.p-2.card-title.text-center.mb-0
+                  Летковый заградитель круглый  диаметр 80 оцинкованный
 
     .col-12.col-md-6.d-lg-none
       .card.rewiew.bg-grey.mb-4

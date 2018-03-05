@@ -96,6 +96,10 @@ ul.social-contacts{
     white-space: nowrap;
     font-size: 0.8rem;
 }
+#sidebar .list-group-item.active{
+  background-color: #f4880b;
+  color: #ffffff;
+}
 
 /* highlight active menu */
 #sidebar .list-group-item:not(.collapsed) {

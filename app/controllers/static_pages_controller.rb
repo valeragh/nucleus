@@ -1,5 +1,6 @@
 class StaticPagesController < ApplicationController
   def index
+  	@categories = Category.all.order(:rang)
   end
 
   def about_us
