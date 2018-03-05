@@ -1,0 +1,72 @@
+<footer class="main-footer section bg-yellow pt-5">
+	<div class="container">
+		<div class="row">
+			<div class="col-6 col-xl-3">
+				<p class="footer-link-header font-weight-bold">Узнайте о нас</p>
+				<ul class="footer-link pl-0">
+					<li><%= link_to "О компании", root_path, title: "О компании" %></li>
+					<li><%= link_to "Наше качество", root_path, title: "Наше качество" %></li>
+					<li><%= link_to "Новости", root_path, title: "Новости" %></li>
+					<li><%= link_to "Работа", root_path, title: "Работа" %></li>
+				</ul>
+			</div><!-- col -->
+			<div class="col-6 col-xl-3">
+				<p class="footer-link-header font-weight-bold">Покупателям</p>
+				<ul class="footer-link pl-0">
+					<li><%= link_to "Как заказать", root_path, title: "Как заказать" %></li>
+					<li><%= link_to "Оплата", root_path, title: "Оплата" %></li>
+					<li><%= link_to "Доставка", root_path, title: "Доставка" %></li>
+					<li><%= link_to "Прайс-лист", root_path, title: "Прайс-лист" %></li>
+				</ul>
+			</div><!-- col -->
+			<div class="col-6 col-xl-3">
+				<p class="footer-link-header font-weight-bold">Будьте на связи</p>
+				<ul class="footer-link pl-0">
+					<li><%= link_to "Контакты", root_path, title: "Контакты" %></li>
+					<li><%= link_to "Написать нам", root_path, title: "Написать нам" %></li>
+					<li><%= link_to "Впросы-ответы", root_path, title: "Впросы-ответы" %></li>
+					<li><%= link_to "Карта сайта", root_path, title: "Карта сайта" %></li>
+				</ul>
+			</div><!-- col -->
+			<div class="col-6 col-xl-3">
+			  <ul class="social-contacts list-inline d-flex flex-row justify-content-start justify-content-xl-center mt-4">
+					<li class="mr-3"><a href="https://www.facebook.com/" title="Ищите нас в Facebook" class="facebook" target="_blank"><%= fa_icon "facebook 2x" %></a></li>
+					<li class="mr-3"><a href="http://instagram.com/" title="Ищите нас в Instagram" class="instagram" target="_blank"><%= fa_icon "instagram 2x" %></a></li>
+					<li><a href="http://twitter.com/" title="Ищите нас на Twitter" class="twitter" target="_blank"><%= fa_icon "twitter 2x" %></a></li>
+				</ul>
+				<ul class="social-contacts list-inline d-flex flex-row justify-content-start justify-content-xl-center">
+					<li class="mr-3"><a href="https://www.vk.com/" title="Ищите нас в ВКонтакте" class="vk" target="_blank"><%= fa_icon "vk 2x" %></a></li>
+					<li class="mr-3"><a href="http://pinterest.com/" title="Ищите нас на Pinterest" class="pinterest" target="_blank"><%= fa_icon "pinterest 2x" %></a></li>
+					<li><a href="http://google.com/" title="Ищите нас на Google plus" class="google" target="_blank"><%= fa_icon "google-plus 2x" %></a></li>
+				</ul>
+			</div><!-- col -->
+		</div><!-- row -->
+	</div><!-- container -->
+</footer>
+<footer class="secondary-footer section bg-black">
+	<div class="container">
+		<div class="row">
+			<div class="d-none d-xl-block col-12 mt-3 text-center">
+				<%= link_to "Пользовательское соглашение", root_path, title: "Пользовательское соглашение", class: "mx-2" %>
+        <span class="text-orange">|</span>
+        <%= link_to "Политика конфиденциальности", root_path, title: "Политика конфиденциальности", class: "mx-2" %>
+				<span class="text-orange">|</span>
+				<p class="text-white d-inline-flex mx-2">Copyright © 2010 - <%= Time.current.year %> Nucleus Все права защищены</p>
+				<span class="text-orange">|</span>
+				<a href="http://lightwebdesign.com.ua/" title="Built by LWD" target="_blank" class="mx-2 lwd" %>Built by LWD</a>
+      </div>
+      <div class="d-block d-xl-none col-12 col-md-6 mt-3">
+				<%= link_to "Пользовательское соглашение", root_path, title: "Пользовательское соглашение", class: "mx-2" %>
+			</div>
+			<div class="d-block d-xl-none col-12 col-md-6 mt-3">
+				<%= link_to "Политика конфиденциальности", root_path, title: "Политика конфиденциальности", class: "mx-2" %>
+			</div>
+      <div class="d-block d-xl-none col-12 col-md-6 mt-3">
+				<p class="text-white d-inline-flex mx-2">Copyright © 2010 - <%= Time.current.year %> Nucleus Все права защищены</p>
+			</div>
+			<div class="d-block d-xl-none col-12 col-md-6 my-3">
+				<a href="http://lightwebdesign.com.ua/" title="Built by LWD" target="_blank" class="mx-2 lwd" %>Built by LWD</a>
+			</div>
+		</div>
+	</div>
+</footer>

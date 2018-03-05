@@ -1,14 +1,170 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Nucleus</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <!-- yield favicons -->
+  <%= csrf_meta_tags %>
+  <%= metamagic %>
+  <link rel="canonical" href="http://nucleus.com.ua/">
+  <link rel="author" href="http://nucleus.com.ua/humans.txt">
+  <meta name="apple-mobile-web-app-title" content="Nucleus">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <!-- iPhone ICON -->
+  <%= favicon_link_tag 'apple-touch-icon-57x57.png', rel: 'apple-touch-icon', type: 'image/png', sizes: '57x57' %>
+  <!-- iPad ICON-->
+  <%= favicon_link_tag 'apple-touch-icon-72x72.png', rel: 'apple-touch-icon', type: 'image/png', sizes: '72x72' %>
+  <!-- iPhone (Retina) ICON-->
+  <%= favicon_link_tag 'apple-touch-icon-114x114.png', rel: 'apple-touch-icon', type: 'image/png', sizes: '114x114' %>
+  <!-- iPad (Retina) ICON-->
+  <%= favicon_link_tag 'apple-touch-icon-144x144.png', rel: 'apple-touch-icon', type: 'image/png', sizes: '144x144' %>
+
+  <!-- iPhone SPLASHSCREEN-->
+  <%= favicon_link_tag 'apple-touch-startup-image-320x460.png', rel: 'apple-touch-startup-image', media: '(device-width: 320px)' %>
+  <!-- iPhone (Retina) SPLASHSCREEN-->
+  <%= favicon_link_tag 'apple-touch-startup-image-640x920.png', rel: 'apple-touch-startup-image', media: '(device-width: 320px) and (-webkit-device-pixel-ratio: 2)' %>
+  <!-- iPad (portrait) SPLASHSCREEN-->
+  <%= favicon_link_tag 'apple-touch-startup-image-768x1004.png', rel: 'apple-touch-startup-image', media: '(device-width: 768px) and (orientation: portrait)' %>
+  <!-- iPad (landscape) SPLASHSCREEN-->
+  <%= favicon_link_tag 'apple-touch-startup-image-320x460.png', rel: 'apple-touch-startup-image', media: '(device-width: 320px)' %>
+  <link href="apple-touch-startup-image-748x1024.png" media="(device-width: 768px) and (orientation: landscape)" rel="apple-touch-startup-image">
+  <!-- iPad (Retina, portrait) SPLASHSCREEN-->
+  <%= favicon_link_tag 'apple-touch-startup-image-1536x2008.png', rel: 'apple-touch-startup-image', media: '(device-width: 1536px) and (orientation: portrait) and (-webkit-device-pixel-ratio: 2)' %>
+  <!-- iPad (Retina, landscape) SPLASHSCREEN-->
+  <%= favicon_link_tag 'apple-touch-startup-image-2048x1496.png', rel: 'apple-touch-startup-image', media: '(device-width: 1536px)  and (orientation: landscape) and (-webkit-device-pixel-ratio: 2)' %>
+  <meta name="apple-mobile-web-app-title" content="Nucleus">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+
+  <%= favicon_link_tag 'favicon.png', rel: 'icon' %>
+  <!--[if IE]><link rel="shortcut icon" href="https://shanti-center.com.ua/favicon.ico"><![endif]-->
+
+  <meta name="msapplication-square70x70logo" content="<%= image_url 'smalltile.png' %>">
+  <meta name="msapplication-square150x150logo" content="<%= image_url 'mediumtile.png' %>">
+  <meta name="msapplication-wide310x150logo" content="<%= image_url 'widetile.png' %>">
+  <meta name="msapplication-square310x310logo" content="<%= image_url 'largetile.png' %>">
+  <meta name="msapplication-TileColor" content="#990047">
+  <meta name="application-name" content="Nucleus">
+  <meta name="msapplication-tooltip" content="Инвентарь для пасечников">
+
+
+  <script type="application/ld+json">
+    {
+      "name": "Инвентарь для пасечников",
+      "short_name": "Nucleus",
+      "icons": [
+      {
+        "src": "<%= image_url 'android-chrome-192x192' %>",
+        "sizes": "192x192",
+        "type": "image/png"
+      },
+      {
+        "src": "<%= image_url 'android-chrome-512x512' %>",
+        "sizes": "512x512",
+        "type": "image/png"
+     }
+    ],
+      "theme_color": "#990047",
+      "background_color": "#ffffff",
+      "display": "standalone"
+    }
+  </script>
+  <% if content_for?(:meta_og) %>
+    <%= yield :meta_og %>
+  <% else %>
+    <meta property="og:description" content="Инвентарь для пасечников">
+    <meta property="og:locale" content="ru">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Nucleus">
+    <meta property="og:url" content="http://nucleus.com.ua/">
+    <meta property="fb:app_id" content="">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Nucleus">
+    <meta name="twitter:description" content="Инвентарь для пасечников">
+    <%= tag :meta, property: 'og:image', content: image_url('logo-splash.jpg')%>
+    <%= tag :meta, name: 'twitter:image', content: image_url('logo-splash.jpg')%>
+  <% end %>  
+
+  <script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "Organization",
+      "url": "http://nucleus.com.ua/",
+      "logo": "<%= image_url 'nucleus_square.png' %>",
+      "name": "Инвентарь для пасечников",
+      "email": "hello@nucleus.com.ua",
+      "description": "Инвентарь для пасечников","address": [{
+        "@type": "PostalAddress",
+        "addressLocality": "Старобельск, Украина",
+        "postalCode": "87500",
+        "streetAddress": "проспект Победы, 25"
+      },{
+        "@type": "PostalAddress",
+        "addressLocality": "Старобельск, Украина",
+        "postalCode": "87504",
+        "streetAddress": "проспект Мира, 87"
+      }],
+      "contactPoint": [{
+          "@type": "ContactPoint",
+          "telephone": "+380 505555555",
+          "contactType": "reservations",
+          "areaServed": "UA"
+      },
+      {
+          "@type": "ContactPoint",
+          "telephone": "+380 675555555",
+          "contactType": "reservations",
+          "areaServed": "UA"
+      }],
+      "sameAs": [
+          "https://plus.google.com/",
+          "https://www.facebook.com/groups/",
+          "https://www.pinterest.com/",
+          "https://www.instagram.com/"
+      ]
+    }
+  </script>
+  <div itemscope itemtype="https://schema.org/Organization" style="display:none;">
+    <meta itemprop="name" content="Инвентарь для пасечников" />
+    <link itemprop="url" href="https://shanti-center.com.ua/" />
+    <link itemprop="logo" href="<%= image_url 'shanti_square.png' %>" />
+    <meta itemprop="description" content="Инвентарь для пасечников" /><meta itemprop="email" content="hello@nucleus.com.ua" />
+    <div itemprop="address" itemscope itemtype="https://schema.org/PostalAddress">
+    <meta itemprop="addressLocality" content="Старобельск, Украина" />        
+    <meta itemprop="postalCode" content="87500" />
+    <meta itemprop="streetAddress" content="проспект Победы, 25" />
+    </div>
+    <div itemprop="address" itemscope itemtype="https://schema.org/PostalAddress">
+    <meta itemprop="addressLocality" content="Старобельск, Украина" />        
+    <meta itemprop="postalCode" content="87504" />
+    <meta itemprop="streetAddress" content="проспект Мира, 87" />
+    </div>
+    <meta itemprop="telephone" content="+38050-555-55-55" />
+    <meta itemprop="telephone" content="+38066-555-55-55" />
+    <link itemprop="sameAs" href="https://plus.google.com/" />
+    <link itemprop="sameAs" href="https://www.facebook.com/groups/" />
+    <link itemprop="sameAs" href="https://www.pinterest.com/" />
+    <link itemprop="sameAs" href="https://www.instagram.com/" />
+  </div>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
 </head>
 <body>
+  <% flash.each do |key, value| %>
+    <div class="alert alert-<%= key %> alert-dismissible fade show" role="alert">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+      <%= value %>
+    </div>
+  <% end %>
+  <%= render "layouts/header" %>
+  
+  <div class="main">
+    <%= yield %>
+  </div>
 
-<%= yield %>
+  <%= render "layouts/footer" %>
 
 </body>
 </html>
