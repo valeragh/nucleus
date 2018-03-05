@@ -1,3 +1,4 @@
+git_source(:github) { |name| "https://github.com/#{name}.git" }
 source 'https://rubygems.org'
 
 
@@ -53,4 +54,9 @@ end
 
 source 'https://rails-assets.org' do
   gem 'rails-assets-tether', '>= 1.3.3'
+end
+
+group :production do
+  gem 'capistrano', github: 'capistrano/capistrano', ref: '96a16'
+  gem 'unicorn'
 end
