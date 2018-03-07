@@ -3,4 +3,5 @@
     %span
       = category.title
   .collapse{:id=>"menu#{index}"}
-    = link_to category.title, show_category_path(category), :class=>"list-group-item", "data-parent"=>"#menu1"
+    - category.pod_categories.each do |pod_category|
+      = link_to pod_category.title, show_pod_category_path(category, pod_category), :class=>"list-group-item #{active_class(show_pod_category_path(category, pod_category))}", "data-parent"=>"#menu#{index}"

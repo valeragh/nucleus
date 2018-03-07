@@ -5,6 +5,8 @@ class StoresController < ApplicationController
   end
 
   def pod_category
+  	@categories = Category.all.order(:rang)
+  	@pod_category = PodCategory.friendly.find(params[:id])
   end
 
   def product

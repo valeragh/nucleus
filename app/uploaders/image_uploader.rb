@@ -39,7 +39,7 @@ class ImageUploader < CarrierWave::Uploader::Base
   end
 
   def category_image
-    if model.class.to_s == "Category"
+    if model.class.to_s == "Category" || model.class.to_s == "PodCategory"
       resize_to_fill(500, 500)
     end
   end

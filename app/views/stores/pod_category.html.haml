@@ -1,2 +1,157 @@
-%h1 Stores#pod_category
-%p Find me in app/views/stores/pod_category.html.haml
+.container
+  .row
+    .col-12.col-lg-4#sidebar.mb-4
+      %h2.text-orange.my-4 Каталог 
+      .list-group
+        = render "static_pages/aside_category"
+
+      .card.rewiew.bg-grey.my-4.d-none.d-lg-block
+        .card-header.p-2.text-black
+          %small 27 ноября 2017 / Алексей Новиков
+        .card-block.p-3
+          %h6.card-title.text-orange Летковый заградитель круглый  диаметр 80 оцинкованный
+          %p.card-text.text-black
+            Some quick example text to build on the card title and make up the bulk of the card's content.
+          = link_to "Подробней", root_path, class: "btn btn-warning"
+
+      .card.rewiew.bg-grey.my-4.d-none.d-lg-block
+        .card-header.p-2.text-black
+          %small 22 ноября 2017 / Маша
+        .card-block.p-3
+          %h6.card-title.text-orange Скреп ременной 3,3 м
+          %p.card-text.text-black
+            Some quick example text to build on the card title and make up the bulk of the card's content.
+          = link_to "Подробней", root_path, class: "btn btn-warning"
+            
+                            
+
+    .col-12.col-lg-8
+      %h1.text-orange
+        = @pod_category.title
+      .row
+        .col-6.col-xl-4
+          .card.product-card.mb-3
+            .card-header.bg-yellow.d-flex.align-items-center
+              %h6.text-black.font-weight-bold
+                Летковый заградитель круглый  диаметр 70 оцинкованный
+            = image_tag "category_test_product.jpg", class: "card-img-top", title: "product"
+            %label.text-light.status В наличие
+            %label.text-black.date.text-center #540
+            .card-block.p-2
+              %span.badge.badge-warning Оптовая:
+              %p.text-orange.mb-2.font-weight-bold 1004,05 грн
+              %br
+              %span.badge.badge-default Розница:
+              %p.text-black.font-weight-bold 1204,05 грн
+              .btn-group.btn-group-sm.d-flex.justify-content-center.my-2{:role=>"group", "aria-label"=>"Buy Group Button"}
+                %button.btn.btn-danger.text-light В корзину
+                = link_to "Подробней", root_path, class: "btn btn-warning text-light"
+        .col-6.col-xl-4
+          .card.product-card.mb-3
+            .card-header.bg-yellow.d-flex.align-items-center
+              %h6.text-black.font-weight-bold
+                Летковый заградитель
+            = image_tag "category_test_product.jpg", class: "card-img-top", title: "product"
+            %label.text-light.status В наличие
+            %label.text-black.date.text-center #540
+            .card-block.p-2
+              %span.badge.badge-warning Оптовая:
+              %p.text-orange.mb-2.font-weight-bold 1004,05 грн
+              %br
+              %span.badge.badge-default Розница:
+              %p.text-black.font-weight-bold 1204,05 грн
+              .btn-group.btn-group-sm.d-flex.justify-content-center.my-2{:role=>"group", "aria-label"=>"Buy Group Button"}
+                %button.btn.btn-danger.text-light В корзину
+                = link_to "Подробней", root_path, class: "btn btn-warning text-light"
+        .col-6.col-xl-4
+          .card.product-card.mb-3
+            .card-header.bg-yellow.d-flex.align-items-center
+              %h6.text-black.font-weight-bold
+                Летковый заградитель круглый  диаметр 70 оцинкованный
+            = image_tag "category_test_product.jpg", class: "card-img-top", title: "product"
+            %label.text-light.status В наличие
+            %label.text-black.date.text-center #540
+            .card-block.p-2
+              %span.badge.badge-warning Оптовая:
+              %p.text-orange.mb-2.font-weight-bold 1004,05 грн
+              %br
+              %span.badge.badge-default Розница:
+              %p.text-black.font-weight-bold 1204,05 грн
+              .btn-group.btn-group-sm.d-flex.justify-content-center.my-2{:role=>"group", "aria-label"=>"Buy Group Button"}
+                %button.btn.btn-danger.text-light В корзину
+                = link_to "Подробней", root_path, class: "btn btn-warning text-light"
+        .col-6.col-xl-4
+          .card.product-card.mb-3
+            .card-header.bg-yellow.d-flex.align-items-center
+              %h6.text-black.font-weight-bold
+                Летковый заградитель
+            = image_tag "category_test_product.jpg", class: "card-img-top", title: "product"
+            %label.text-light.status В наличие
+            %label.text-black.date.text-center #540
+            .card-block.p-2
+              %span.badge.badge-warning Оптовая:
+              %p.text-orange.mb-2.font-weight-bold 1004,05 грн
+              %br
+              %span.badge.badge-default Розница:
+              %p.text-black.font-weight-bold 1204,05 грн
+              .btn-group.btn-group-sm.d-flex.justify-content-center.my-2{:role=>"group", "aria-label"=>"Buy Group Button"}
+                %button.btn.btn-danger.text-light В корзину
+                = link_to "Подробней", root_path, class: "btn btn-warning text-light"
+        .col-6.col-xl-4
+          .card.product-card.mb-3
+            .card-header.bg-yellow.d-flex.align-items-center
+              %h6.text-black.font-weight-bold
+                Летковый заградитель круглый  диаметр 70 оцинкованный
+            = image_tag "category_test_product.jpg", class: "card-img-top", title: "product"
+            %label.text-light.status.bg-orange Под заказ
+            %label.text-black.date.text-center #540
+            .card-block.p-2
+              %span.badge.badge-warning Оптовая:
+              %p.text-orange.mb-2.font-weight-bold 1004,05 грн
+              %br
+              %span.badge.badge-default Розница:
+              %p.text-black.font-weight-bold 1204,05 грн
+              .btn-group.btn-group-sm.d-flex.justify-content-center.my-2{:role=>"group", "aria-label"=>"Buy Group Button"}
+                %button.btn.btn-danger.text-light В корзину
+                = link_to "Подробней", root_path, class: "btn btn-warning text-light"
+        .col-6.col-xl-4
+          .card.product-card.mb-3
+            .card-header.bg-yellow.d-flex.align-items-center
+              %h6.text-black.font-weight-bold
+                Летковый заградитель
+            = image_tag "category_test_product.jpg", class: "card-img-top", title: "product"
+            %label.text-light.status.bg-orange Под заказ
+            %label.text-black.date.text-center #540
+            .card-block.p-2
+              %span.badge.badge-warning Оптовая:
+              %p.text-orange.mb-2.font-weight-bold 1004,05 грн
+              %br
+              %span.badge.badge-default Розница:
+              %p.text-black.font-weight-bold 1204,05 грн
+              .btn-group.btn-group-sm.d-flex.justify-content-center.my-2{:role=>"group", "aria-label"=>"Buy Group Button"}
+                %button.btn.btn-danger.text-light В корзину
+                = link_to "Подробней", root_path, class: "btn btn-warning text-light"
+        
+                
+        
+
+    .col-12.col-md-6.d-lg-none
+      .card.rewiew.bg-grey.mb-4
+        .card-header.p-2.text-black
+          %small 27 ноября 2017 / Алексей Новиков
+        .card-block.p-3
+          %h6.card-title.text-orange Летковый заградитель круглый  диаметр 80 оцинкованный
+          %p.card-text.text-black
+            Some quick example text to build on the card title and make up the bulk of the card's content.
+          = link_to "Подробней", root_path, class: "btn btn-warning"
+
+    .col-12.col-md-6.d-lg-none
+      .card.rewiew.bg-grey.mb-4
+        .card-header.p-2.text-black
+          %small 22 ноября 2017 / Маша
+        .card-block.p-3
+          %h6.card-title.text-orange Скреп ременной 3,3 м
+          %p.card-text.text-black
+            Some quick example text to build on the card title and make up the bulk of the card's content.
+          = link_to "Подробней", root_path, class: "btn btn-warning"
+
