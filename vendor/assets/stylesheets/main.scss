@@ -16,6 +16,8 @@ a:hover{
 .bg-yellow{background-color:#ffcf01 !important;}
 .bg-grey{background-color:#fee88b !important;}
 
+.border-y-yellow{border-top: 1px solid #ffcf01; border-bottom: 1px solid #ffcf01;}
+
 .text-red{color:#c10404 !important;}
 .text-black{color:#212529 !important;}
 .text-orange{color:#f4880a !important;}
@@ -242,11 +244,37 @@ ul.social-contacts{
   p{font-size:0.8rem;line-height:11px;display:inline;}
 }
 
+// Product
+
+h1.title-product{
+  line-height:1.7rem;
+  .badge.price-badge{
+    font-size:12px;
+  }
+}
+span.product-price{font-size:0.8rem;}
+.border-y-yellow{
+  label.date{
+    position: absolute;
+    background-color: #ffc107;
+    padding: 5px 10px;
+    font-size:13px;
+    top:33px;
+    border-radius: 50%;
+    width:50px;
+    right:10px;
+  }
+  .links:hover{color:#c10404 !important;}
+}
 
 // Media
 
 @include media-breakpoint-up(xs) {
-  
+  .border-y-yellow{
+    p{
+      font-size:0.8rem;
+    }
+  }
 
 }
 @include media-breakpoint-up(sm) {

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180306204533) do
+ActiveRecord::Schema.define(version: 20180307084343) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -51,5 +51,21 @@ ActiveRecord::Schema.define(version: 20180306204533) do
   end
 
   add_index "pod_categories", ["slug"], name: "index_pod_categories_on_slug", unique: true, using: :btree
+
+  create_table "products", force: :cascade do |t|
+    t.string   "title"
+    t.text     "description"
+    t.string   "image_url"
+    t.integer  "rang"
+    t.integer  "pod_category_id"
+    t.integer  "category_id"
+    t.string   "status",                                  default: "В наличие"
+    t.datetime "created_at",                                                    null: false
+    t.datetime "updated_at",                                                    null: false
+    t.string   "slug"
+    t.decimal  "price",           precision: 8, scale: 2
+  end
+
+  add_index "products", ["slug"], name: "index_products_on_slug", unique: true, using: :btree
 
 end

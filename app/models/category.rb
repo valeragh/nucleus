@@ -1,5 +1,6 @@
 class Category < ActiveRecord::Base
   has_many :pod_categories
+  has_many :products
 	validates :title, :image_url, presence: true
   
   mount_uploader :image_url, ImageUploader

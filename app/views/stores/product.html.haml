@@ -1,2 +1,115 @@
-%h1 Stores#product
-%p Find me in app/views/stores/product.html.haml
+.container
+  .row
+    .col-12.col-lg-4#sidebar.mb-4
+      %h2.text-orange.my-4 Каталог 
+      .list-group
+        = render "static_pages/aside_category"
+
+      .card.rewiew.bg-grey.my-4.d-none.d-lg-block
+        .card-header.p-2.text-black
+          %small 27 ноября 2017 / Алексей Новиков
+        .card-block.p-3
+          %h6.card-title.text-orange Летковый заградитель круглый  диаметр 80 оцинкованный
+          %p.card-text.text-black
+            Some quick example text to build on the card title and make up the bulk of the card's content.
+          = link_to "Подробней", root_path, class: "btn btn-warning"
+
+      .card.rewiew.bg-grey.my-4.d-none.d-lg-block
+        .card-header.p-2.text-black
+          %small 22 ноября 2017 / Маша
+        .card-block.p-3
+          %h6.card-title.text-orange Скреп ременной 3,3 м
+          %p.card-text.text-black
+            Some quick example text to build on the card title and make up the bulk of the card's content.
+          = link_to "Подробней", root_path, class: "btn btn-warning"
+            
+                            
+
+    .col-12.col-lg-8
+      .row
+        .col-6
+          %h1.text-orange.title-product
+            = @product.title
+            %span{:class=>"price-badge badge badge-#{@product.status_badge}"}
+              = @product.status
+        .col-6
+          %span.mt-4.badge.badge-warning Оптовая:
+          %span.mt-4.text-orange.font-weight-bold.product-price 
+            = number_to_currency(@product.price_opt, unit: "грн", separator: ",", precision: 2)
+          %br
+          %span.badge.badge-default Розница:
+          %span.text-black.font-weight-bold.product-price 
+            = number_to_currency(@product.price, unit: "грн", separator: ",", precision: 2)
+          %form.mt-2
+            .form-group.row
+              .col-3
+                %input{:type=>"text", :class=>"form-control border-dark", :placeholder=>"Количество", :value=>"1"}
+              %button{:class=>"btn btn-danger", :type=>"button"} В корзину
+        .col-6.border-y-yellow
+          %label.text-black.date.text-center #540
+          = image_tag @product.image_url.category, class: "img-fluid", title: "#{@product.title}"
+        .col-6.border-y-yellow
+          %button{:class=>"btn btn-warning btn-block mt-3", :type=>"button"} Перезвонить мне
+          %h5.mt-3 
+            Описание
+            = @product.title
+          %p
+            = @product.description
+          .links.mt-4
+            = link_to root_path, class: "text-orange" do
+              Отзывы -
+              3
+            |
+            = link_to "График работы", root_path, class: "text-orange"
+            |
+            = link_to "Контакты", root_path, class: "text-orange"
+          %button{:class=>"btn btn-info btn-block my-3", :type=>"button"} Оставить отзыв
+      %h3.my-4.text-center Посмотрите также
+      .row
+        - @products.each do |product|
+          .col-6.col-xl-4
+            .card.product-card.mb-3
+              .card-header.bg-yellow.d-flex.align-items-center
+                %h6.text-black.font-weight-bold
+                  = product.title
+              = image_tag product.image_url.category, class: "card-img-top", title: "#{product.title}"
+              %label{:class=>"text-light status #{product.status_class}"}
+                = product.status 
+              %label.text-black.date.text-center #540
+              .card-block.p-2
+                %span.badge.badge-warning Оптовая:
+                %p.text-orange.mb-2.font-weight-bold 
+                  = number_to_currency(product.price_opt, unit: "грн", separator: ",", precision: 2)
+                %br
+                %span.badge.badge-default Розница:
+                %p.text-black.font-weight-bold 
+                  = number_to_currency(product.price, unit: "грн", separator: ",", precision: 2)
+                .btn-group.btn-group-sm.d-flex.justify-content-center.my-2{:role=>"group", "aria-label"=>"Buy Group Button"}
+                  %button.btn.btn-danger.text-light В корзину
+                  = link_to "Подробней", show_product_path(product.category, product.pod_category, product), class: "btn btn-warning text-light"
+            
+         
+
+
+
+    .col-12.col-md-6.d-lg-none
+      .card.rewiew.bg-grey.mb-4
+        .card-header.p-2.text-black
+          %small 27 ноября 2017 / Алексей Новиков
+        .card-block.p-3
+          %h6.card-title.text-orange Летковый заградитель круглый  диаметр 80 оцинкованный
+          %p.card-text.text-black
+            Some quick example text to build on the card title and make up the bulk of the card's content.
+          = link_to "Подробней", root_path, class: "btn btn-warning"
+
+    .col-12.col-md-6.d-lg-none
+      .card.rewiew.bg-grey.mb-4
+        .card-header.p-2.text-black
+          %small 22 ноября 2017 / Маша
+        .card-block.p-3
+          %h6.card-title.text-orange Скреп ременной 3,3 м
+          %p.card-text.text-black
+            Some quick example text to build on the card title and make up the bulk of the card's content.
+          = link_to "Подробней", root_path, class: "btn btn-warning"
+
+

@@ -49,8 +49,27 @@ RSpec.describe StoresController, type: :controller do
 
   describe "GET #product" do
     it "returns http success" do
-      get :product
+      category = create(:category)
+      pod_category = create(:pod_category)
+      product = create(:product, pod_category_id: pod_category.id)
+      get :product, category_id: category, pod_category_id: pod_category, id: product
       expect(response).to have_http_status(:success)
+    end
+
+    it "renders the #product view" do
+      category = create(:category)
+      pod_category = create(:pod_category)
+      product = create(:product, pod_category_id: pod_category.id)
+      get :product, category_id: category, pod_category_id: pod_category, id: product
+      expect(response).to render_template :product
+    end
+
+    it "assigns the requested product to @product" do
+      category = create(:category)
+      pod_category = create(:pod_category)
+      product = create(:product, pod_category_id: pod_category.id)
+      get :product, category_id: category, pod_category_id: pod_category, id: product
+      expect(assigns(:product)).to eq(product)
     end
   end
 

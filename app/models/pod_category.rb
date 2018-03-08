@@ -1,5 +1,6 @@
 class PodCategory < ActiveRecord::Base
 	belongs_to :category
+  has_many :products
 
 	validates :title, :image_url, :category_id, presence: true
 

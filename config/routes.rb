@@ -7,6 +7,6 @@ Rails.application.routes.draw do
   match '/faqs', to: 'static_pages#faqs', via: 'get'
   get   '/:id', to: 'stores#category', as: :show_category
   get '/:category_id/:id', to: 'stores#pod_category', as: :show_pod_category
-  get 'stores/product'
+  get '/:category_id/:pod_category_id/:id', to: 'stores#product', as: :show_product
 
 end

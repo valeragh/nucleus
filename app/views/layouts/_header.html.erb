@@ -15,7 +15,7 @@
       </ul>
       <form class="form-inline ml-auto">
         <div class="input-group">
-          <input type="text" class="form-control border-dark" placeholder="Search">
+          <input type="text" class="form-control border-dark" placeholder="Поиск...">
           <div class="input-group-append">
               <button class="btn btn-outline-danger" type="button"><i class="fa fa-search"></i></button>
           </div>
@@ -40,7 +40,7 @@
     </button>
     <div class="collapse navbar-collapse bg-orange" id="navbarCollapse">
       <ul class="navbar-nav second-nav ml-auto mr-auto text-white">
-        <li class="nav-item mr-3 <%= active_class(root_path) %>">
+        <li class="nav-item mr-3 <%= active_class(about_us_path) %>">
           <%= link_to "Прайс-лист", root_path, class: "nav-link", title: "Прайс-лист" %>
         </li>
         <li class="nav-item mr-3 <%= active_class(about_us_path) %>">
