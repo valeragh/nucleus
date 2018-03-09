@@ -1,7 +1,7 @@
 class StaticPagesController < ApplicationController
+  before_action :set_category
+
   def index
-  	@categories = Category.all.order(:rang)
-  	@reviews = Review.where("status = 'Показать'").sample(3)
   end
 
   def about_us
@@ -12,4 +12,10 @@ class StaticPagesController < ApplicationController
 
   def faqs
   end
+
+  private
+    def set_category
+      @categories = Category.all.order(:rang)
+      @reviews = Review.where("status = 'Показать'").sample(3)
+    end
 end

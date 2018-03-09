@@ -1,2 +1,74 @@
-%h1 StaticPages#contacts
-%p Find me in app/views/static_pages/contacts.html.haml
+.container
+  %h1.text-orange Каталог 
+  .row
+    .col-12.col-lg-4#sidebar.mb-4
+      .list-group
+        = render "static_pages/aside_category"
+
+      = render "reviews/aside_reviews_top"
+
+    .col-12.col-lg-8
+      %ol.breadcrumb.py-0.pl-0
+        %li.breadcrumb-item
+          = link_to "Главная", root_path
+        %li.breadcrumb-item.active
+          Контакты
+      %h1.text-orange.mb-0
+        Контактная информация
+      .row
+        .col-12.col-md-6.py-4
+          .card.mb-3
+            .card-header.bg-yellow.align-items-center
+              %h6.text-black.font-weight-bold
+                Центральный магазин
+            = image_tag "magazine_nucleus.jpg", class: "img-fluid", title: "Nucleus"
+            .card-block
+              %p.text-black.p-2
+                Краткое описание магазина
+              %ul.list-group.list-group-flush
+                %li.list-group-item.p-2
+                  = fa_icon "map-marker", class: "text-red"
+                  Старобельск, ул. Свободы, 13
+                %li.list-group-item.p-2
+                  = fa_icon "phone", class: "text-red"
+                  +38-050-555-55-55
+                %li.list-group-item.p-2
+                  = fa_icon "phone", class: "text-red"
+                  +38-067-555-55-55
+
+        .col-12.col-md-6.py-4
+          .card.mb-3
+            .card-header.bg-yellow.align-items-center
+              %h6.text-black.font-weight-bold
+                Магазин в Харьковской области
+            = image_tag "magazine_nucleus.jpg", class: "img-fluid", title: "Nucleus"
+            .card-block
+              %p.text-black.p-2
+                Краткое описание магазина
+              %ul.list-group.list-group-flush
+                %li.list-group-item.p-2
+                  = fa_icon "map-marker", class: "text-red"
+                  Старобельск, ул. Свободы, 13
+                %li.list-group-item.p-2
+                  = fa_icon "phone", class: "text-red"
+                  +38-050-555-55-55
+                %li.list-group-item.p-2
+                  = fa_icon "phone", class: "text-red"
+                  +38-067-555-55-55
+
+      .map-responsive
+        %iframe{:src=>"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2006.902211541093!2d38.91117008302517!3d49.283404608726116!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x41203357f10e1167%3A0x432fa4c85b2b50c6!2z0KHRgtCw0YDQvtCx0LXQu9GM0YHQutC40Lkg0JPQvtGA0L7QtNGB0LrQvtC5INGA0YvQvdC-0Lo!5e0!3m2!1sru!2sua!4v1520604226674", :width=>"600", :height=>"450", :frameborder=>"0", :style=>"border:0", :allowfullscreen=>true}
+      .letter.my-4
+        %h4.text-orange Если у вас есть вопросы, напишите нам
+        %form
+          .form-group
+            %input{:type=>"text", :class=>"form-control", :placeholder=>"Ваше имя"}
+          .form-group
+            %input{:type=>"text", :class=>"form-control", :placeholder=>"Ваше телефон"}
+          .form-group
+            %input{:type=>"text", :class=>"form-control", :placeholder=>"Ваше Email"}
+          .form-group
+            %input{:type=>"text", :class=>"form-control", :placeholder=>"Ваше вопрос", :rows=>"3"}
+          %button{:type=>"submit", :class=>"btn btn-warning"} Отправить
+    
+    = render "reviews/aside_reviews_bottom"

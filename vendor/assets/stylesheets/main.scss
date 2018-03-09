@@ -211,6 +211,22 @@ ul.social-contacts{
 
 }
 
+// Google Map
+
+.map-responsive{
+    overflow:hidden;
+    padding-bottom:56.25%;
+    position:relative;
+    height:0;
+}
+.map-responsive iframe{
+    left:0;
+    top:0;
+    height:100%;
+    width:100%;
+    position:absolute;
+}
+
 // Home
 
 .card.product{
@@ -315,6 +331,13 @@ span.product-price{font-size:0.8rem;}
 a.back-product, .form-text a{color:#f4880b;}
 a.back-product:hover, .form-text a:hover {color:#c10404;}
 
+
+// Faqs
+section.faqs{
+  .list-group-item{
+    border: 1px solid rgb(255, 207, 1);
+  }
+}
 
 
 // Media
