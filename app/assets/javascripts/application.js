@@ -16,5 +16,6 @@
 //= require tether
 //= require popper
 //= require bootstrap
+//= require jquery.form-validator
 //= require turbolinks
 //= require_tree .

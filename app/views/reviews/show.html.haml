@@ -1,0 +1,35 @@
+.container
+  %h1.text-orange Каталог 
+  .row
+    .col-12.col-lg-4#sidebar.mb-4
+      .list-group
+        = render "static_pages/aside_category"
+
+    .col-12.col-lg-8
+      %ol.breadcrumb.py-0.pl-0
+        %li.breadcrumb-item
+          = link_to "Главная", root_path
+        %li.breadcrumb-item
+          = link_to @review.product.category.title, show_category_path(@review.product.category)
+        %li.breadcrumb-item
+          = link_to @review.product.pod_category.title, show_pod_category_path(@review.product.category, @review.product.pod_category)
+        %li.breadcrumb-item
+          = link_to @review.product.title, show_product_path(@review.product.category, @review.product.pod_category, @review.product)
+      .list-group.reviews.mb-4
+        .list-group-item.flex-column.align-items-start
+          .d-flex.w-100.justify-content-between
+            = image_tag @review.product.image_url.thumb
+            = link_to show_product_path(@review.product.category, @review.product.pod_category, @review.product), class: "review-link" do
+              %h6.mb-1
+                = @review.product.title
+          %p.mb-1
+            "
+            = @review.description
+            "
+          .d-flex.w-100.justify-content-between
+            %small
+              = @review.name
+            %small
+              = l @review.created_at, format: :long
+      = link_to "Все отзывы", reviews_path, class: "mb-4 btn btn-warning"
+        

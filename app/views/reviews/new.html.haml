@@ -1,0 +1,27 @@
+.container
+  %h1.text-orange Каталог 
+  .row
+    .col-12.col-lg-4#sidebar.mb-4
+      .list-group
+        = render "static_pages/aside_category"
+
+    .col-12.col-lg-8
+      %ol.breadcrumb.py-0.pl-0
+        %li.breadcrumb-item
+          = link_to "Главная", root_path
+        %li.breadcrumb-item
+          = link_to @product.category.title, show_category_path(@product.category)
+        %li.breadcrumb-item
+          = link_to @product.pod_category.title, show_pod_category_path(@product.category, @product.pod_category)
+        %li.breadcrumb-item
+          = link_to @product.title, show_product_path(@product.category, @product.pod_category, @product)
+     
+      #new_review
+        %p.text-red
+          Заполните все поля
+        = render "reviews/form"
+      .back.my-4
+        = link_to show_product_path(@product.category, @product.pod_category, @product), class: "back-product" do
+          = fa_icon "caret-left"
+          Вернуться к 
+          = @product.title

@@ -1,0 +1,15 @@
+- @reviews.each do |review|
+  .card.rewiew.bg-grey.my-4.d-none.d-lg-block
+    .card-header.p-2.text-black
+      %small
+        = l review.created_at, format: :long 
+        \/ 
+        = review.name
+    .card-block.p-3
+      = link_to show_product_path(review.product.category, review.product.pod_category, review.product), class: "review-link" do
+        %h6.card-title
+          = review.product.title
+      %p.card-text.text-black
+        = review.description.truncate_words(10)
+      = link_to "Подробней", product_review_path(review.product, review), class: "btn btn-warning"
+

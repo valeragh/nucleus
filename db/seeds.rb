@@ -1,6 +1,7 @@
 Category.delete_all
 PodCategory.delete_all
 Product.delete_all
+Review.delete_all
 
 category_1 = Category.create( title:'Для вывода маток',
 										            rang:'1',
@@ -8,7 +9,7 @@ category_1 = Category.create( title:'Для вывода маток',
 pod_category_1 = category_1.pod_categories.create(title: 'Для вывода маток',
 	                                                    rang: '1',
 											                                image_url: Rails.root.join("app/assets/images/test_product.jpg").open)
-pod_category_1.products.create( title:'Колпачок квадратный 90мм',
+product = pod_category_1.products.create( title:'Колпачок квадратный 90мм',
 									              rang:'1',
 									              status: 'В наличие',
 									              price: '10000,45',
@@ -16,6 +17,10 @@ pod_category_1.products.create( title:'Колпачок квадратный 90�
 									              image_url: Rails.root.join("app/assets/images/test_product.jpg").open,
 									              category_id: category_1.id
 	                            )
+product.reviews.create(name: 'Иванов Иван',
+	                     status: 'Показать',
+	                     description: 'Пришла моя посылочка. Очень оперативно. Спасибо. Костюм просто супер, качество хорошее!',
+	                     )
 pod_category_1.products.create( title:'Клеточка маточная металическая (Титова)',
 									              rang:'2',
 									              status: 'Под заказ',
@@ -39,7 +44,7 @@ category_2 = Category.create( title:'Дым-пушка ВАРОА-МОР',
 pod_category_1 = category_2.pod_categories.create(title: 'Дым-пушка ВАРОА-МОР',
                                                   rang: '1',
 									                                image_url: Rails.root.join("app/assets/images/test_product.jpg").open)
-pod_category_1.products.create( title:'Колпачок квадратный 90мм',
+product = pod_category_1.products.create( title:'Колпачок квадратный 90мм',
 									              rang:'1',
 									              status: 'В наличие',
 									              price: '10000,45',
@@ -47,6 +52,10 @@ pod_category_1.products.create( title:'Колпачок квадратный 90�
 									              image_url: Rails.root.join("app/assets/images/test_product.jpg").open,
 									              category_id: category_2.id
 	                            )
+product.reviews.create(name: 'Иванов Иван',
+	                     status: 'Показать',
+	                     description: 'Пришла моя посылочка. Очень оперативно. Спасибо. Костюм просто супер, качество хорошее!',
+	                     )
 pod_category_1.products.create( title:'Клеточка маточная металическая (Титова)',
 									              rang:'2',
 									              status: 'Под заказ',
@@ -86,7 +95,7 @@ pod_category_1.products.create( title:'Клеточка маточная мет�
 									              image_url: Rails.root.join("app/assets/images/test_product.jpg").open,
 									              category_id: category_3.id
 	                            )
-pod_category_1.products.create( title:'Каток для распечатывания сот «Ежик» деревянная ручка',
+product = pod_category_1.products.create( title:'Каток для распечатывания сот «Ежик» деревянная ручка',
 									              rang:'3',
 									              status: 'Скрыть',
 									              price: '1000,35',
@@ -94,7 +103,10 @@ pod_category_1.products.create( title:'Каток для распечатыва�
 									              image_url: Rails.root.join("app/assets/images/test_product.jpg").open,
 									              category_id: category_3.id
 	                            )
-            
+product.reviews.create(name: 'Иванов Иван',
+	                     status: 'Показать',
+	                     description: 'Пришла моя посылочка. Очень оперативно. Спасибо. Костюм просто супер, качество хорошее!',
+	                     )            
 category_4 = Category.create( title:'Инвентарь для распечатки соторамок',
 									            rang:'4',
 									            image_url: Rails.root.join("app/assets/images/test_product.jpg").open)

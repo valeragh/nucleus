@@ -1,6 +1,7 @@
 class Product < ActiveRecord::Base
 	belongs_to :category
 	belongs_to :pod_category
+  has_many :reviews
 
 	validates :title, :image_url, :category_id, :pod_category_id, :description, :status, presence: true
 	after_commit :create_category_id!, on: [:create, :update]
@@ -36,9 +37,5 @@ class Product < ActiveRecord::Base
        "success"
     end
   end  
-
-  def price_opt
-    price - 10
-  end
 
 end

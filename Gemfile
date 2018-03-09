@@ -33,6 +33,8 @@ gem 'friendly_id', '~> 5.0.0'
 gem 'babosa'
 gem 'carrierwave'
 gem 'mini_magick'
+gem 'simple_form'
+gem 'jquery-form-validator-rails'
 
 group :test, :development do
   gem "rspec-rails", "~> 3.6"

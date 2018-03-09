@@ -5,27 +5,16 @@
       .list-group
         = render "static_pages/aside_category"
 
-      .card.rewiew.bg-grey.my-4.d-none.d-lg-block
-        .card-header.p-2.text-black
-          %small 27 ноября 2017 / Алексей Новиков
-        .card-block.p-3
-          %h6.card-title.text-orange Летковый заградитель круглый  диаметр 80 оцинкованный
-          %p.card-text.text-black
-            Some quick example text to build on the card title and make up the bulk of the card's content.
-          = link_to "Подробней", root_path, class: "btn btn-warning"
-
-      .card.rewiew.bg-grey.my-4.d-none.d-lg-block
-        .card-header.p-2.text-black
-          %small 22 ноября 2017 / Маша
-        .card-block.p-3
-          %h6.card-title.text-orange Скреп ременной 3,3 м
-          %p.card-text.text-black
-            Some quick example text to build on the card title and make up the bulk of the card's content.
-          = link_to "Подробней", root_path, class: "btn btn-warning"
-            
-                            
+      = render "reviews/aside_reviews_top"
 
     .col-12.col-lg-8
+      %ol.breadcrumb.pb-0.pl-0
+        %li.breadcrumb-item
+          = link_to "Главная", root_path
+        %li.breadcrumb-item
+          = link_to @pod_category.category.title, show_category_path(@pod_category.category)
+        %li.breadcrumb-item.active
+          = @pod_category.title
       %h1.text-orange
         = @pod_category.title
       .row
@@ -40,34 +29,12 @@
                 = product.status 
               %label.text-black.date.text-center #540
               .card-block.p-2
-                %span.badge.badge-warning Оптовая:
-                %p.text-orange.mb-2.font-weight-bold 
-                  = number_to_currency(product.price_opt, unit: "грн", separator: ",", precision: 2)
-                %br
-                %span.badge.badge-default Розница:
+                %span.badge.badge-warning Цена:
                 %p.text-black.font-weight-bold 
                   = number_to_currency(product.price, unit: "грн", separator: ",", precision: 2)
                 .btn-group.btn-group-sm.d-flex.justify-content-center.my-2{:role=>"group", "aria-label"=>"Buy Group Button"}
                   %button.btn.btn-danger.text-light В корзину
                   = link_to "Подробней", show_product_path(product.category, product.pod_category, product), class: "btn btn-warning text-light"
 
-    .col-12.col-md-6.d-lg-none
-      .card.rewiew.bg-grey.mb-4
-        .card-header.p-2.text-black
-          %small 27 ноября 2017 / Алексей Новиков
-        .card-block.p-3
-          %h6.card-title.text-orange Летковый заградитель круглый  диаметр 80 оцинкованный
-          %p.card-text.text-black
-            Some quick example text to build on the card title and make up the bulk of the card's content.
-          = link_to "Подробней", root_path, class: "btn btn-warning"
-
-    .col-12.col-md-6.d-lg-none
-      .card.rewiew.bg-grey.mb-4
-        .card-header.p-2.text-black
-          %small 22 ноября 2017 / Маша
-        .card-block.p-3
-          %h6.card-title.text-orange Скреп ременной 3,3 м
-          %p.card-text.text-black
-            Some quick example text to build on the card title and make up the bulk of the card's content.
-          = link_to "Подробней", root_path, class: "btn btn-warning"
+    = render "reviews/aside_reviews_bottom"
 

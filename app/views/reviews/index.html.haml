@@ -1,0 +1,49 @@
+.container
+  %h1.text-orange Каталог 
+  .row
+    .col-12.col-lg-4#sidebar.mb-4
+      .list-group
+        = render "static_pages/aside_category"
+
+    .col-12.col-lg-8
+      %ol.breadcrumb.py-0.pl-0
+        %li.breadcrumb-item
+          = link_to "Главная", root_path
+        %li.breadcrumb-item
+          = link_to @product.category.title, show_category_path(@product.category)
+        %li.breadcrumb-item
+          = link_to @product.pod_category.title, show_pod_category_path(@product.category, @product.pod_category)
+        %li.breadcrumb-item
+          = link_to @product.title, show_product_path(@product.category, @product.pod_category, @product)
+      - if @reviews.present?
+        .list-group.reviews.mb-4
+          - @reviews.each do |review|
+            .list-group-item.flex-column.align-items-start
+              .d-flex.w-100.justify-content-between
+                = image_tag review.product.image_url.thumb
+                = link_to show_product_path(review.product.category, review.product.pod_category, review.product), class: "review-link" do
+                  %h6.mb-1
+                    = review.product.title
+              %p.mb-1
+                "
+                = review.description
+                "
+              .d-flex.w-100.justify-content-between
+                %small
+                  = review.name
+                %small
+                  = l review.created_at, format: :long
+      - else
+        %p
+          По данному товару нет отзывов.
+      
+      #new_review
+        %p
+          Вы можете оставить свой отзыв.
+        = render "reviews/form"
+      .back.my-4
+        = link_to show_product_path(@product.category, @product.pod_category, @product), class: "back-product" do
+          = fa_icon "caret-left"
+          Вернуться к 
+          = @product.title
+        
