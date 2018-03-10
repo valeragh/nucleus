@@ -2,6 +2,22 @@ Category.delete_all
 PodCategory.delete_all
 Product.delete_all
 Review.delete_all
+Contact.delete_all
+
+Contact.create(title:'Луганская область',
+	           description: 'Магазин находится рядом с рынком. В наличие вся продукция',
+	           address: 'улица Шевченко 33, Старобельск',
+	           phone_one: '050-555-55-55',
+	           phone_two: '067-555-55-55',
+	           image_url: Rails.root.join("app/assets/images/magazine_nucleus.jpg").open,
+	           status: 'Показать')
+Contact.create(title:'Харьковская область',
+	           description: 'Магазин находится рядом с рынком. В наличие вся продукция',
+	           address: 'вулиця Пушкінська, 37, Харків',
+	           phone_one: '050-555-55-55',
+	           phone_two: '067-555-55-55',
+	           image_url: Rails.root.join("app/assets/images/magazine_nucleus.jpg").open,
+	           status: 'Показать')
 
 category_1 = Category.create( title:'Для вывода маток',
 										            rang:'1',

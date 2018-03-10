@@ -17,5 +17,7 @@
 //= require popper
 //= require bootstrap
 //= require jquery.form-validator
+//= require underscore
+//= require gmaps/google
 //= require turbolinks
 //= require_tree .

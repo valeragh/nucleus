@@ -31,7 +31,7 @@ class ImageUploader < CarrierWave::Uploader::Base
 
   # Create different versions of your uploaded files:
   version :thumb do
-    process resize_to_fit: [50, 50]
+    process resize_to_fill: [50, 50]
   end
 
   version :category do
@@ -41,6 +41,16 @@ class ImageUploader < CarrierWave::Uploader::Base
   def category_image
     if model.class.to_s == "Category" || model.class.to_s == "PodCategory" || model.class.to_s == "Product"
       resize_to_fill(500, 500)
+    end
+  end
+
+  version :magazine do
+    process :magazine_image
+  end
+
+  def magazine_image
+    if model.class.to_s == "Contact"
+      resize_to_fill(600, 400)
     end
   end
 

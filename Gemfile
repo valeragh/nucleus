@@ -35,6 +35,8 @@ gem 'carrierwave'
 gem 'mini_magick'
 gem 'simple_form'
 gem 'jquery-form-validator-rails'
+gem 'geocoder'
+gem 'gmaps4rails'
 
 group :test, :development do
   gem "rspec-rails", "~> 3.6"
