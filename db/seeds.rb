@@ -10,6 +10,8 @@ Contact.create(title:'Луганская область',
 	           phone_one: '050-555-55-55',
 	           phone_two: '067-555-55-55',
 	           image_url: Rails.root.join("app/assets/images/magazine_nucleus.jpg").open,
+	           longitude: '38.9074943',
+	           latitude: '49.278819',
 	           status: 'Показать')
 Contact.create(title:'Харьковская область',
 	           description: 'Магазин находится рядом с рынком. В наличие вся продукция',
@@ -17,6 +19,8 @@ Contact.create(title:'Харьковская область',
 	           phone_one: '050-555-55-55',
 	           phone_two: '067-555-55-55',
 	           image_url: Rails.root.join("app/assets/images/magazine_nucleus.jpg").open,
+	           longitude: '36.239841',
+	           latitude: '49.9978735',
 	           status: 'Показать')
 
 category_1 = Category.create( title:'Для вывода маток',
