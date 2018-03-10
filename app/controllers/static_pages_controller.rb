@@ -8,6 +8,7 @@ class StaticPagesController < ApplicationController
   end
 
   def contacts
+    @letter = Letter.new
   end
 
   def faqs

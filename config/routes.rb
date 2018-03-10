@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   resources :products, only: [:index] do
     resources :reviews, only: [:index, :show, :new, :create]
   end
+  resources :letters, only: [:new, :create]
 
   root 'static_pages#index'
 
