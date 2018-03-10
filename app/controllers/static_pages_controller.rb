@@ -24,5 +24,6 @@ class StaticPagesController < ApplicationController
     def set_category
       @categories = Category.all.order(:rang)
       @reviews = Review.where("status = 'Показать'").sample(3)
+      @contact = Contact.first
     end
 end
