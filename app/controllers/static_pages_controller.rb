@@ -18,6 +18,7 @@ class StaticPagesController < ApplicationController
   end
 
   def faqs
+    @faqs = Faq.all
   end
 
   private

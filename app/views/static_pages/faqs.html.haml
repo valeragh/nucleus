@@ -19,23 +19,10 @@
         %p.my-3
           Мы подобрали наиболее частые вопросы от наших пользователей и ответы на них.
         .list-group
-          .list-group-item.flex-column.align-items-start
-            %h5.mb-1
-              Вопрос 1
-            %p.mb-1
-              Orci et lectus in quam, rutrum aliquam consectetuer. Lorem cras curabitur in volutpat, ligula congue erat maecenas leo, lorem lectus nec risus nulla mauris euismod. Vestibulum fringilla eget. Gravida bibendum magna congue malesuada integer, in dolor in, maecenas odio, aliquam magna quisque amet eros enim. Neque ut urna nec iaculis justo, ac aliquam mauris porta eleifend ullamcorper, vel blandit dui donec vivamus.
-          .list-group-item.flex-column.align-items-start
-            %h5.mb-1
-              Вопрос 2
-            %p.mb-1
-              Orci et lectus in quam, rutrum aliquam consectetuer. Lorem cras curabitur in volutpat, ligula congue erat maecenas leo, lorem lectus nec risus nulla mauris euismod. Vestibulum fringilla eget. Gravida bibendum magna congue malesuada integer, in dolor in, maecenas odio, aliquam magna quisque amet eros enim. Neque ut urna nec iaculis justo, ac aliquam mauris porta eleifend ullamcorper, vel blandit dui donec vivamus.
-          .list-group-item.flex-column.align-items-start
-            %h5.mb-1
-              Вопрос 3
-            %p.mb-1
-              Orci et lectus in quam, rutrum aliquam consectetuer. Lorem cras curabitur in volutpat, ligula congue erat maecenas leo, lorem lectus nec risus nulla mauris euismod. Vestibulum fringilla eget. Gravida bibendum magna congue malesuada integer, in dolor in, maecenas odio, aliquam magna quisque amet eros enim. Neque ut urna nec iaculis justo, ac aliquam mauris porta eleifend ullamcorper, vel blandit dui donec vivamus.
-          .list-group-item.flex-column.align-items-start
-            %h5.mb-1
-              Вопрос 4
-            %p.mb-1
-              Orci et lectus in quam, rutrum aliquam consectetuer. Lorem cras curabitur in volutpat, ligula congue erat maecenas leo, lorem lectus nec risus nulla mauris euismod. Vestibulum fringilla eget. Gravida bibendum magna congue malesuada integer, in dolor in, maecenas odio, aliquam magna quisque amet eros enim. Neque ut urna nec iaculis justo, ac aliquam mauris porta eleifend ullamcorper, vel blandit dui donec vivamus.
+          - @faqs.each do |faq|
+            .list-group-item.flex-column.align-items-start
+              %h5.mb-1
+                = faq.title
+              %p.mb-1
+                = faq.description
+          

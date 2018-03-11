@@ -3,6 +3,16 @@ PodCategory.delete_all
 Product.delete_all
 Review.delete_all
 Contact.delete_all
+Faq.delete_all
+
+Faq.create(title: 'Вопрос 1',
+	       description: 'Orci et lectus in quam, rutrum aliquam consectetuer. Lorem cras curabitur in volutpat, ligula congue erat maecenas leo, lorem lectus nec risus nulla mauris euismod. Vestibulum fringilla eget. Gravida bibendum magna congue malesuada integer, in dolor in, maecenas odio, aliquam magna quisque amet eros enim. Neque ut urna nec iaculis justo, ac aliquam mauris porta eleifend ullamcorper, vel blandit dui donec vivamus.')
+Faq.create(title: 'Вопрос 2',
+	       description: 'Orci et lectus in quam, rutrum aliquam consectetuer. Lorem cras curabitur in volutpat, ligula congue erat maecenas leo, lorem lectus nec risus nulla mauris euismod. Vestibulum fringilla eget. Gravida bibendum magna congue malesuada integer, in dolor in, maecenas odio, aliquam magna quisque amet eros enim. Neque ut urna nec iaculis justo, ac aliquam mauris porta eleifend ullamcorper, vel blandit dui donec vivamus.')
+Faq.create(title: 'Вопрос 3',
+	       description: 'Orci et lectus in quam, rutrum aliquam consectetuer. Lorem cras curabitur in volutpat, ligula congue erat maecenas leo, lorem lectus nec risus nulla mauris euismod. Vestibulum fringilla eget. Gravida bibendum magna congue malesuada integer, in dolor in, maecenas odio, aliquam magna quisque amet eros enim. Neque ut urna nec iaculis justo, ac aliquam mauris porta eleifend ullamcorper, vel blandit dui donec vivamus.')
+Faq.create(title: 'Вопрос 4',
+	       description: 'Orci et lectus in quam, rutrum aliquam consectetuer. Lorem cras curabitur in volutpat, ligula congue erat maecenas leo, lorem lectus nec risus nulla mauris euismod. Vestibulum fringilla eget. Gravida bibendum magna congue malesuada integer, in dolor in, maecenas odio, aliquam magna quisque amet eros enim. Neque ut urna nec iaculis justo, ac aliquam mauris porta eleifend ullamcorper, vel blandit dui donec vivamus.')
 
 Contact.create(title:'Луганская область',
 	           description: 'Магазин находится рядом с рынком. В наличие вся продукция',
