@@ -1,0 +1,25 @@
+.container
+  .row
+    .col-12.col-lg-4#sidebar.mb-4
+      = render "static_pages/aside_category_hide"
+
+      = render "reviews/aside_reviews_top"
+
+    .col-12.col-lg-8
+      %ol.breadcrumb.pb-0.pl-0
+        %li.breadcrumb-item
+          = link_to "Главная", root_path
+        %li.breadcrumb-item
+          = link_to "Новости", posts_path
+        %li.breadcrumb-item.active
+          = @post.title
+      %h1.text-orange
+        = @post.title
+      = image_tag @post.image_url.magazine, class: "img-fluid"
+      %blockquote.blockquote.text-orange.mt-4
+        %p.mb-0
+          = @post.shot_description
+      %p.pt-4
+        = @post.description
+
+    = render "reviews/aside_reviews_bottom"

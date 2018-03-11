@@ -49,7 +49,7 @@ class ImageUploader < CarrierWave::Uploader::Base
   end
 
   def magazine_image
-    if model.class.to_s == "Contact"
+    if model.class.to_s == "Contact" || model.class.to_s == "Post"
       resize_to_fill(600, 400)
     end
   end

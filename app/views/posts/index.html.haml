@@ -1,0 +1,28 @@
+.container
+  .row
+    .col-12.col-lg-4#sidebar.mb-4
+      = render "static_pages/aside_category_hide"
+
+      = render "reviews/aside_reviews_top"
+
+    .col-12.col-lg-8
+      %ol.breadcrumb.pb-0.pl-0
+        %li.breadcrumb-item
+          = link_to "Главная", root_path
+        %li.breadcrumb-item.active
+          Новости
+      %h1.text-orange
+        Новости
+      .row
+        - @posts.each do |post|
+          .col-12.col-md-6
+            .card.mb-4
+              = image_tag post.image_url.magazine, class: "card-img-top"
+              .card-block.p-3
+                %h4.card-title
+                  = post.title
+                %p.card-text
+                  = post.shot_description.truncate_words(15)
+                = link_to "Подробней", show_post_path(post), class: "btn btn-warning"
+
+    = render "reviews/aside_reviews_bottom"
