@@ -1,9 +1,7 @@
 .container
   .row
     .col-12.col-lg-4#sidebar.mb-4
-      %h2.text-orange.my-4 Каталог 
-      .list-group
-        = render "static_pages/aside_category"
+      = render "static_pages/aside_category_hide"
 
       = render "reviews/aside_reviews_top" 
 
@@ -18,13 +16,13 @@
         %li.breadcrumb-item.active
           = @product.title
       .row
-        .col-6
+        .col-12.col-lg-6
           %h1.text-orange.title-product
             = @product.title
             %span{:class=>"price-badge badge badge-#{@product.status_badge}"}
               = @product.status
-        .col-6
-          %span.badge.badge-warning.mt-4 Цена:
+        .col-12.col-lg-6
+          %span.price-badge.badge.badge-warning.mt-4 Цена:
           %span.text-black.font-weight-bold.product-price 
             = number_to_currency(@product.price, unit: "грн", separator: ",", precision: 2)
           %form.mt-2
@@ -32,10 +30,10 @@
               .col-3
                 %input{:type=>"text", :class=>"form-control border-dark", :placeholder=>"Количество", :value=>"1"}
               %button{:class=>"btn btn-danger", :type=>"button"} В корзину
-        .col-6.border-y-yellow
+        .col-12.col-lg-6.border-y-yellow
           %label.text-black.date.text-center #540
           = image_tag @product.image_url.category, class: "img-fluid", title: "#{@product.title}"
-        .col-6.border-y-yellow
+        .col-12.col-lg-6.border-y-yellow
           %button{:class=>"btn btn-warning btn-block mt-3", :type=>"button"} Перезвонить мне
           %h5.mt-3 
             Описание
@@ -55,7 +53,7 @@
       %h3.my-4.text-center Посмотрите также
       .row
         - @products.each do |product|
-          .col-6.col-xl-4
+          .col-12.col-md-6.col-xl-4
             .card.product-card.mb-3
               .card-header.bg-yellow.d-flex.align-items-center
                 %h6.text-black.font-weight-bold
@@ -68,7 +66,7 @@
                 %span.badge.badge-warning Цена:
                 %p.text-black.font-weight-bold 
                   = number_to_currency(product.price, unit: "грн", separator: ",", precision: 2)
-                .btn-group.btn-group-sm.d-flex.justify-content-center.my-2{:role=>"group", "aria-label"=>"Buy Group Button"}
+                .btn-group.btn-group-sm.d-flex.my-2{:role=>"group", "aria-label"=>"Buy Group Button"}
                   %button.btn.btn-danger.text-light В корзину
                   = link_to "Подробней", show_product_path(product.category, product.pod_category, product), class: "btn btn-warning text-light"
    

@@ -1,9 +1,7 @@
 .container
   .row
     .col-12.col-lg-4#sidebar.mb-4
-      %h2.text-orange.my-4 Каталог 
-      .list-group
-        = render "static_pages/aside_category"
+      = render "static_pages/aside_category_hide"
 
       = render "reviews/aside_reviews_top"
 
@@ -19,7 +17,7 @@
         = @pod_category.title
       .row
         - @products.each do |product|
-          .col-6.col-xl-4
+          .col-12.col-md-6.col-xl-4
             .card.product-card.mb-3
               .card-header.bg-yellow.d-flex.align-items-center
                 %h6.text-black.font-weight-bold
@@ -32,7 +30,7 @@
                 %span.badge.badge-warning Цена:
                 %p.text-black.font-weight-bold 
                   = number_to_currency(product.price, unit: "грн", separator: ",", precision: 2)
-                .btn-group.btn-group-sm.d-flex.justify-content-center.my-2{:role=>"group", "aria-label"=>"Buy Group Button"}
+                .btn-group.btn-group-sm.d-flex.my-2{:role=>"group", "aria-label"=>"Buy Group Button"}
                   %button.btn.btn-danger.text-light В корзину
                   = link_to "Подробней", show_product_path(product.category, product.pod_category, product), class: "btn btn-warning text-light"
 

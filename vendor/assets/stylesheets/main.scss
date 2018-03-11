@@ -224,7 +224,7 @@ ul.social-contacts{
     position: absolute;
     background-color: #ffc107;
     padding: 5px 10px;
-    top:204px;
+    top:380px;
   }
   label.status{
     font-size:13px;
@@ -238,21 +238,22 @@ ul.social-contacts{
     right:10px;
   }
   h6{
-    font-size:0.8rem;
+    font-size:1.6rem;
   }
-  span{font-size:13px;}
-  p{font-size:0.8rem;line-height:11px;display:inline;}
+  span{font-size:18px;}
+  p{font-size:1.3rem;display:inline;}
 }
 
 // Product
 
 h1.title-product{
-  line-height:1.7rem;
+  line-height:2rem;
   .badge.price-badge{
     font-size:12px;
   }
 }
-span.product-price{font-size:0.8rem;}
+span.price-badge{font-size:18px;}
+span.product-price{font-size:1.3rem;}
 .border-y-yellow{
   label.date{
     position: absolute;
@@ -313,8 +314,19 @@ section.faqs{
 	html {
     font-size: 16px;
   }
+
+  // Navbar
+
   .second-navbar{margin-top:125px;}
   .third-nav{margin-top:181px;}
+
+  // PodCategory
+
+  .card.product-card{
+    label{
+      top:540px;
+    }
+  }
 }
 @include media-breakpoint-up(md) {
 	html {
@@ -344,6 +356,9 @@ section.faqs{
     label{
       top:370px;
     }
+    h6{
+      font-size:1rem;
+    }
   } 
 }
 @include media-breakpoint-up(lg) {
@@ -369,6 +384,7 @@ section.faqs{
     label{
       top:330px;
     }
+    p{font-size:1rem;}
   }
 }
 @include media-breakpoint-up(xl) {

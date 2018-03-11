@@ -1,0 +1,7 @@
+.d-none.d-lg-block
+  %h2.text-orange.my-4 Каталог 
+  .list-group
+    - @categories.each do |category|
+      = link_to category.title, show_category_path(category), :class=>"list-group-item #{active_class(show_category_path(category))}"
+
+  
