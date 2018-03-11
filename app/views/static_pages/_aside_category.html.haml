@@ -1,7 +1,4 @@
-- @categories.each_with_index do |category, index|
-  %a{:href=>"#menu#{index}", "data-toggle"=>"collapse", "data-parent"=>"#sidebar", "aria-expanded"=>"false", :class=>"list-group-item #{active_class(show_category_path(category))} collapsed"}
-    %span
-      = category.title
-  .collapse{:id=>"menu#{index}"}
-    - category.pod_categories.each do |pod_category|
-      = link_to pod_category.title, show_pod_category_path(category, pod_category), :class=>"list-group-item #{active_class(show_pod_category_path(category, pod_category))}", "data-parent"=>"#menu#{index}"
+- @categories.each do |category|
+  = link_to category.title, show_category_path(category), :class=>"list-group-item #{active_class(show_category_path(category))}"
+
+  

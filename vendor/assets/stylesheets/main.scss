@@ -115,61 +115,21 @@ ul.social-contacts{
 
 #sidebar .list-group-item {
     border-radius: 0;
-    background-color: #ffffff;
-    color: #f4880b;
+    background-color: #ffcf01;
+    color: #212529;
     border-left: 0;
     border-right: 0;
     border-color: #f4880b;
     white-space: nowrap;
-    font-size: 0.74rem;
+    font-size: 1.3rem;
+}
+#sidebar a.list-group-item:hover {
+    color: #c10404;
 }
 #sidebar .list-group-item.active{
-  background-color: #f4880b;
-  color: #ffffff;
+  background-color: #f4880a;
 }
 
-/* highlight active menu */
-#sidebar .list-group-item:not(.collapsed) {
-  background-color: #ffcf01;
-  color: #212529;
-}
-
-/* closed state */
-#sidebar .list-group .list-group-item[aria-expanded="false"]::after {
-  content: " \f0d7";
-  font-family: FontAwesome;
-  display: inline;
-  text-align: right;
-  padding-left: 5px;
-}
-
-/* open state */
-#sidebar .list-group .list-group-item[aria-expanded="true"] {
-  background-color: #f4880b;
-  color: #ffffff;
-}
-#sidebar .list-group .list-group-item[aria-expanded="true"]::after {
-  content: " \f0da";
-  font-family: FontAwesome;
-  display: inline;
-  text-align: right;
-  padding-left: 5px;
-}
-
-/* level 1*/
-#sidebar .list-group .collapse .list-group-item  {
-  padding-left: 30px;
-}
-
-/* level 2*/
-#sidebar .list-group .collapse > .collapse .list-group-item {
-  padding-left: 40px;
-}
-
-/* level 3*/
-#sidebar .list-group .collapse > .collapse > .collapse .list-group-item {
-  padding-left: 40px;
-}
 
 @media (max-width:48em) {
     /* overlay sub levels on small screens */
@@ -207,8 +167,7 @@ ul.social-contacts{
           transition-timing-function: ease-in;
   -webkit-transition-property: width;
        -o-transition-property: width;
-          transition-property: width;
-
+         transition-property: width;
 }
 
 // Google Map
@@ -361,8 +320,17 @@ section.faqs{
 	html {
     font-size: 20px;
   }
+
+  // Navbar
+
   .second-navbar{margin-top:150px;}
   .third-nav{margin-top:212px;}
+  
+  // Sidebar Category
+
+  #sidebar .list-group-item {
+    font-size: 1.4rem;
+  }
 
   // Home
 
@@ -381,6 +349,12 @@ section.faqs{
 @include media-breakpoint-up(lg) {
   html {
     font-size: 20px;
+  }
+  
+  // Sidebar Category
+
+  #sidebar .list-group-item {
+    font-size: 0.74rem;
   }
 
   // Home
@@ -402,8 +376,17 @@ section.faqs{
     font-size: 18px;
   }
   .main{min-height:750px;}
+
+  // Header
+  
   .second-navbar{margin-top:135px;}
   .third-nav{margin-top:198px;}
+
+  // Sidebar Category
+
+  #sidebar .list-group-item {
+    font-size: 1rem;
+  }
 
   // Home
 

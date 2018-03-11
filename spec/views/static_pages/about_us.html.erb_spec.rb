@@ -17,7 +17,6 @@ RSpec.describe "static_pages/about_us" do
 
     expect(rendered).to match /Первая категория/
     expect(rendered).to match /Вторая категория/
-    expect(rendered).to match /Первая подкатегория/
     expect(rendered).to match /Первое имя/
     expect(rendered).to match /Первый отзыв/
     expect(rendered).to match /Первый продукт/
