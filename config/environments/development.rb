@@ -14,7 +14,21 @@ Rails.application.configure do
   config.action_controller.perform_caching = false
 
   # Don't care if the mailer can't send.
-  config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.delivery_method = :smtp
+  # SMTP settings for gmail
+  config.action_mailer.smtp_settings = {
+    :enable_starttls_auto => true,
+    :openssl_verify_mode => 'none',
+    #:tls => false,
+    #:ssl => false,
+    address:"smtp.locum.ru",
+    port: 2525,
+    domain: "nucleus.com.ua",
+    authentication: "login",
+    user_name: Rails.application.secrets.mail_username,
+    password: Rails.application.secrets.mail_password
+  }
 
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log

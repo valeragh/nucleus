@@ -25,4 +25,5 @@ RSpec.describe "static_pages/index" do
     expect(rendered).to match /12345678/
     expect(rendered).to match /78945612/
   end
+
 end

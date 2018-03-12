@@ -669,3 +669,4 @@ pod_category_6.products.create( title:'Каток для распечатыва�
 									              image_url: Rails.root.join("app/assets/images/test_product.jpg").open,
 									              category_id: category_11.id
 	                            )
+AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?

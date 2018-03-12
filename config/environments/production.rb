@@ -34,7 +34,20 @@ Rails.application.configure do
   # Asset digests allow you to set far-future HTTP expiration dates on all assets,
   # yet still be able to expire them through the digest params.
   config.assets.digest = true
-
+  config.action_mailer.delivery_method = :smtp
+  # SMTP settings for gmail
+  config.action_mailer.smtp_settings = {
+    :enable_starttls_auto => true,
+    :openssl_verify_mode => 'none',
+    #:tls => false,
+    #:ssl => false,
+    address:"smtp.locum.ru",
+    port: 2525,
+    domain: "nucleus.com.ua",
+    authentication: "login",
+    user_name: Rails.application.secrets.mail_username,
+    password: Rails.application.secrets.mail_password
+  }
   # `config.assets.precompile` and `config.assets.version` have moved to config/initializers/assets.rb
 
   # Specifies the header that your server uses for sending files.

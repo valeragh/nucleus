@@ -28,9 +28,19 @@
           <span class="badge badge-pill badge-warning">0</span>
         <%end%>
         |
-        <%= link_to "Вход", root_path %>
-        |
-        <%= link_to "Регистрация", root_path %>
+        <%- if user_signed_in? %>
+          <%- if current_user.admin? %>
+            <%= link_to "Админпанель", admin_dashboard_path %>
+          <%- else %>
+            <%= link_to "Кабинет", root_path %>
+          <%end%>
+          |
+          <%= link_to "Выйти", destroy_user_session_path %>
+        <%- else %>
+          <%= link_to "Вход", new_user_session_path %>
+          |
+          <%= link_to "Регистрация", new_user_registration_path %>
+        <%end%>
       </div>
     </div>
   </nav>

@@ -430,16 +430,6 @@ ru:
         few:  "Файлы"
         many: "Файлы"
         other: "Файлы"
-      admin_user:
-        one:  "Администратор"
-        few:  "Администраторы"
-        many: "Администраторы"
-        other: "Администраторы"
-      rss_email:
-        one: "Подписчик"
-        few: "Подписчика"
-        many: "Подписчики"
-        other: "Подписчики"
       back_phone:
         one: "Обратный звонок"
         few: "Обратные звонки"
@@ -450,6 +440,11 @@ ru:
         few: "Категории"
         many: "Категории"
         other: "Категории"
+      user:
+        one: "Пользователь"
+        few: "Пользователи"
+        many: "Пользователи"
+        other: "Пользователи"
     attributes:
       faq:
         question: "Вопрос"
@@ -489,6 +484,12 @@ ru:
         rang: "Приоритет"
         created_at: "Создан"
         updated_at: "Обновлен"
+      user:
+        phone: "Телефон"
+        password: "Пароль"
+        password_confirmation: "Пароль повторно"
+        current_password: "Текущий пароль"
+        remember_me: "Запомнить меня"
 
 
   number:

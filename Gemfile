@@ -37,6 +37,9 @@ gem 'simple_form'
 gem 'jquery-form-validator-rails'
 gem 'geocoder'
 gem 'gmaps4rails'
+gem 'devise'
+gem 'activeadmin', github: 'gregbell/active_admin'
+gem 'cancancan'
 
 group :test, :development do
   gem "rspec-rails", "~> 3.6"

@@ -40,10 +40,23 @@ a:hover{
   z-index: 1100;
   width: 100%;
 }
+.alert-alert{
+  color: #721c24;
+  background-color: #f8d7da;
+  border-color: #f5c6cb;
+}
+
+.alert-notice{
+  color: #155724;
+  background-color: #d4edda;
+  border-color: #c3e6cb;
+}
 
 span.help-block {
   color: #c10404;
 }
+
+p.help-block{font-size:0.8rem;color:#6f6e6e;}
 
 span.help-block.form-error{color:#f26c4f;}
 

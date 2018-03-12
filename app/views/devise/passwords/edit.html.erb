@@ -1,0 +1,30 @@
+<div class="container">
+  <div class="row justify-content-md-center">
+    <div class="col col-md-4 my-4">
+      <section class="bg-grey p-4">
+        <h2 class="mb-4">Смените ваш пароль</h2>
+
+          <%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
+            <%= f.error_notification %>
+
+            <%= f.input :reset_password_token, as: :hidden %>
+            <%= f.full_error :reset_password_token %>
+
+            <div class="form-inputs">
+              <%= f.input :password, placeholder: "Новый пароль", required: true, autofocus: true, hint: ("#{@minimum_password_length} символов минимум" if @minimum_password_length), label: false %>
+              <%= f.input :password_confirmation, placeholder: "Новый пароль повторно", required: true, label: false %>
+            </div>
+
+            <div class="form-actions">
+              <%= f.button :submit, "Сохранить пароль", class: "btn btn-block btn-warning" %>
+            </div>
+          <% end %>
+
+        <div class="btn-group d-flex justify-content-center my-4">
+          <%= link_to "Войти", new_session_path(resource_name), class: "btn btn-outline-warning btn-block" %>
+          <%= link_to "Регистрация", new_registration_path(resource_name), class: "btn btn-outline-info" %>
+        </div>
+      </section>
+    </div>
+  </div>
+</div>

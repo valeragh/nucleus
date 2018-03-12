@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
   
+  ActiveAdmin.routes(self)
+  devise_for :users,
+             controllers: {sessions: 'users/sessions', passwords: 'users/passwords', registrations: 'users/registrations'},
+             path: '',
+             path_names: { sign_in: 'login', sign_out: 'logout', sign_up: 'signup' }
+
   resources :products, only: [:index] do
     resources :reviews, only: [:index, :show, :new, :create]
   end
