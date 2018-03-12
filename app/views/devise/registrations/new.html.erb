@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row justify-content-md-center">
-    <div class="col col-md-4 my-4">
+    <div class="col col-sm-8 col-xl-4 my-4">
       <section class="bg-grey p-4">
 	      <h2 class="mb-4">Регистрация</h2>
 
@@ -8,7 +8,7 @@
 				  <div class="form-inputs">
 				    <%= f.input :email, input_html: { :placeholder => "Ваш email", :required => false, :autofocus => true}, label: false %>
 				    <%= f.input :password, input_html: { :placeholder => "Пароль", required: true, hint: ("#{@minimum_password_length} символов минимум" if @minimum_password_length)}, label: false %>
-				    <%= f.input :password_confirmation, input_html: { "data-validation" => "required", "data-validation-error-msg" => "Заполните поле", :placeholder => "Пароль повторно", required: true}, label: false %>
+				    <%= f.input :password_confirmation, input_html: {:placeholder => "Пароль повторно", required: true}, label: false %>
 				  </div>
 
 				  <div class="form-actions">
