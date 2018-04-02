@@ -28,4 +28,5 @@ class Users::SessionsController < Devise::SessionsController
       @categories = Category.all.order(:rang)
       @contact = Contact.first
     end
+
 end

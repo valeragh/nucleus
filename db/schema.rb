@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180312064758) do
+ActiveRecord::Schema.define(version: 20180402131238) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,6 +30,15 @@ ActiveRecord::Schema.define(version: 20180312064758) do
   add_index "active_admin_comments", ["author_type", "author_id"], name: "index_active_admin_comments_on_author_type_and_author_id", using: :btree
   add_index "active_admin_comments", ["namespace"], name: "index_active_admin_comments_on_namespace", using: :btree
   add_index "active_admin_comments", ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource_type_and_resource_id", using: :btree
+
+  create_table "carts", force: :cascade do |t|
+    t.datetime "created_at",                               null: false
+    t.datetime "updated_at",                               null: false
+    t.decimal  "total",           precision: 12, scale: 3
+    t.integer  "order_status_id"
+  end
+
+  add_index "carts", ["order_status_id"], name: "index_carts_on_order_status_id", using: :btree
 
   create_table "categories", force: :cascade do |t|
     t.string   "title"
@@ -85,6 +94,36 @@ ActiveRecord::Schema.define(version: 20180312064758) do
     t.datetime "created_at",                       null: false
     t.datetime "updated_at",                       null: false
   end
+
+  create_table "order_items", force: :cascade do |t|
+    t.integer  "quantity",                             default: 1
+    t.integer  "product_id"
+    t.integer  "order_id"
+    t.decimal  "unit_price",  precision: 12, scale: 3
+    t.decimal  "total_price", precision: 12, scale: 3
+    t.datetime "created_at",                                       null: false
+    t.datetime "updated_at",                                       null: false
+    t.integer  "cart_id"
+  end
+
+  add_index "order_items", ["cart_id"], name: "index_order_items_on_cart_id", using: :btree
+  add_index "order_items", ["order_id"], name: "index_order_items_on_order_id", using: :btree
+  add_index "order_items", ["product_id"], name: "index_order_items_on_product_id", using: :btree
+
+  create_table "orders", force: :cascade do |t|
+    t.integer  "order_status_id"
+    t.integer  "user_id"
+    t.decimal  "total",           precision: 12, scale: 3
+    t.string   "delivery"
+    t.datetime "created_at",                               null: false
+    t.datetime "updated_at",                               null: false
+    t.string   "phone"
+    t.text     "description"
+    t.string   "email"
+    t.string   "status"
+  end
+
+  add_index "orders", ["order_status_id"], name: "index_orders_on_order_status_id", using: :btree
 
   create_table "pod_categories", force: :cascade do |t|
     t.string   "title"

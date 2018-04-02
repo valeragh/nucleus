@@ -1,5 +1,6 @@
 class ReviewsController < ApplicationController
   before_action :set_category
+  before_action :set_cart
 
   def index
   	@product = Product.friendly.find(params[:product_id])
@@ -48,5 +49,9 @@ class ReviewsController < ApplicationController
     def set_category
       @categories = Category.all.order(:rang)
       @contact = Contact.first
+    end
+
+    def set_cart
+      @cart = current_cart
     end
 end

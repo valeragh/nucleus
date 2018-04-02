@@ -1,5 +1,6 @@
 class LettersController < ApplicationController
   before_action :set_category
+  before_action :set_cart
 
   def new
   	@letter = Letter.new
@@ -29,5 +30,9 @@ class LettersController < ApplicationController
     def set_category
       @categories = Category.all.order(:rang)
       @contact = Contact.first
+    end
+
+    def set_cart
+      @cart = current_cart
     end
 end

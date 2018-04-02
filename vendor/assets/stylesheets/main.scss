@@ -17,6 +17,7 @@ a:hover{
 .bg-grey{background-color:#fee88b !important;}
 
 .border-y-yellow{border-top: 1px solid #ffcf01; border-bottom: 1px solid #ffcf01;}
+.border-yellow{border: 1px solid #ffcf01;}
 
 .text-red{color:#c10404 !important;}
 .text-black{color:#212529 !important;}
@@ -65,6 +66,7 @@ span.help-block.form-error{color:#f26c4f;}
 .btn-outline-warning{color:#c10404;border-color:#f4880a;}
 .btn-warning{color:#ffffff;background-color:#f4880a;border-color:#f4880a;}
 .badge-warning{color:#212529;background-color:#ffcf01;}
+.badge-danger{color:#ffffff;background-color:#c10404;}
 
 // Breadcrumb
 .breadcrumb{
@@ -309,6 +311,15 @@ a.back-product:hover, .form-text a:hover {color:#c10404;}
 section.faqs{
   .list-group-item{
     border: 1px solid rgb(255, 207, 1);
+  }
+}
+
+
+// Cart
+
+.item-cart{
+  label {
+    font-size: 12px;
   }
 }
 

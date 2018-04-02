@@ -1,7 +1,26 @@
+# == Schema Information
+#
+# Table name: products
+#
+#  id              :integer          not null, primary key
+#  title           :string
+#  description     :text
+#  image_url       :string
+#  rang            :integer
+#  pod_category_id :integer
+#  category_id     :integer
+#  status          :string           default("В наличие")
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
+#  slug            :string
+#  price           :decimal(8, 2)
+#
+
 class Product < ActiveRecord::Base
 	belongs_to :category
 	belongs_to :pod_category
   has_many :reviews
+  has_many :order_items
 
 	validates :title, :image_url, :category_id, :pod_category_id, :description, :status, presence: true
 	after_commit :create_category_id!, on: [:create, :update]

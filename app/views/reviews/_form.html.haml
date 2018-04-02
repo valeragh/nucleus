@@ -1,4 +1,4 @@
-= simple_form_for @review, :url => product_reviews_path, :method => :post, :html => {:class => ''} do |f|
+= simple_form_for @review, :url => product_reviews_path(product_id: @product.id), :method => :post, :html => {:class => ''} do |f|
   = f.input :name, input_html: { type: 'text', :placeholder => "Ваше имя", class: "form-control", "data-validation" => "required", "data-validation-error-msg" => "Заполните поле"}, label: false
   = f.input :description, input_html: { type: 'text', :placeholder => "Ваш отзыв", class: "form-control", "data-validation" => "required", "data-validation-error-msg" => "Заполните поле", rows: "3"}, label: false
   %small.mb-1.form-text.text-muted

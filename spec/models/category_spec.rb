@@ -1,3 +1,16 @@
+# == Schema Information
+#
+# Table name: categories
+#
+#  id         :integer          not null, primary key
+#  title      :string
+#  rang       :integer
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#  image_url  :string
+#  slug       :string
+#
+
 require 'rails_helper'
 require 'carrierwave/test/matchers'
 

@@ -1,5 +1,18 @@
+# == Schema Information
+#
+# Table name: categories
+#
+#  id         :integer          not null, primary key
+#  title      :string
+#  rang       :integer
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#  image_url  :string
+#  slug       :string
+#
+
 class Category < ActiveRecord::Base
-  has_many :pod_categories
+  has_many :pod_categories, :dependent => :destroy
   has_many :products
 	validates :title, :image_url, presence: true
   

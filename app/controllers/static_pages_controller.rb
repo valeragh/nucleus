@@ -1,5 +1,6 @@
 class StaticPagesController < ApplicationController
   before_action :set_category
+  before_action :set_cart
 
   def index
   end
@@ -26,5 +27,9 @@ class StaticPagesController < ApplicationController
       @categories = Category.all.order(:rang)
       @reviews = Review.where("status = 'Показать'").sample(3)
       @contact = Contact.first
+    end
+
+    def set_cart
+      @cart = current_cart
     end
 end

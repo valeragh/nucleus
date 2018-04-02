@@ -1,8 +1,9 @@
 require "rails_helper"
 
 RSpec.describe "stores/pod_category" do
-  it "displays @categories, @reviews, @products, @contact the stores" do
+  it "displays @cart, @categories, @reviews, @products, @contact the stores" do
     assign(:stores, [
+      @cart = create(:cart),
       @categories = [category_one = create(:category, title: 'Первая категория'),
       category_two = create(:category, title: 'Вторая категория')],
       @category = create(:category, title: 'Текущая категория'),

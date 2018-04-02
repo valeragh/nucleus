@@ -1,3 +1,17 @@
+# == Schema Information
+#
+# Table name: pod_categories
+#
+#  id          :integer          not null, primary key
+#  title       :string
+#  image_url   :string
+#  rang        :integer
+#  category_id :integer
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#  slug        :string
+#
+
 require 'rails_helper'
 require 'carrierwave/test/matchers'
 

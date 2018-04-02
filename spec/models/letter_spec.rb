@@ -1,3 +1,17 @@
+# == Schema Information
+#
+# Table name: letters
+#
+#  id             :integer          not null, primary key
+#  name           :string
+#  description    :text
+#  email          :string
+#  checked_out_at :datetime
+#  status         :string           default("Новое")
+#  created_at     :datetime         not null
+#  updated_at     :datetime         not null
+#
+
 require 'rails_helper'
 
 describe Letter do

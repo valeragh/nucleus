@@ -30,9 +30,10 @@
                 %span.badge.badge-warning Цена:
                 %p.text-black.font-weight-bold 
                   = number_to_currency(product.price, unit: "грн", separator: ",", precision: 2)
-                .btn-group.btn-group-sm.d-flex.my-2{:role=>"group", "aria-label"=>"Buy Group Button"}
-                  %button.btn.btn-danger.text-light В корзину
-                  = link_to "Подробней", show_product_path(product.category, product.pod_category, product), class: "btn btn-warning text-light"
+                .buttons-product.my-2
+                  = link_to "В корзину", order_items_path(:product_id => product.id), :method => :post, remote: true, class: "btn btn-block btn-danger text-light"
+
+                  = link_to "Подробней", show_product_path(product.category, product.pod_category, product), class: "mt-2 btn btn-block btn-warning text-light"
 
     = render "reviews/aside_reviews_bottom"
 

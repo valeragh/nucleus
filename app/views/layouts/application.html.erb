@@ -159,7 +159,7 @@
       <%= value %>
     </div>
   <% end %>
-  <%= render "layouts/header" %>
+  <%= render "layouts/header" unless @disable_nav %>
   
   <div class="main">
     <%= yield %>

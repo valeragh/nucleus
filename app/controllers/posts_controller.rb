@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
 	before_action :set_category
+  before_action :set_cart
 
   def index
     @posts = Post.all
@@ -14,5 +15,9 @@ class PostsController < ApplicationController
       @categories = Category.all.order(:rang)
       @reviews = Review.where("status = 'Показать'").sample(3)
       @contact = Contact.first
+    end
+
+    def set_cart
+      @cart = current_cart
     end
 end

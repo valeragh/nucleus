@@ -61,6 +61,7 @@ group :development do
   gem 'binding_of_caller'
   gem 'meta_request'
   gem 'web-console', '~> 2.0'
+  gem 'annotate'
 end
 
 source 'https://rails-assets.org' do

@@ -1,0 +1,41 @@
+.container
+  %h1.text-orange.title-product.text-center
+    Ваш заказ №
+    = @order.id
+    %span{:class => "badge badge-#{@order.status_class}" }
+      = @order.status
+  .row.justify-content-md-center
+    .col-6
+      - @order.order_items.each do |order_item|
+        .item-cart.p-3.border-yellow
+          .cart-title.d-flex.justify-content-between
+            = image_tag order_item.product.image_url.thumb, class: "img-thumbnail"
+            %p.ml-2.lh-1
+              %strong
+                = order_item.product.title
+          .d-flex.justify-content-between.mt-1
+            %strong.text-black Цена:
+            %span.cart-price
+              = number_to_currency(order_item.product.price, unit: "грн", separator: ",", precision: 2)
+              за ед.
+          .d-flex.justify-content-between.mt-1
+            %strong.text-black Количество:
+            %span.cart-price
+              = order_item.quantity
+              ед.
+          .d-flex.justify-content-between.mt-1
+            %strong.text-black Итого:
+            %span.cart-price
+              = number_to_currency(order_item.total_price, unit: "грн", separator: ",", precision: 2)
+      .product-total.d-flex.justify-content-between.my-3
+        %strong Всего к оплате:
+        %strong.cart-price-total
+          = number_to_currency @order.total, unit: "грн", separator: ",", precision: 2
+      .product-total.d-flex.justify-content-between.mt-3
+        %strong Доставка:
+        %strong.cart-price-total
+          = @order.delivery
+      %p
+        = @order.description
+      = link_to "Оплатить", root_path, class: "btn btn-success btn-block"
+      = link_to "Личный кабинет", root_path, class: "mt-2 btn btn-block btn-warning"

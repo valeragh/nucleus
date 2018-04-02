@@ -1,3 +1,17 @@
+# == Schema Information
+#
+# Table name: posts
+#
+#  id               :integer          not null, primary key
+#  title            :string
+#  description      :text
+#  image_url        :string
+#  created_at       :datetime         not null
+#  updated_at       :datetime         not null
+#  slug             :string
+#  shot_description :string
+#
+
 # Read about factories at https://github.com/thoughtbot/factory_girl
 
 FactoryGirl.define do

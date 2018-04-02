@@ -2,8 +2,7 @@
   .row
     .col-12.col-lg-4#sidebar.mb-4
       = render "static_pages/aside_category_hide"
-
-      = render "reviews/aside_reviews_top" 
+      = render "reviews/aside_reviews_top"
 
     .col-12.col-lg-8
       %ol.breadcrumb.pb-0.pl-0
@@ -25,11 +24,7 @@
           %span.price-badge.badge.badge-warning.mt-4 Цена:
           %span.text-black.font-weight-bold.product-price 
             = number_to_currency(@product.price, unit: "грн", separator: ",", precision: 2)
-          %form.mt-2
-            .form-group.row
-              .col-3
-                %input{:type=>"text", :class=>"form-control border-dark", :placeholder=>"Количество", :value=>"1"}
-              %button{:class=>"btn btn-danger", :type=>"button"} В корзину
+          = link_to "В корзину", order_items_path(:product_id => @product.id), :method => :post, remote: true, class: "btn btn-danger btn-block mt-2"
         .col-12.col-lg-6.border-y-yellow
           %label.text-black.date.text-center #540
           = image_tag @product.image_url.category, class: "img-fluid", title: "#{@product.title}"
@@ -45,9 +40,9 @@
               Отзывы -
               = @product_reviews.count
             |
-            = link_to "График работы", root_path, class: "text-orange"
+            = link_to "График работы", contacts_path, class: "text-orange"
             |
-            = link_to "Контакты", root_path, class: "text-orange"
+            = link_to "Контакты", contacts_path, class: "text-orange"
           = link_to "Оставить отзыв", new_product_review_path(@product), class: "btn btn-info btn-block my-3"
 
       %h3.my-4.text-center Посмотрите также
