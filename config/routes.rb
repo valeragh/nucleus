@@ -74,7 +74,7 @@ Rails.application.routes.draw do
     resources :reviews, only: [:index, :show, :new, :create]
   end
   resources :letters, only: [:new, :create]
-  resource :cart, only: [:new, :create, :show]
+  resource :cart, only: [:show]
   resources :order_items, only: [:create, :update, :destroy]
   resources :orders, only: [:new, :create, :show]
   resources :orders, :only => [:create], :shallow => true do

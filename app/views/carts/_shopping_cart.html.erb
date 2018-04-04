@@ -34,7 +34,7 @@
       <div class="product-total d-flex justify-content-between my-3">
         <strong> Всего к оплате:</strong>
         <strong class="cart-price-total">
-          <%= number_to_currency @cart.total_price, unit: "грн", separator: ",", precision: 2 %>
+          <%= number_to_currency @cart.total, unit: "грн", separator: ",", precision: 2 %>
         </strong>
       </div>
     </div>

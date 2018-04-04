@@ -24,7 +24,11 @@
           %span.price-badge.badge.badge-warning.mt-4 Цена:
           %span.text-black.font-weight-bold.product-price 
             = number_to_currency(@product.price, unit: "грн", separator: ",", precision: 2)
-          = link_to "В корзину", order_items_path(:product_id => @product.id), :method => :post, remote: true, class: "btn btn-danger btn-block mt-2"
+          = simple_form_for @order_item, remote: true do |f|
+            = f.input :product_id, as: :hidden, input_html: { value: "#{@product.id}"}
+            = f.input :unit_price, as: :hidden, input_html: { value: "#{@product.price}"}
+            = f.input :quantity, as: :hidden, value: "1"
+            = f.button :submit, "В корзину", class: "btn btn-danger btn-block mt-2"
         .col-12.col-lg-6.border-y-yellow
           %label.text-black.date.text-center #540
           = image_tag @product.image_url.category, class: "img-fluid", title: "#{@product.title}"

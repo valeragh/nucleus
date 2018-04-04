@@ -1,5 +1,6 @@
 class Users::SessionsController < Devise::SessionsController
   before_action :set_category
+  before_action :set_cart
   #before_filter :disable_nav, only: [:new]
   # before_action :configure_sign_in_params, only: [:create]
 
@@ -27,6 +28,10 @@ class Users::SessionsController < Devise::SessionsController
     def set_category
       @categories = Category.all.order(:rang)
       @contact = Contact.first
+    end
+
+    def set_cart
+      @cart = current_cart
     end
 
 end

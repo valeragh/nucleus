@@ -57,11 +57,10 @@ class Order < ActiveRecord::Base
 	  end
 
     def set_user
-      request_hash = {
-        :email => self[:email],
-        :password => Devise.friendly_token[0, 20],
-        :password_confirmation => Devise.friendly_token[0, 20]
-      }
-      self[:user_id] = User.where(email: self[:email]).first_or_create(request_hash).id
+      user = User.where(email: self[:email]).first_or_create do |user|
+        user.email = self[:email]
+        user.password = Devise.friendly_token[0,20]
+      end
+      self[:user_id] = user.id
     end
 end

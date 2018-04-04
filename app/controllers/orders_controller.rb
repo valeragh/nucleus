@@ -39,7 +39,7 @@ class OrdersController < ApplicationController
 
   private
 	  def order_params
-	    params.require(:order).permit(:desciption, :user_id, :email, :phone, :status, :total, :delivery)
+	    params.require(:order).permit(:description, :user_id, :email, :phone, :status, :total, :delivery)
 	  end
 
     def set_category

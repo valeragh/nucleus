@@ -2,34 +2,18 @@ class OrderItemsController < ApplicationController
   before_action :set_cart
 
   def create
-    product = Product.find(params[:product_id])
-    @order_item = @cart.add_product(product.id)
-
-    respond_to do |format|
-      if @order_item.save
-        format.html { redirect_to @order_item.cart }
-        format.js { @current_item = @order_item}
-        format.json { render json: @order_item, status: :created, location: @order_item }
-      else
-        format.html { render action: 'new' }
-        format.json { render json: @order_item.errors, status: :unprocessable_entity }
-      end
+    @order_item = @cart.order_items.new(order_item_params)
+    existing_order = @cart.order_items.where(product_id: params[:order_item][:product_id])
+    if existing_order.count >= 1
+      existing_order.last.update_column(:quantity, existing_order.last.quantity + params[:order_item][:quantity].to_i)
+    else
+      @cart.save
     end
   end
 
   def update
     @order_item = @cart.order_items.find(params[:id])
     @order_item.update_attributes(order_item_params)
-    respond_to do |format|
-      if @order_item.save
-        format.html { redirect_to @order_item.cart }
-        format.js { @current_item = @order_item}
-        format.json { render json: @order_item, status: :created, location: @order_item }
-      else
-        format.html { render action: 'new' }
-        format.json { render json: @order_item.errors, status: :unprocessable_entity }
-      end
-    end
     @order_items = @cart.order_items.order(id: :desc)
     @order = Order.new
   end
@@ -38,11 +22,12 @@ class OrderItemsController < ApplicationController
     @order_item = @cart.order_items.find(params[:id])
     @order_item.destroy
     @order_items = @cart.order_items.order(id: :desc)
+    @order = Order.new
   end
 
   private
     def order_item_params
-      params.require(:order_item).permit(:quantity, :product_id, :cart_id)
+      params.require(:order_item).permit(:quantity, :product_id, :cart_id, :unit_price, :total_price)
     end
 
     def set_cart

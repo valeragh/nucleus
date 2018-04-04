@@ -1,5 +1,6 @@
 ActiveAdmin.register User do
-permit_params :email, :password, :password_confirmation, :role
+  
+  permit_params :email, :password, :password_confirmation, :role
 
   filter :email
   filter :role, label: 'Роль', as: :select, collection: {None: "none", Administrator: "admin", Manager: "manager" }

@@ -39,6 +39,7 @@ gem 'geocoder'
 gem 'gmaps4rails'
 gem 'devise'
 gem 'activeadmin', github: 'gregbell/active_admin'
+gem 'activeadmin_addons'
 gem 'cancancan'
 
 group :test, :development do

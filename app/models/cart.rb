@@ -11,19 +11,15 @@
 
 class Cart < ActiveRecord::Base
 	has_many :order_items, :dependent => :destroy
+  before_save :update_subtotal
 
-  def add_product(product_id)
-    current_item = order_items.find_by(product_id: product_id)
-    if current_item
-      current_item.quantity += 1
-    else
-      current_item = order_items.build(product_id: product_id)
+  def subtotal
+    order_items.collect { |oi| oi.valid? ? (oi.quantity * oi.unit_price) : 0 }.sum
+  end
+
+  private
+    def update_subtotal
+      self[:total] = subtotal
     end
-    current_item
-  end
-
-  def total_price
-    order_items.to_a.sum { |item| item.total_price}
-  end
 
 end

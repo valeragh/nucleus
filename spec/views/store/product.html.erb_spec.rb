@@ -4,6 +4,7 @@ RSpec.describe "stores/product" do
   it "displays @cart, @categories, @reviews, @product_reviews, @product, @contact the stores" do
     assign(:stores, [
       @cart = create(:cart),
+      @order_item = @cart.order_items.new,
       @categories = [category_one = create(:category, title: 'Первая категория'),
                      category_two = create(:category, title: 'Вторая категория')],
       @category = create(:category, title: 'Текущая категория'),

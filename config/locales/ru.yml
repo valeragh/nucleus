@@ -440,11 +440,26 @@ ru:
         few: "Категории"
         many: "Категории"
         other: "Категории"
+      pod_category:
+        one: "Подкатегория"
+        few: "Подкатегории"
+        many: "Подкатегории"
+        other: "Подкатегории"
       user:
         one: "Пользователь"
         few: "Пользователи"
         many: "Пользователи"
         other: "Пользователи"
+      product:
+        one: "Товар"
+        few: "Товары"
+        many: "Товары"
+        other: "Товары"
+      review:
+        one: "Отзыв"
+        few: "Отзывы"
+        many: "Отзывы"
+        other: "Отзывы"
     attributes:
       faq:
         question: "Вопрос"
@@ -457,14 +472,24 @@ ru:
         name: "Имя"
         description: "Вопрос"
         status: "Статус"
-      rss_email:
-        created_at: "Создан"
-        updated_at: "Обновлен"
       order:
         id: "Номер"
-        name: "Имя"
+        user_id: "Пользователь"
+        total: "Итого"
+        delivery: "Перевозчик"
         phone: "Телефон"
-        cargo: "Груз"
+        description: "Комментарий"
+        status: "Статус"
+        created_at: "Создан"
+        updated_at: "Обновлен"
+      order_item:
+        product_id: "Товар"
+        total: "Итого"
+        order_id: "Заказ"
+        unit_price: "Стоимость"
+        total_price: "Итого"
+        quantity: "Количество"
+        cart_id: "Корзина"
         created_at: "Создан"
         updated_at: "Обновлен"
       back_phone:
@@ -484,13 +509,45 @@ ru:
         rang: "Приоритет"
         created_at: "Создан"
         updated_at: "Обновлен"
+      pod_category:
+        title: "Заголовок"
+        image_url: "Изображение для плитки"
+        rang: "Приоритет"
+        category_id: "Категория"
+        created_at: "Создан"
+        updated_at: "Обновлен"
+      product:
+        title: "Заголовок"
+        image_url: "Изображение для плитки"
+        rang: "Приоритет"
+        category_id: "Категория"
+        pod_category_id: "Подкатегория"
+        status: "Статус"
+        price: "Стоимость"
+        created_at: "Создан"
+        updated_at: "Обновлен"
       user:
         phone: "Телефон"
         password: "Пароль"
         password_confirmation: "Пароль повторно"
         current_password: "Текущий пароль"
         remember_me: "Запомнить меня"
-
+        created_at: "Создан"
+        updated_at: "Обновлен"
+        last_sign_in_ip: "Последний вход ip"
+        current_sign_in_ip: "Текущий вход ip"
+        last_sign_in_at: "Последний вход"
+        current_sign_in_at: "Текущий вход"
+        sign_in_count: "Количество посещений"
+        remember_created_at: "Напоминание пароля"
+        reset_password_sent_at: "Сброс пароля"
+      review:
+        name: 'Имя'
+        description: 'Отзыв'
+        product_id: 'Товар'
+        status: 'Статус'
+        created_at: "Создан"
+        updated_at: "Обновлен"
 
   number:
     currency:
