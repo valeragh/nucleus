@@ -26,4 +26,8 @@ FactoryGirl.define do
     phone "5555555"
     delivery "Новая почта"
   end
+
+  factory :invalid_order, parent: :order do
+    email nil
+  end
 end

@@ -12,19 +12,13 @@
     В корзине нет товара. Пожалуйста <%= link_to "вернитесь", root_path, class: 'text-orange' %> и добавьте товар в вашу корзину.
   </p>
 <% else %>
-  <p class="text-center">
+  <p class="text-center h4">
     Оформите Ваш заказ
   </p>
   <div class="row">
     <div class="col-12 col-lg-5">
       <div class="bg-grey p-3">
-        <%= simple_form_for @order do |f| %>
-          <%= f.input :email, input_html: { value: "#{current_user.try(:email)}", placeholder: "Email", "data-validation" => "required", "data-validation-error-msg" => "Заполните поле"}, label: false %>
-          <%= f.input :phone, input_html: { placeholder: "Телефон", "data-validation" => "required", "data-validation-error-msg" => "Заполните поле"}, label: false %>
-          <%= f.input :delivery, priority: [ "Новая почта" ], collection: [ "Новая почта", "Деливери", "Интайм", "Забрать в магазине"], selected: 1, label: false %>
-          <%= f.input :description, input_html: {placeholder: "Комментарий", rows: "3"}, label: false %>
-          <%= f.submit 'Оформить', class: "btn btn-success my-2", "data-disable-with"=>"<i class='fa fa-spinner fa-spin'></i> Отправка..." %>
-        <% end %>
+        <%= render "orders/form" %>
       </div>
     </div>
     <div class="col-12 col-lg-7">
@@ -34,7 +28,7 @@
       <div class="product-total d-flex justify-content-between my-3">
         <strong> Всего к оплате:</strong>
         <strong class="cart-price-total">
-          <%= number_to_currency @cart.total, unit: "грн", separator: ",", precision: 2 %>
+          <%= number_to_currency @cart.subtotal, unit: "грн", separator: ",", precision: 2 %>
         </strong>
       </div>
     </div>

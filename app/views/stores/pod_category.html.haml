@@ -17,27 +17,7 @@
         = @pod_category.title
       .row
         - @products.each do |product|
-          .col-12.col-md-6.col-xl-4
-            .card.product-card.mb-3
-              .card-header.bg-yellow.d-flex.align-items-center
-                %h6.text-black.font-weight-bold
-                  = product.title
-              = image_tag product.image_url.category, class: "card-img-top", title: "#{product.title}"
-              %label{:class=>"text-light status #{product.status_class}"}
-                = product.status 
-              %label.text-black.date.text-center #540
-              .card-block.p-2
-                %span.badge.badge-warning Цена:
-                %p.text-black.font-weight-bold 
-                  = number_to_currency(product.price, unit: "грн", separator: ",", precision: 2)
-                .buttons-product.my-2
-                  = simple_form_for @order_item, remote: true do |f|
-                    = f.input :product_id, as: :hidden, input_html: { value: "#{product.id}"}
-                    = f.input :unit_price, as: :hidden, input_html: { value: "#{product.price}"}
-                    = f.input :quantity, as: :hidden, value: "1"
-                    = f.button :submit, "В корзину", class: "btn btn-block btn-danger text-light"
-
-                  = link_to "Подробней", show_product_path(product.category, product.pod_category, product), class: "mt-2 btn btn-block btn-warning text-light"
+          = render "product_row", product: product, order_item: @order_item
 
     = render "reviews/aside_reviews_bottom"
 

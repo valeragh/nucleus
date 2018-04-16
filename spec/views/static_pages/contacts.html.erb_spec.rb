@@ -3,7 +3,6 @@ require "rails_helper"
 RSpec.describe "static_pages/contacts" do
   it "displays @cart, @categories, @reviews, @contact, @contacts the static_pages" do
     assign(:static_pages, [
-      @cart = create(:cart),
       @categories = [category_one = create(:category, title: 'Первая категория'),
       category_two = create(:category, title: 'Вторая категория')],
       pod_category = create(:pod_category, category_id: category_one.id, title: 'Первая подкатегория'),

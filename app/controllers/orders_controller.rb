@@ -1,10 +1,11 @@
 class OrdersController < ApplicationController
-  before_action :set_category
-  before_filter :disable_nav
+  before_action :set_category, except: [:show]
+  before_filter :disable_nav, only: [:show]
   before_filter :authenticate_user!, only: [:show]
 
   def show
     @order = Order.find(params[:id])
+    @order_items = @order.order_items.order(id: :desc)
   end
 
   def new

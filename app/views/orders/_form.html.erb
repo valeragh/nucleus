@@ -1,0 +1,7 @@
+<%= simple_form_for @order do |f| %>
+	<%= f.input :email, input_html: { value: "#{current_user.try(:email)}", placeholder: "Email", "data-validation" => "required", "data-validation-error-msg" => "Заполните поле"}, label: false %>
+	<%= f.input :phone, input_html: { placeholder: "Телефон", "data-validation" => "required", "data-validation-error-msg" => "Заполните поле"}, label: false %>
+	<%= f.input :delivery, priority: [ "Новая почта" ], collection: [ "Новая почта", "Деливери", "Интайм", "Забрать в магазине"], selected: 1, label: false %>
+	<%= f.input :description, input_html: {placeholder: "Комментарий", rows: "3"}, label: false %>
+	<%= f.submit 'Оформить', class: "btn btn-success my-2", "data-disable-with"=>"<i class='fa fa-spinner fa-spin'></i> Отправка..." %>
+<% end %>

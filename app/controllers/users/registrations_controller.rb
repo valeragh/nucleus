@@ -2,7 +2,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
 # before_action :configure_sign_up_params, only: [:create]
 # before_action :configure_account_update_params, only: [:update]
 before_action :set_category
-before_action :set_cart
 #before_filter :disable_nav, only: [:new]
 
   # GET /resource/sign_up
@@ -64,9 +63,5 @@ before_action :set_cart
     def set_category
       @categories = Category.all.order(:rang)
       @contact = Contact.first
-    end
-
-    def set_cart
-      @cart = current_cart
     end
 end

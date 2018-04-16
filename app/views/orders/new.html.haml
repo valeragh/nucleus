@@ -1,0 +1,17 @@
+.container
+  %h1.text-orange Каталог 
+  .row
+    .col-12.col-lg-4#sidebar.mb-4
+      .list-group
+        = render "static_pages/aside_category"
+
+    .col-12.col-lg-8
+      %ol.breadcrumb.py-0.pl-0
+        %li.breadcrumb-item
+          = link_to "Главная", root_path
+        %li.breadcrumb-item.active
+          Корзина
+      %h2 Оформите Ваш заказ
+      .col-12.col-lg-6
+        .bg-grey.p-3
+          = render "form"

@@ -1,9 +1,9 @@
 class StoresController < ApplicationController
   before_action :set_category
-  before_action :set_cart
 
   def category
   	@category = Category.friendly.find(params[:id])
+    @pod_categories = @category.pod_categories
     @reviews = Review.where("status = 'Показать'").sample(3)
   end
 
@@ -11,7 +11,7 @@ class StoresController < ApplicationController
   	@pod_category = PodCategory.friendly.find(params[:id])
     @products = @pod_category.products.where("status != 'Скрыть'").order(:rang)
     @reviews = Review.where("status = 'Показать'").sample(3)
-    @order_item = @cart.order_items.new
+    @order_item = current_cart.order_items.new
   end
 
   def product
@@ -19,7 +19,7 @@ class StoresController < ApplicationController
     @products = @product.pod_category.products.where('(status != ? AND id != ?)', 'Скрыть', @product.id).order(:rang)
     @reviews = Review.where("status = 'Показать'").sample(3)
     @product_reviews = @product.reviews
-    @order_item = @cart.order_items.new
+    @order_item = current_cart.order_items.new
   end
 
   private
@@ -28,7 +28,4 @@ class StoresController < ApplicationController
       @contact = Contact.first
     end
 
-    def set_cart
-      @cart = current_cart
-    end
 end

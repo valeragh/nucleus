@@ -52,6 +52,12 @@ describe Product do
     expect(product.errors[:status]).to include("не может быть пустым")
   end
 
+  it "is invalid without a factory price" do
+    product = build(:product, price: nil)
+    product.valid?
+    expect(product.errors[:price]).to include("не может быть пустым")
+  end
+
   it "is invalid without a factory image_url" do
     product = build(:product, image_url: nil)
     product.valid?

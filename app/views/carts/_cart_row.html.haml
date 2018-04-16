@@ -10,14 +10,13 @@
       = number_to_currency(product.price, unit: "грн", separator: ",", precision: 2)
       за шт.
   .product-form
-    = simple_form_for order_item, :html => {remote: true} do |f|
-      = f.input :product_id, as: :hidden, input_html: { value: "#{product.id}"}
+    = form_for order_item, remote: true do |f|
+      = f.hidden_field :product_id, as: :hidden, input_html: { value: "#{product.id}"}
       %label{for: "quantity"} Количество
       .input-group
-        = f.number_field :quantity, value: order_item.quantity.to_i, class: "form-control", min: 1, id: "quantity"
+        = f.number_field :quantity, value: order_item.quantity.to_i, class: "form-control", min: 1
         .input-group-append
-          = f.button :button, class: "btn btn-warning" do
-            = fa_icon "retweet"
+          = f.submit "Обновить кол-во", class: "btn btn-warning"
           = link_to order_item, { data: { confirm: "Are you sure you wish to delete the product '#{order_item.product.title}' from your cart?" }, method: :delete, remote: true, class: "btn btn-danger" } do
             = fa_icon "trash"
 

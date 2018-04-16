@@ -73,23 +73,26 @@ RSpec.describe Admin::OrdersController, type: :controller do
 
    describe "GET show" do
     it 'returns http success' do
+      cart = create(:cart)
       order = create(:order)
       product = create(:product, title: 'Текущий продукт', price: '9')
-      order_item = create(:order_item, product_id: product.id, quantity: '1', unit_price: product.price, order_id: order.id)
+      order_item = create(:order_item, cart_id: cart.id, product_id: product.id, quantity: '1', unit_price: product.price, order_id: order.id)
       get :show, id: order
       expect(response).to have_http_status(:success)
     end
     it 'assigns the order' do
+      cart = create(:cart)
       order = create(:order)
       product = create(:product, title: 'Текущий продукт', price: '9')
-      order_item = create(:order_item, product_id: product.id, quantity: '1', unit_price: product.price, order_id: order.id)
+      order_item = create(:order_item, cart_id: cart.id, product_id: product.id, quantity: '1', unit_price: product.price, order_id: order.id)
       get :show, id: order
       expect(assigns(:order)).to eq(order)
     end
     it "should render the form elements" do
+      cart = create(:cart)
       order = create(:order)
       product = create(:product, title: 'Текущий продукт', price: '9')
-      order_item = create(:order_item, product_id: product.id, quantity: '1', unit_price: product.price, order_id: order.id)
+      order_item = create(:order_item, cart_id: cart.id, product_id: product.id, quantity: '1', unit_price: product.price, order_id: order.id)
       get :show, id: order
       expect(page).to have_content(order.id)
       expect(page).to have_content(order.status)

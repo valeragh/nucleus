@@ -13,6 +13,7 @@ RSpec.describe StaticPagesController, type: :controller do
       expect(response).to render_template("index")
       expect(response.body).to eq ""
     end
+
   end
 
   describe "GET #about_us" do

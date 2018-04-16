@@ -6,7 +6,7 @@
       = @order.status
   .row.justify-content-md-center
     .col-6
-      - @order.order_items.each do |order_item|
+      - @order_items.each do |order_item|
         .item-cart.p-3.border-yellow
           .cart-title.d-flex.justify-content-between
             = image_tag order_item.product.image_url.thumb, class: "img-thumbnail"
@@ -38,4 +38,4 @@
       %p
         = @order.description
       = link_to "Оплатить", root_path, class: "btn btn-success btn-block"
-      = link_to "Личный кабинет", root_path, class: "mt-2 btn btn-block btn-warning"
+      = link_to "Личный кабинет", root_path, class: "my-2 btn btn-block btn-warning"

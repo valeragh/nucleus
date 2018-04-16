@@ -4,7 +4,6 @@ RSpec.describe "letters/new" do
   it "displays new @cart, @categories, @reviews, @contact the letters" do
     @letter = Letter.new
     assign(:letters, [
-      @cart = create(:cart),
       @categories = [category_one = create(:category, title: 'Первая категория'),
                      category_two = create(:category, title: 'Вторая категория')],
       pod_category = create(:pod_category, category_id: category_one.id, title: 'Первая подкатегория'),

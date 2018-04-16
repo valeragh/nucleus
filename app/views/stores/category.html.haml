@@ -14,7 +14,7 @@
       %h1.text-orange
         = @category.title
       .row
-        - @category.pod_categories.each do |pod_category|
+        - @pod_categories.each do |pod_category|
           .col-4.col-lg-3
             = link_to show_pod_category_path(@category, pod_category), class: "product-link" do
               .card.product.mb-2.bg-orange

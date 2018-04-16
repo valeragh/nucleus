@@ -472,8 +472,9 @@ ru:
         name: "Имя"
         description: "Вопрос"
         status: "Статус"
+        checked_out_at: "Дата ответа"
       order:
-        id: "Номер"
+        id: "Номер заказа"
         user_id: "Пользователь"
         total: "Итого"
         delivery: "Перевозчик"

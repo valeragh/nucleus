@@ -1,6 +1,5 @@
 class Users::PasswordsController < Devise::PasswordsController
   before_action :set_category
-  before_action :set_cart
   # GET /resource/password/new
   # def new
   #   super
@@ -37,9 +36,4 @@ class Users::PasswordsController < Devise::PasswordsController
       @categories = Category.all.order(:rang)
       @contact = Contact.first
     end
-
-    def set_cart
-      @cart = current_cart
-    end
-
 end

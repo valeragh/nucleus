@@ -19,6 +19,9 @@ class OrderItem < ActiveRecord::Base
   belongs_to :cart
   before_save :finalize
   validates :quantity, presence: true, numericality: { only_integer: true, greater_than: 0 }
+  validate :product_present
+  validate :cart_present
+
 
   def unit_price
     if persisted?
@@ -38,6 +41,18 @@ class OrderItem < ActiveRecord::Base
 	    self[:unit_price] = unit_price
 	    self[:total_price] = quantity * self[:unit_price]
 	  end
-  
+
+    def product_present
+      if product.nil?
+        errors.add(:product, "не верное значение или не может активное")
+      end
+    end
+
+    def cart_present
+      if cart.nil?
+        errors.add(:cart, "не верное значение")
+      end
+    end
+    
  
 end

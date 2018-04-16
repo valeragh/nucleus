@@ -10,7 +10,7 @@
 #
 
 class Cart < ActiveRecord::Base
-	has_many :order_items, :dependent => :destroy
+  has_many :order_items, :dependent => :destroy
   before_save :update_subtotal
 
   def subtotal

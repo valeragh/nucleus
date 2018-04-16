@@ -3,10 +3,10 @@ require "rails_helper"
 RSpec.describe "stores/category" do
   it "displays @cart, @categories, @category, @reviews, @contact the stores" do
     assign(:stores, [
-      @cart = create(:cart),
       @categories = [category_one = create(:category, title: 'Первая категория'),
       category_two = create(:category, title: 'Вторая категория')],
       @category = create(:category, title: 'Текущая категория'),
+      @pod_categories = [create(:pod_category, category_id: @category.id, title: "Первая текущая подкатегория")],
       pod_category = create(:pod_category, category_id: @category.id, title: 'Первая подкатегория'),
       product = create(:product, category_id: category_one.id, pod_category_id: pod_category.id, title: 'Первый продукт'),
       @reviews = [review_one = create(:review, name: 'Первое имя', product_id: product.id, description: 'Второй отзыв'),
@@ -20,6 +20,7 @@ RSpec.describe "stores/category" do
     expect(rendered).to match /Первая категория/
     expect(rendered).to match /Вторая категория/
     expect(rendered).to match /Текущая категория/
+    expect(rendered).to match /Первая текущая подкатегория/
     expect(rendered).to match /Первое имя/
     expect(rendered).to match /Первый отзыв/
     expect(rendered).to match /Первый продукт/

@@ -1,6 +1,5 @@
 class PostsController < ApplicationController
 	before_action :set_category
-  before_action :set_cart
 
   def index
     @posts = Post.all
@@ -17,7 +16,4 @@ class PostsController < ApplicationController
       @contact = Contact.first
     end
 
-    def set_cart
-      @cart = current_cart
-    end
 end

@@ -1,6 +1,5 @@
 class LettersController < ApplicationController
   before_action :set_category
-  before_action :set_cart
 
   def new
   	@letter = Letter.new
@@ -32,7 +31,4 @@ class LettersController < ApplicationController
       @contact = Contact.first
     end
 
-    def set_cart
-      @cart = current_cart
-    end
 end
