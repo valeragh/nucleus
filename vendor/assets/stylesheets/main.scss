@@ -65,6 +65,10 @@ span.help-block.form-error{color:#f26c4f;}
 .btn-danger{color:#ffffff;background-color:#c10404;border-color:#f26c4f;}
 .btn-outline-warning{color:#c10404;border-color:#f4880a;}
 .btn-warning{color:#ffffff;background-color:#f4880a;border-color:#f4880a;}
+.btn-warning:hover{
+    color: #212529 !important;
+    background-color: #ffcf01;
+    border-color: #ffcf01;}
 .badge-warning{color:#212529;background-color:#ffcf01;}
 .badge-danger{color:#ffffff;background-color:#c10404;}
 
@@ -106,6 +110,7 @@ span.help-block.form-error{color:#f26c4f;}
   margin-top:10px;
   li.nav-item{padding:10px;}
 }
+.nav-link.phone{color: #5a5959;}
 
 // Footer
 
@@ -126,7 +131,51 @@ ul.social-contacts{
   a.lwd:hover{color:#ffcf01;}
 }
 
+// Banner
+
+.header-baner{
+  position: relative;
+  margin: 1px 0 0 9px;
+  width: 511px;
+  height: 119px;
+  border: 1px solid rgba(0,0,0,0.2);
+  border-radius: 5px;
+  box-shadow: -1.3px 1.5px 8px rgba(0,0,0,0.2);
+  overflow: hidden;
+  background: #fff;
+  img{
+    max-width: 100%;
+    max-height: 100%;
+  }
+  .text-baner{position:absolute;}
+  p{
+    text-transform: uppercase;
+    font-size: 14px;
+    color: #434343;
+  }
+}
+
+#baner1{
+  img{margin-left: 20px;}
+  .text-baner{
+    top: 10px;
+    right: 40px;
+  }
+  .background-text{line-height: 1.7;}
+  .capital-text {
+    color: #c10404;
+  }
+}
+
+
+
 //Sidebar
+
+#sidebar .list-group{
+  border-left: 1px solid #f4880b;
+  border-right: 1px solid #f4880b;
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
 
 #sidebar .list-group-item {
     border-radius: 0;
@@ -135,11 +184,12 @@ ul.social-contacts{
     border-left: 0;
     border-right: 0;
     border-color: #f4880b;
-    white-space: nowrap;
+    white-space: normal;
     font-size: 1.3rem;
 }
 #sidebar a.list-group-item:hover {
     color: #c10404;
+    background-color: #f4880b;
 }
 #sidebar .list-group-item.active{
   background-color: #f4880a;
@@ -205,7 +255,9 @@ ul.social-contacts{
 
 .card.product{
   border: 1px solid rgb(244, 136, 11);
+  background-color: #f4880a;
   color:#ffffff;
+  box-shadow:0 0 10px rgba(0,0,0,0.5);
   .card-block{
     height:55px;
   }
@@ -215,6 +267,12 @@ ul.social-contacts{
    h6:hover{
     color:#c10404;
   }
+}
+
+.card.product:hover{
+  color:#212529;
+  background-color:#ffcf01;
+  border: 1px solid #ffcf01;
 }
 
 .card.rewiew{
@@ -229,6 +287,7 @@ ul.social-contacts{
 
 .card.product-card{
   border: 1px solid rgb(255, 207, 1);
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
   .card-header {
     height: 83px;
   }

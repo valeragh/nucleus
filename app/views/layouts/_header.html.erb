@@ -3,7 +3,7 @@
     <%= link_to root_path, class: "pb-2 ml-lg-2", title: "Nucleus" do%>
       <%= image_tag "nucleus_logo_for_web.png", alt: "Nucleus",  width: "200", "aria-hidden"=>"true" %>
     <%end%>
-    <p class="text-uppercase d-none d-lg-block h3 faa-vertical animated faa-slow lh-1 text-red">Улья <%= fa_icon "archive 2x", class: "text-orange"%><br><small class="text-lowercase text-muted fs-60 text-black">От производителя</small></p>
+    <%= render "layouts/banner" %>
     <div class="flex-column right-all">
       <ul class="navbar-nav ml-auto flex-row small mb-2 mb-md-0">
         <li class="nav-item mr-2">
