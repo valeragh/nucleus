@@ -14,6 +14,7 @@
 #  updated_at      :datetime         not null
 #  slug            :string
 #  price           :decimal(8, 2)
+#  identif         :integer
 #
 
 class Product < ActiveRecord::Base
@@ -22,7 +23,7 @@ class Product < ActiveRecord::Base
   has_many :reviews
   has_many :order_items
 
-	validates :title, :image_url, :category_id, :pod_category_id, :description, :price, :status, presence: true
+	validates :title, :image_url, :category_id, :pod_category_id, :identif, :description, :price, :status, presence: true
 	after_commit :create_category_id!, on: [:create, :update]
 	
 	mount_uploader :image_url, ImageUploader

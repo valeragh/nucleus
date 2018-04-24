@@ -14,6 +14,7 @@
 #  updated_at      :datetime         not null
 #  slug            :string
 #  price           :decimal(8, 2)
+#  identif         :integer
 #
 
 require 'rails_helper'
@@ -62,6 +63,12 @@ describe Product do
     product = build(:product, image_url: nil)
     product.valid?
     expect(product.errors[:image_url]).to include("не может быть пустым")
+  end
+
+  it "is invalid without a factory identif" do
+    product = build(:product, identif: nil)
+    product.valid?
+    expect(product.errors[:identif]).to include("не может быть пустым")
   end
 
   it "has a valid factory" do

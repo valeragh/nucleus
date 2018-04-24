@@ -27,10 +27,10 @@ RSpec.describe Admin::ProductsController, type: :controller do
       product = create(:product, category_id: category.id, pod_category_id: pod_category.id)
       get :index
       expect(page).to have_content(category.title)
-      expect(page).to have_content(pod_category.rang)
+      expect(page).to have_content(pod_category.title)
       expect(page).to have_content(product.title)
       expect(page).to have_content(product.price)
-      expect(page).to have_content(product.rang)
+      expect(page).to have_content(product.status)
     end
     let(:filters_sidebar) { page.find('#filters_sidebar_section') }
     it "filter Title exists" do
@@ -159,7 +159,7 @@ RSpec.describe Admin::ProductsController, type: :controller do
       product = create(:product, category_id: category.id, pod_category_id: pod_category.id)
       get :show, id: product
       expect(page).to have_content(category.title)
-      expect(page).to have_content(pod_category.rang)
+      expect(page).to have_content(pod_category.title)
       expect(page).to have_content(product.title)
       expect(page).to have_content(product.price)
       expect(page).to have_content(product.rang)

@@ -14,6 +14,7 @@
 #  updated_at      :datetime         not null
 #  slug            :string
 #  price           :decimal(8, 2)
+#  identif         :integer
 #
 
 # Read about factories at https://github.com/thoughtbot/factory_girl
@@ -28,5 +29,6 @@ FactoryGirl.define do
     category_id 1
     status "В наличие"
     price "9.99"
+    identif "544"
   end
 end

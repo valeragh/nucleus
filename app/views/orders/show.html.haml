@@ -10,6 +10,9 @@
         .item-cart.p-3.border-yellow
           .cart-title.d-flex.justify-content-between
             = image_tag order_item.product.image_url.thumb, class: "img-thumbnail"
+            %label.text-orange.date.text-center
+              \#
+              = order_item.product.identif
             %p.ml-2.lh-1
               %strong
                 = order_item.product.title

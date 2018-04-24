@@ -1,6 +1,6 @@
 ActiveAdmin.register Product do
 
-  permit_params :title, :rang, :price, :category_id, :pod_category_id, :description, :image_url, :slug
+  permit_params :title, :rang, :identif, :price, :category_id, :pod_category_id, :description, :image_url, :slug
   before_filter :find_resource, :only => [:show, :edit, :update, :destroy]
 
   filter :title
@@ -14,6 +14,9 @@ ActiveAdmin.register Product do
     end
     f.inputs do
       f.input :pod_category_id, as: :select, collection: PodCategory.all.map { |m| [m.title, m.id] }
+    end
+    f.inputs do
+      f.input :identif
     end
     f.inputs do
       f.input :title
@@ -37,9 +40,10 @@ ActiveAdmin.register Product do
   	column("Изображение"){|product| image_tag product.image_url.thumb}
   	column("Категория"){|product| link_to product.category.title, [:admin, product.category]}
   	column("Подкатегория"){|product| link_to product.pod_category.title, [:admin, product.pod_category]}
+    column :identif
     column :title
     column :price
-    column :rang
+    column :status
     column :created_at
     actions
   end
@@ -76,6 +80,7 @@ ActiveAdmin.register Product do
       row('Категория') { |b| link_to product.category.title, [:admin, product.category] }
       row('Подкатегория') { |b| link_to product.pod_category.title, [:admin, product.pod_category] }
       row :status
+      row :identif
       row :title
       row :price
       row :rang

@@ -9,7 +9,7 @@ RSpec.describe "stores/pod_category" do
       category_two = create(:category, title: 'Вторая категория')],
       @category = create(:category, title: 'Текущая категория'),
       @pod_category = create(:pod_category, category_id: @category.id, title: 'Текущая подкатегория'),
-      @products = [create(:product, category_id: @category.id, pod_category_id: @pod_category.id, title: 'Текуший продукт')], 
+      @products = [create(:product, category_id: @category.id, pod_category_id: @pod_category.id, title: 'Текуший продукт', identif: '888')], 
       product = create(:product, category_id: category_one.id, pod_category_id: @pod_category.id, title: 'Первый продукт'),
       @reviews = [review_one = create(:review, name: 'Первое имя', product_id: product.id, description: 'Второй отзыв'),
       review_two = create(:review, name: 'Второе имя', product_id: product.id, description: 'Первый отзыв')],
@@ -24,6 +24,7 @@ RSpec.describe "stores/pod_category" do
     expect(rendered).to match /Текущая категория/
     expect(rendered).to match /Текущая подкатегория/
     expect(rendered).to match /Текуший продукт/
+    expect(rendered).to match /888/
     expect(rendered).to match /Первое имя/
     expect(rendered).to match /Первый отзыв/
     expect(rendered).to match /Первый продукт/

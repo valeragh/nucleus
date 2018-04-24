@@ -30,7 +30,9 @@
             = f.hidden_field :quantity, value: "1"
             = f.submit "В корзину", class: "btn btn-danger btn-block mt-2"
         .col-12.col-lg-6.border-y-yellow
-          %label.text-black.date.text-center #540
+          %label.text-black.date.text-center
+            \#
+            = @product.identif
           = image_tag @product.image_url.category, class: "img-fluid", title: "#{@product.title}"
         .col-12.col-lg-6.border-y-yellow
           %button{:class=>"btn btn-warning btn-block mt-3", :type=>"button"} Перезвонить мне
@@ -60,7 +62,9 @@
               = image_tag product.image_url.category, class: "card-img-top", title: "#{product.title}"
               %label{:class=>"text-light status #{product.status_class}"}
                 = product.status 
-              %label.text-black.date.text-center #540
+              %label.text-black.date.text-center
+                \#
+                = product.identif
               .card-block.p-2
                 %span.badge.badge-warning Цена:
                 %p.text-black.font-weight-bold 

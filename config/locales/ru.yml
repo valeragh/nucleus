@@ -460,6 +460,11 @@ ru:
         few: "Отзывы"
         many: "Отзывы"
         other: "Отзывы"
+      price:
+        one: "Прайс"
+        few: "Прайс"
+        many: "Прайс"
+        other: "Прайс"
     attributes:
       faq:
         question: "Вопрос"
@@ -527,6 +532,7 @@ ru:
         price: "Стоимость"
         created_at: "Создан"
         updated_at: "Обновлен"
+        identif: "Идентификатор"
       user:
         phone: "Телефон"
         password: "Пароль"
@@ -547,6 +553,10 @@ ru:
         description: 'Отзыв'
         product_id: 'Товар'
         status: 'Статус'
+        created_at: "Создан"
+        updated_at: "Обновлен"
+      price:
+        price_url: "Файл Прайса"
         created_at: "Создан"
         updated_at: "Обновлен"
 

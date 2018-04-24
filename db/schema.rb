@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180402131238) do
+ActiveRecord::Schema.define(version: 20180417133648) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -149,6 +149,13 @@ ActiveRecord::Schema.define(version: 20180402131238) do
 
   add_index "posts", ["slug"], name: "index_posts_on_slug", unique: true, using: :btree
 
+  create_table "prices", force: :cascade do |t|
+    t.string   "price_url"
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
+    t.string   "status",     default: "Загружен"
+  end
+
   create_table "products", force: :cascade do |t|
     t.string   "title"
     t.text     "description"
@@ -161,6 +168,7 @@ ActiveRecord::Schema.define(version: 20180402131238) do
     t.datetime "updated_at",                                                    null: false
     t.string   "slug"
     t.decimal  "price",           precision: 8, scale: 2
+    t.integer  "identif"
   end
 
   add_index "products", ["slug"], name: "index_products_on_slug", unique: true, using: :btree

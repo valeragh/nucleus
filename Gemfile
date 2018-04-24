@@ -32,6 +32,7 @@ gem 'metamagic'
 gem 'friendly_id', '~> 5.0.0'
 gem 'babosa'
 gem 'carrierwave'
+gem 'carrierwave-i18n'
 gem 'mini_magick'
 gem 'simple_form'
 gem 'jquery-form-validator-rails'
@@ -41,6 +42,7 @@ gem 'devise'
 gem 'activeadmin', github: 'gregbell/active_admin'
 gem 'activeadmin_addons'
 gem 'cancancan'
+gem "roo", "~> 2.7.0"
 
 group :test, :development do
   gem "rspec-rails", "~> 3.6"

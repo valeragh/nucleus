@@ -9,9 +9,9 @@ RSpec.describe "stores/product" do
                      category_two = create(:category, title: 'Вторая категория')],
       @category = create(:category, title: 'Текущая категория'),
       @pod_category = create(:pod_category, category_id: @category.id, title: 'Текущая подкатегория'),
-      @product = create(:product, category_id: @category.id, pod_category_id: @pod_category.id, title: 'Текуший продукт', description: 'Текущее описание'),
-      @products = [create(:product, category_id: @category.id, pod_category_id: @pod_category.id, title: 'Первый сопутствующий продукт'),
-                   create(:product, category_id: @category.id, pod_category_id: @pod_category.id, title: 'Второй сопутствующий продукт')], 
+      @product = create(:product, category_id: @category.id, pod_category_id: @pod_category.id, title: 'Текуший продукт', description: 'Текущее описание', identif: '888'),
+      @products = [product_one = create(:product, category_id: @category.id, pod_category_id: @pod_category.id, title: 'Первый сопутствующий продукт', identif: '998'),
+                   product_two = create(:product, category_id: @category.id, pod_category_id: @pod_category.id, title: 'Второй сопутствующий продукт', identif: '999')], 
       @product_reviews = [review_one = create(:review, product_id: @product.id),
                           review_two = create(:review, product_id: @product.id)],
       @reviews = [review_one = create(:review, name: 'Первое имя', description: 'Первый отзыв', product_id: @product.id),
@@ -27,9 +27,12 @@ RSpec.describe "stores/product" do
     expect(rendered).to match /Текущая категория/
     expect(rendered).to match /Текущая подкатегория/
     expect(rendered).to match /Текуший продукт/
+    expect(rendered).to match /888/
     expect(rendered).to match /Текущее описание/
     expect(rendered).to match /Первый сопутствующий продукт/
+    expect(rendered).to match /998/
     expect(rendered).to match /Второй сопутствующий продукт/
+    expect(rendered).to match /999/
     expect(rendered).to match /Первое имя/
     expect(rendered).to match /Первый отзыв/
     expect(rendered).to match /Второе имя/
