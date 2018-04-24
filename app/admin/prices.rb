@@ -1,7 +1,7 @@
 ActiveAdmin.register Price do
   permit_params :price_url, :status
   
-  actions :all, :except => [:show, :destroy]
+  actions :all, :except => [:new, :show, :destroy]
   config.filters = false 
   
   form do |f|
