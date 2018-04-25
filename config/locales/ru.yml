@@ -465,6 +465,11 @@ ru:
         few: "Прайс"
         many: "Прайс"
         other: "Прайс"
+      data_product:
+        one: "Дата БД"
+        few: "Дата БД"
+        many: "Дата БД"
+        other: "Дата БД"
     attributes:
       faq:
         question: "Вопрос"
@@ -557,6 +562,10 @@ ru:
         updated_at: "Обновлен"
       price:
         price_url: "Файл Прайса"
+        created_at: "Создан"
+        updated_at: "Обновлен"
+      data_product:
+        file_url: "Файл Базы"
         created_at: "Создан"
         updated_at: "Обновлен"
 

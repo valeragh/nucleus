@@ -25,7 +25,7 @@ ActiveAdmin.register Order do
     panel "Товар" do
       table_for order.order_items do
         column("Товар") do |order_item|
-          link_to order_item.product.title, [:admin, order_item.product]
+          order_item.product.present? ? (link_to order_item.product.title, [:admin, order_item.product]) : "Нет в системе"
         end
         column("Количество") do |order_item|
           order_item.quantity

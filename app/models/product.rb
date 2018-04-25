@@ -41,7 +41,9 @@ class Product < ActiveRecord::Base
   end
 
   def create_category_id!
-    self.update_column(:category_id, self.pod_category.category_id)
+    if self.category_id.blank?
+      self.update_column(:category_id, self.pod_category.category_id)
+    end
   end
 
   def status_class
