@@ -1,7 +1,7 @@
 ActiveAdmin.register DataProduct do
   permit_params :file_url
   
-  actions :all, :except => [:show, :destroy]
+  actions :all, :except => [:new, :show, :destroy]
   config.filters = false 
   
   form do |f|

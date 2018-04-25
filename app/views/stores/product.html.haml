@@ -58,7 +58,7 @@
             .card.product-card.mb-3
               .card-header.bg-yellow.d-flex.align-items-center
                 %h6.text-black.font-weight-bold
-                  = product.title
+                  = product.title.truncate_words(5)
               = image_tag product.image_url.category, class: "card-img-top", title: "#{product.title}"
               %label{:class=>"text-light status #{product.status_class}"}
                 = product.status 
