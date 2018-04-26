@@ -1,5 +1,6 @@
 require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
+require 'sucker_punch/testing/inline'
 
 Dir["#{Rails.root}/app/uploaders/*.rb"].each { |file| require file }
 if defined?(CarrierWave)

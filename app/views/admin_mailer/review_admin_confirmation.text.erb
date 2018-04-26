@@ -1,0 +1,9 @@
+Добрый день администрация Nucleus
+
+Получено новое отзыв от <%= @review.name %>
+
+Дата создания - <%= l @review.created_at, format: :long %>
+Статус - <%= @review.status %>
+Товар - <%= @review.product.present? ? @review.product.title : "Нет в системе" %>
+Имя пользователя - <%= @review.name %>
+Отзыв пользователя - <%= @review.description %>

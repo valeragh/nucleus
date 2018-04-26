@@ -23,7 +23,7 @@ class OrdersController < ApplicationController
 
     respond_to do |format|
       if @order.save
-        #UserMailer.order_admin_confirmation(@order).deliver
+        AdminMailer.order_admin_confirmation(@order).deliver_later
         #UserMailer.order_confirmation(@order).deliver
         Cart.destroy(session[:cart_id])
         session[:cart_id] = nil

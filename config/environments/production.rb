@@ -92,4 +92,5 @@ Rails.application.configure do
   config.action_mailer.default_url_options = { :host => 'nucleus.com.ua' }
   config.action_controller.asset_host = "http://nucleus.com.ua"
   Rails.application.routes.default_url_options[:host] = 'nucleus.com.ua'
+  config.active_job.queue_adapter = :sucker_punch
 end

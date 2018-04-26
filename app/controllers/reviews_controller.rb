@@ -28,7 +28,7 @@ class ReviewsController < ApplicationController
 
     respond_to do |format|
       if @review.save
-        #UserMailer.review_admin_confirmation(@review).deliver
+        AdminMailer.review_admin_confirmation(@review).deliver_later
         #UserMailer.review_confirmation(@review).deliver
         format.html { redirect_to root_path }
         flash[:success] = "Спасибо за Ваш отзыв. После модерации он будет опубликован"

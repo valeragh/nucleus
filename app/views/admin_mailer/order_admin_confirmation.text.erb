@@ -1,0 +1,17 @@
+Добрый день администрация Nucleus
+
+Получен новый заказ №<%= @order.id %>
+
+Дата создания - <%= l @order.created_at, format: :long %>
+Статус - <%= @order.status %>
+Телефон пользователя - <%= @order.phone %>
+Email пользователя - <%= @order.email %>
+Доставка товара - <%= @order.delivery %>
+Комментарий пользователя - <%= @order.description %>
+<%- @order.order_items.each do |order_item| %>
+	Товар: <%= order_item.product.present? ? order_item.product.title : "Нет в системе" %>
+	Количество: <%= order_item.quantity %>
+	Стоимость: <%= order_item.unit_price %>
+	Итого по товару: <%= order_item.total_price %>
+<%end%>
+Итоговая стоимость по заказу: <%= @order.total %>

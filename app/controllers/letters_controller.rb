@@ -10,7 +10,7 @@ class LettersController < ApplicationController
 
     respond_to do |format|
       if @letter.save
-        #UserMailer.letter_admin_confirmation(@letter).deliver
+        AdminMailer.letter_admin_confirmation(@letter).deliver_later
         #UserMailer.letter_confirmation(@letter).deliver
         format.html { redirect_to root_path }
         flash[:success] = "Спасибо за Ваше обращение, наши администраторы ответят Вам в ближайшее время"

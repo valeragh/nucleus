@@ -24,5 +24,6 @@ module Nucleus
     config.assets.precompile << /\.(?:svg|eot|woff|ttf)\z/
     config.active_record.raise_in_transactional_callbacks = true
     config.i18n.default_locale = :ru
+    config.active_job.queue_adapter = :sucker_punch
   end
 end

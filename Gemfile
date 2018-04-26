@@ -43,6 +43,7 @@ gem 'activeadmin', github: 'gregbell/active_admin'
 gem 'activeadmin_addons'
 gem 'cancancan'
 gem "roo", "~> 2.7.0"
+gem 'sucker_punch'
 
 group :test, :development do
   gem "rspec-rails", "~> 3.6"
