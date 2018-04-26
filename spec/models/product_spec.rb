@@ -86,6 +86,11 @@ describe Product do
       expect(product.image_url.category).to be_no_larger_than(500, 500)
     end
 
+    it "scales down a large image to to fit within 600 by 400 pixels" do
+      product = build(:product)
+      expect(product.image_url.magazine).to be_no_larger_than(600, 400)
+    end
+
 
     it "has the correct format" do
       product = build(:product)
