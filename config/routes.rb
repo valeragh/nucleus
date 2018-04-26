@@ -90,6 +90,7 @@ Rails.application.routes.draw do
   match '/faqs', to: 'static_pages#faqs', via: 'get'
   match '/reviews', to: 'reviews#all_reviews', via: 'get'
   match '/posts', to: 'posts#index', via: 'get'
+  match 'cabinet', to: 'cabinets#show', via: 'get'
   get '/:id', to: 'stores#category', as: :show_category
   get '/:category_id/:id', to: 'stores#pod_category', as: :show_pod_category
   get '/:category_id/:pod_category_id/:id', to: 'stores#product', as: :show_product

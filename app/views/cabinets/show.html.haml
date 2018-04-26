@@ -1,0 +1,62 @@
+.container
+  %h1.text-orange Каталог 
+  .row
+    .col-12.col-lg-4#sidebar.mb-4
+      .list-group
+        = render "static_pages/aside_category"
+
+      = render "reviews/aside_reviews_top"
+
+    .col-12.col-lg-8
+      .row
+        - if @orders.present?
+          - @orders.each do |order|
+            .col-12
+              %h2.text-orange.title-product.text-center
+                Ваш заказ №
+                = order.id
+                %span{:class => "badge badge-#{order.status_class}" }
+                  = order.status
+              - order.order_items.each do |order_item|
+                .item-cart.p-3.border-yellow
+                  .cart-title.d-flex.justify-content-between
+                    = image_tag order_item.product.image_url.thumb, class: "img-thumbnail"
+                    %label.text-orange.date.text-center
+                      \#
+                      = order_item.product.identif
+                    %p.ml-2.lh-1
+                      %strong
+                        = order_item.product.title
+                  .d-flex.justify-content-between.mt-1
+                    %strong.text-black Цена:
+                    %span.cart-price
+                      = number_to_currency(order_item.product.price, unit: "грн", separator: ",", precision: 2)
+                      за ед.
+                  .d-flex.justify-content-between.mt-1
+                    %strong.text-black Количество:
+                    %span.cart-price
+                      = order_item.quantity
+                      ед.
+                  .d-flex.justify-content-between.mt-1
+                    %strong.text-black Итого:
+                    %span.cart-price
+                      = number_to_currency(order_item.total_price, unit: "грн", separator: ",", precision: 2)
+              .product-total.d-flex.justify-content-between.my-3
+                %strong Всего к оплате:
+                %strong.cart-price-total
+                  = number_to_currency order.total, unit: "грн", separator: ",", precision: 2
+              .product-total.d-flex.justify-content-between.mt-3
+                %strong Доставка:
+                %strong.cart-price-total
+                  = order.delivery
+              %p
+                = order.description
+              = link_to "Оплатить", cabinet_path, class: "mb-4 btn btn-success btn-block"
+        - else
+          %h2
+            У вас нет заказов
+
+    = render "reviews/aside_reviews_bottom"
+
+
+

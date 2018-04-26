@@ -28,7 +28,7 @@
           <%- if current_user.admin? %>
             <%= link_to "Админпанель", admin_dashboard_path %>
           <%- else %>
-            <%= link_to "Кабинет", root_path %>
+            <%= link_to "Кабинет", cabinet_path %>
           <%end%>
           |
           <%= link_to "Выйти", destroy_user_session_path %>
