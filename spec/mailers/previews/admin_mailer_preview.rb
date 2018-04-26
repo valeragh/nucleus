@@ -11,4 +11,8 @@ class AdminMailerPreview < ActionMailer::Preview
   def review_admin_confirmation
     AdminMailer.review_admin_confirmation(Review.first).deliver_now
   end
+
+  def back_phone_admin_confirmation
+    AdminMailer.back_phone_admin_confirmation(BackPhone.first).deliver_now
+  end
 end

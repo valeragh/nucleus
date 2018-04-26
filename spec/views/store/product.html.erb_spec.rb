@@ -11,14 +11,17 @@ RSpec.describe "stores/product" do
       @pod_category = create(:pod_category, category_id: @category.id, title: 'Текущая подкатегория'),
       @product = create(:product, category_id: @category.id, pod_category_id: @pod_category.id, title: 'Текуший продукт', description: 'Текущее описание', identif: '888'),
       @products = [product_one = create(:product, category_id: @category.id, pod_category_id: @pod_category.id, title: 'Первый сопутствующий продукт', identif: '998'),
-                   product_two = create(:product, category_id: @category.id, pod_category_id: @pod_category.id, title: 'Второй сопутствующий продукт', identif: '999')], 
+                   product_two = create(:product, category_id: @category.id, pod_category_id: @pod_category.id, title: 'Второй сопутствующий продукт', identif: '999')],
+      @some_products = [product_one = create(:product, category_id: @category.id, pod_category_id: @pod_category.id, title: 'Первый сопутствующий продукт', identif: '998'),
+                        product_two = create(:product, category_id: @category.id, pod_category_id: @pod_category.id, title: 'Второй сопутствующий продукт', identif: '999')], 
       @product_reviews = [review_one = create(:review, product_id: @product.id),
                           review_two = create(:review, product_id: @product.id)],
       @reviews = [review_one = create(:review, name: 'Первое имя', description: 'Первый отзыв', product_id: @product.id),
                   review_two = create(:review, name: 'Второе имя', description: 'Второй отзыв', product_id: @product.id)],
       @contact = create(:contact, phone_one: '12345678', phone_two: '78945612')
     ])
-  
+    @back_phone = BackPhone.new
+    
     render "layouts/header"
     render
 

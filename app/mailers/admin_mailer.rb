@@ -20,4 +20,10 @@ class AdminMailer < ApplicationMailer
     mail to: "alinamagazin56@gmail.com", subject: "Новый отзыв от #{@review.name}"
   end
 
+  def back_phone_admin_confirmation(back_phone)
+    @back_phone = back_phone
+
+    mail to: "alinamagazin56@gmail.com", subject: "Новый запрос на обратный звонок от #{@back_phone.name}"
+  end
+
 end

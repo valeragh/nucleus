@@ -33,6 +33,33 @@ RSpec.describe AdminMailer, type: :mailer do
 
   end
 
+  describe 'back_phone_admin_confirmation' do
+    let(:back_phone) { create(:back_phone, name: 'Lucas', phone: '12345678') }
+    let(:mail) { described_class.back_phone_admin_confirmation(back_phone).deliver_now }
+
+    it 'renders the subject' do
+      expect(mail.subject).to eq("Новый запрос на обратный звонок от #{back_phone.name}")
+    end
+
+    it 'renders the receiver email' do
+      expect(mail.to).to eq(['alinamagazin56@gmail.com'])
+    end
+
+    it 'renders the sender email' do
+      expect(mail.from).to eq(['support@nucleus.com.ua'])
+    end
+
+    it 'assigns back_phone @name' do
+      expect(mail.body.encoded).to match(back_phone.name)
+    end
+
+    it 'assigns back_phone @phone' do
+      expect(mail.body.encoded)
+        .to match(back_phone.phone)
+    end
+
+  end
+
   describe 'order_admin_confirmation' do
     let(:order) { create(:order, phone: '12345678', delivery: 'Test', email: 'lucas@email.com', description: 'Test') }
     let(:mail) { described_class.order_admin_confirmation(order).deliver_now }

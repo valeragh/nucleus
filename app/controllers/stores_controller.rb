@@ -16,10 +16,12 @@ class StoresController < ApplicationController
 
   def product
     @product = Product.friendly.find(params[:id])
-    @products = @product.pod_category.products.where('(status != ? AND id != ?)', 'Скрыть', @product.id).order(:rang)
+    @products = @product.pod_category.products.where('(status != ? AND id != ?)', 'Скрыть', @product.id).order(:rang).sample(3)
+    @some_products = Product.where('(status != ? AND id != ?)', 'Скрыть', @product.id).order(:rang).sample(3)
     @reviews = Review.where("status = 'Показать'").sample(3)
     @product_reviews = @product.reviews
     @order_item = current_cart.order_items.new
+    @back_phone = BackPhone.new
   end
 
   private

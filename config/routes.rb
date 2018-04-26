@@ -74,6 +74,7 @@ Rails.application.routes.draw do
     resources :reviews, only: [:index, :show, :new, :create]
   end
   resources :letters, only: [:new, :create]
+  resources :back_phones, only: [:new, :create]
   resource :cart, only: [:show]
   resources :order_items, only: [:create, :update, :destroy]
   resources :orders, only: [:new, :create, :show]
