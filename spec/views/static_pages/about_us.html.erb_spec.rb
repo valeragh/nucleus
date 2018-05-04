@@ -11,7 +11,8 @@ RSpec.describe "static_pages/about_us" do
       review_two = create(:review, name: 'Второе имя', product_id: product.id, description: 'Первый отзыв')],
       @contact = create(:contact, phone_one: '12345678', phone_two: '78945612')
     ])
-
+    @q = Product.search(params[:q])
+    
     render "layouts/header"
     render
 

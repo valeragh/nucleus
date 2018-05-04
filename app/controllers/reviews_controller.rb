@@ -48,6 +48,7 @@ class ReviewsController < ApplicationController
     def set_category
       @categories = Category.all.order(:rang)
       @contact = Contact.first
+      @q = Product.search(params[:q])
     end
 
 end

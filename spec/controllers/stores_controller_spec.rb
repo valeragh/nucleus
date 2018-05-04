@@ -79,4 +79,28 @@ RSpec.describe StoresController, type: :controller do
     end
   end
 
+  describe "GET #search" do
+    it "returns http success" do
+      get :search
+      expect(response).to have_http_status(:success)
+    end
+
+    it "renders the search template" do
+      get :search
+      expect(response).to render_template("search")
+      expect(response.body).to eq ""
+    end
+
+    it "show search @products" do
+      category = create(:category)
+      pod_category = create(:pod_category, category_id: category.id)
+      matching_product = create(:product, title: 'test', pod_category_id: pod_category.id, category_id: category.id)
+      non_matching_product = create(:product, title: 'non', pod_category_id: pod_category.id, category_id: category.id)
+      get :search, q: { title_or_description_cont: 'test' }
+
+      expect(assigns(:products)).to include(matching_product)
+      expect(assigns(:products)).not_to include(non_matching_product)
+    end
+  end
+
 end

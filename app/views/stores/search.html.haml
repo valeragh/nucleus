@@ -1,0 +1,20 @@
+.container
+  .row
+    .col-12.col-lg-4#sidebar.mb-4
+      = render "static_pages/aside_category_hide"
+
+      = render "reviews/aside_reviews_top"
+
+    .col-12.col-lg-8
+      %ol.breadcrumb.pb-0.pl-0
+        %li.breadcrumb-item
+          = link_to "Главная", root_path
+        %li.breadcrumb-item.active
+          Поиск
+      %h1.text-orange
+        Поиск
+      .row
+        - @products.each do |product|
+          = render "product_row", product: product, order_item: @order_item
+
+    = render "reviews/aside_reviews_bottom"

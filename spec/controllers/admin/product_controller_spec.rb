@@ -41,13 +41,13 @@ RSpec.describe Admin::ProductsController, type: :controller do
     it "filter Title works" do
       category = create(:category)
       pod_category = create(:pod_category, category_id: category.id)
-      matching_category = create(:product, title: 'test', pod_category_id: pod_category.id, category_id: category.id)
-      non_matching_category = create(:product, title: 'non', pod_category_id: pod_category.id, category_id: category.id)
+      matching_product = create(:product, title: 'test', pod_category_id: pod_category.id, category_id: category.id)
+      non_matching_product = create(:product, title: 'non', pod_category_id: pod_category.id, category_id: category.id)
 
       get :index, q: { title_cont: 'test' }
 
-      expect(assigns(:products)).to include(matching_category)
-      expect(assigns(:products)).not_to include(non_matching_category)
+      expect(assigns(:products)).to include(matching_product)
+      expect(assigns(:products)).not_to include(non_matching_product)
     end
   end
 

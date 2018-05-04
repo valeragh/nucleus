@@ -11,5 +11,6 @@ class CabinetsController < ApplicationController
       @categories = Category.all.order(:rang)
       @reviews = Review.where("status = 'Показать'").sample(3)
       @contact = Contact.first
+      @q = Product.search(params[:q])
     end
 end

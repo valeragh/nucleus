@@ -13,7 +13,7 @@ RSpec.describe "cabinets/show" do
                   review_two = create(:review, name: 'Второе имя', product_id: product.id, description: 'Первый отзыв')],
       order_items = [create(:order_item, product_id: product.id, cart_id: @cart.id)],
       @order = create(:order),
-      
+      @q = Product.search(params[:q])
     ])
 
     #login_user

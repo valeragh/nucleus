@@ -13,6 +13,7 @@ RSpec.describe "static_pages/contacts" do
       @contacts = [contact_one = create(:contact, title: 'Заголовок для контакта', description: 'Описание контакта', address: 'Адрес контакта', phone_one: '11111', phone_two: '22222', status: 'Показать')],
       @letter = Letter.new
     ])
+    @q = Product.search(params[:q])
 
     render "layouts/header"
     render

@@ -21,6 +21,7 @@ RSpec.describe "stores/product" do
       @contact = create(:contact, phone_one: '12345678', phone_two: '78945612')
     ])
     @back_phone = BackPhone.new
+    @q = Product.search(params[:q])
     
     render "layouts/header"
     render

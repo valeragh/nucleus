@@ -11,6 +11,7 @@ RSpec.describe "reviews/show" do
       @review = create(:review, name: 'Первое имя', description: 'Первый отзыв', product_id: @product.id, status: 'Показать'),
       @contact = create(:contact, phone_one: '12345678', phone_two: '78945612')
     ])
+    @q = Product.search(params[:q])
     
     render "layouts/header"
     render

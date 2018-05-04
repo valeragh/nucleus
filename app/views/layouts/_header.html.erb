@@ -13,14 +13,12 @@
           <a href="tel:<%= @contact.phone_two%>" title="Позвоните нам" class="nav-link phone"><%= @contact.phone_two %></a>
         </li>
       </ul>
-      <form class="form-inline ml-auto">
-        <div class="input-group">
-          <input type="text" class="form-control border-dark" placeholder="Поиск...">
-          <div class="input-group-append">
-              <button class="btn btn-outline-danger" type="button"><i class="fa fa-search"></i></button>
-          </div>
+      <%= search_form_for @q, url: search_path, html: {class: "form-inline ml-auto"} do |f| %>
+        <%= f.search_field :title_or_description_cont, placeholder: "Поиск...", class: "form-control border-dark" %>
+        <div class="input-group-append">
+          <button class="btn btn-danger" type="submit"><i class="fa fa-search"></i></button>
         </div>
-      </form>
+      <%end%>
       <div class="total-card mt-2">
         <%= render "layouts/cart_text" %>
         |

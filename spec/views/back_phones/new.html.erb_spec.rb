@@ -9,6 +9,7 @@ RSpec.describe "back_phones/new" do
       pod_category = create(:pod_category, category_id: category_one.id, title: 'Первая подкатегория'),
       @contact = create(:contact, phone_one: '12345678', phone_two: '78945612')
     ])
+    @q = Product.search(params[:q])
     
     render "layouts/header"
     render

@@ -13,6 +13,7 @@ RSpec.describe "static_pages/faqs" do
       @faqs = [faq_one = create(:faq, title: 'Первый вопрос', description: 'Первый ответ'),
         faq_one = create(:faq, title: 'Второй вопрос', description: 'Второй ответ')]
     ])
+    @q = Product.search(params[:q])
 
     render "layouts/header"
     render

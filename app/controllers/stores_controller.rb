@@ -24,10 +24,17 @@ class StoresController < ApplicationController
     @back_phone = BackPhone.new
   end
 
+  def search
+    @products = @q.result(distinct: true)
+    @reviews = Review.where("status = 'Показать'").sample(3)
+    @order_item = current_cart.order_items.new
+  end
+
   private
     def set_category
       @categories = Category.all.order(:rang)
       @contact = Contact.first
+      @q = Product.search(params[:q])
     end
 
 end

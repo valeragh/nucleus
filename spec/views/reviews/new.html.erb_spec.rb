@@ -11,6 +11,7 @@ RSpec.describe "reviews/new" do
       @contact = create(:contact, phone_one: '12345678', phone_two: '78945612')
     ])
     @review = @product.reviews.new
+    @q = Product.search(params[:q])
     
     render "layouts/header"
     render
