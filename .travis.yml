@@ -4,6 +4,7 @@ rvm:
 before_script:
   - cp config/database.yml.example config/database.yml
   - cp config/secrets.yml.example config/secrets.yml
+  - cp config/application.yml.example config/application.yml
   - bundle exec rake db:create db:migrate
 notifications:
   slack: lalightwebdesign:D7n6lxbifJcLSBRCEqTEx0HW
