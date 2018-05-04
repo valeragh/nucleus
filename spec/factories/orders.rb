@@ -13,6 +13,8 @@
 #  description     :text
 #  email           :string
 #  status          :string
+#  data            :text
+#  payment_status  :string           default("Неоплаченный")
 #
 
 # Read about factories at https://github.com/thoughtbot/factory_girl

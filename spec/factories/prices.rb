@@ -6,6 +6,7 @@
 #  price_url  :string
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  status     :string           default("Загружен")
 #
 
 # Read about factories at https://github.com/thoughtbot/factory_girl

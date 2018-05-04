@@ -28,6 +28,12 @@ after "deploy:update_code", :copy_key_production
    run "cp #{SECRET_KEY_BASE} #{release_path}/config/secrets.yml"
 end
 
+after "deploy:update_code", :copy_keys_production
+ task :copy_keys_production, roles => :app do
+   db_config = "#{shared_path}/application.yml"
+   run "cp #{db_config} #{release_path}/config/application.yml"
+end
+
 # В rails 3 по умолчанию включена функция assets pipelining,
 # которая позволяет значительно уменьшить размер статических
 # файлов css и js.

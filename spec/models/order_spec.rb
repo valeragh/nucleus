@@ -13,6 +13,8 @@
 #  description     :text
 #  email           :string
 #  status          :string
+#  data            :text
+#  payment_status  :string           default("Неоплаченный")
 #
 
 require 'rails_helper'

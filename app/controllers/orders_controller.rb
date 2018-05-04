@@ -6,6 +6,16 @@ class OrdersController < ApplicationController
   def show
     @order = Order.find(params[:id])
     @order_items = @order.order_items.order(id: :desc)
+    if @order.payment_status == 'Неоплаченный'
+      @liqpay_request = Liqpay::Request.new(
+        :amount => @order.total,
+        :currency => 'UAH',
+        :description => "Заказ №#{@order.id}",
+        :order_id => @order.id,
+        :result_url => order_url(@order),
+        :server_url => liqpay_payment_order_url(@order) 
+      )
+    end
   end
 
   def new

@@ -1,3 +1,15 @@
+# == Schema Information
+#
+# Table name: back_phones
+#
+#  id             :integer          not null, primary key
+#  name           :string
+#  phone          :string
+#  checked_out_at :datetime
+#  created_at     :datetime         not null
+#  updated_at     :datetime         not null
+#
+
 require 'rails_helper'
 
 describe BackPhone do

@@ -4,6 +4,8 @@
     = @order.id
     %span{:class => "badge badge-#{@order.status_class}" }
       = @order.status
+    %span{:class => "badge badge-#{@order.payment_status_class}" }
+      = @order.payment_status
   .row.justify-content-md-center
     .col-6
       - @order_items.each do |order_item|
@@ -40,5 +42,15 @@
           = @order.delivery
       %p
         = @order.description
-      = link_to "Оплатить", cabinet_path, class: "btn btn-success btn-block"
+      - if @order.payment_status == 'Неоплаченный'
+        = liqpay_button @liqpay_request do
+          = link_to 'Оплатить', '#', onclick: 'document.forms[0].submit();', class: "btn btn-success btn-block"
+      - elsif @order.payment_status == 'Ошибка'
+        %span.text-red
+          Ошибка при оплате, свяжитесь с менеджером по телефонам
+          = @contact.phone_one
+          или
+          = @contact.phone_two
+      - else
+        Заказ оплачен, наши администраторы свяжутся с Вами в ближайшее время
       = link_to "Личный кабинет", cabinet_path, class: "my-2 btn btn-block btn-warning"

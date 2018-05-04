@@ -13,6 +13,8 @@
 #  description     :text
 #  email           :string
 #  status          :string
+#  data            :text
+#  payment_status  :string           default("Неоплаченный")
 #
 
 class Order < ActiveRecord::Base
@@ -44,6 +46,16 @@ class Order < ActiveRecord::Base
       "warning"
     elsif status == 'Обработанный'
       "success"
+    end
+  end
+
+  def payment_status_class
+    if payment_status == 'Неоплаченный'
+      "warning"
+    elsif payment_status == 'Оплаченный'
+      "success"
+    elsif payment_status == 'Ошибка'
+      "danger"
     end
   end
 

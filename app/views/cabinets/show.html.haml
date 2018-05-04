@@ -20,18 +20,24 @@
               - order.order_items.each do |order_item|
                 .item-cart.p-3.border-yellow
                   .cart-title.d-flex.justify-content-between
-                    = image_tag order_item.product.image_url.thumb, class: "img-thumbnail"
+                    - if order_item.product.present?
+                      = image_tag order_item.product.image_url.thumb, class: "img-thumbnail"
+                    - else 
+                      Товара нет в базе
                     %label.text-orange.date.text-center
                       \#
-                      = order_item.product.identif
+                      = order_item.product.present? ? order_item.product.identif : ""
                     %p.ml-2.lh-1
                       %strong
-                        = order_item.product.title
+                        = order_item.product.present? ? order_item.product.title : "Товара нет в базе"
                   .d-flex.justify-content-between.mt-1
                     %strong.text-black Цена:
                     %span.cart-price
-                      = number_to_currency(order_item.product.price, unit: "грн", separator: ",", precision: 2)
-                      за ед.
+                      - if order_item.product.present?
+                        = number_to_currency(order_item.product.price, unit: "грн", separator: ",", precision: 2)
+                        за ед.
+                      - else
+                        Товара нет в базе
                   .d-flex.justify-content-between.mt-1
                     %strong.text-black Количество:
                     %span.cart-price
@@ -51,7 +57,16 @@
                   = order.delivery
               %p
                 = order.description
-              = link_to "Оплатить", cabinet_path, class: "mb-4 btn btn-success btn-block"
+              - if order.payment_status == 'Неоплаченный'
+                = link_to "Посмотреть и оплатить", order_path(order), class: "btn btn-success btn-block"
+              - elsif order.payment_status == 'Ошибка'
+                %span.text-red
+                  Ошибка при оплате, свяжитесь с менеджером по телефонам
+                  = @contact.phone_one
+                  или
+                  = @contact.phone_two
+              - else
+                Заказ оплачен, наши администраторы свяжутся с Вами в ближайшее время
         - else
           %h2
             У вас нет заказов
