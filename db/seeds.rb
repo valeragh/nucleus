@@ -1,7 +1,8 @@
 Category.delete_all
 PodCategory.delete_all
 Product.delete_all
-#Review.delete_all
+Order.delete_all
+Review.delete_all
 #Contact.delete_all
 #Faq.delete_all
 #Post.delete_all
@@ -22,6 +23,9 @@ pod_category = category_1.pod_categories.create(title: 'Мечение мато�
 pod_category = category_1.pod_categories.create(title: 'Шпатели и мисочки',
 	                                                rang: '1',
 											                            image_url: Rails.root.join("app/assets/images/data/IMG_7721.jpg").open)
+pod_category = category_1.pod_categories.create(title: 'Изоляторы',
+	                                                rang: '1',
+											                            image_url: Rails.root.join("app/assets/images/data/IMG_8449.jpg").open)
 
 #2 Воскотопки
 category_2 = Category.create( title:'Воскотопки',
@@ -40,7 +44,13 @@ category_3 = Category.create( title:'Для работы с медом',
 										          image_url: Rails.root.join("app/assets/images/data/IMG_7760.jpg").open)
 pod_category = category_3.pod_categories.create(title: 'Другое',
 	                                                rang: '1',
-											                            image_url: Rails.root.join("app/assets/images/data/IMG_7761.jpg").open)
+											                            image_url: Rails.root.join("app/assets/images/data/IMG_8215.jpg").open)
+pod_category = category_3.pod_categories.create(title: 'Лопатки',
+	                                                rang: '1',
+											                            image_url: Rails.root.join("app/assets/images/data/IMG_8218.jpg").open)
+pod_category = category_3.pod_categories.create(title: 'Фильтры для меда',
+	                                                rang: '1',
+											                            image_url: Rails.root.join("app/assets/images/data/IMG_8246.jpg").open)
 
 #4 Дополнительный инвентарь
 category_4 = Category.create( title:'Дополнительный инвентарь',
@@ -55,6 +65,15 @@ pod_category = category_4.pod_categories.create(title: 'Щетки',
 pod_category = category_4.pod_categories.create(title: 'Стамески',
 	                                                rang: '1',
 											                            image_url: Rails.root.join("app/assets/images/data/IMG_7633.jpg").open)
+pod_category = category_4.pod_categories.create(title: 'Другое',
+	                                                rang: '1',
+											                            image_url: Rails.root.join("app/assets/images/data/IMG_8545.jpg").open)
+pod_category = category_4.pod_categories.create(title: 'Весы',
+	                                                rang: '1',
+											                            image_url: Rails.root.join("app/assets/images/data/IMG_8526.jpg").open)
+pod_category = category_4.pod_categories.create(title: 'Рамконосы',
+	                                                rang: '1',
+											                            image_url: Rails.root.join("app/assets/images/data/IMG_8522.jpg").open)
 
 #5 Дымари
 category_5 = Category.create( title:'Дымари',
@@ -63,6 +82,9 @@ category_5 = Category.create( title:'Дымари',
 pod_category = category_5.pod_categories.create(title: 'Нержавейка',
 	                                                rang: '1',
 											                            image_url: Rails.root.join("app/assets/images/data/IMG_7631.jpg").open)
+pod_category = category_5.pod_categories.create(title: 'Черный',
+	                                                rang: '1',
+											                            image_url: Rails.root.join("app/assets/images/data/IMG_8345.jpg").open)
 
 #6 Инвентарь для распечатки соторамок
 category_6 = Category.create( title:'Инвентарь для распечатки соторамок',
@@ -74,37 +96,17 @@ pod_category = category_6.pod_categories.create(title: 'Ножи',
 pod_category = category_6.pod_categories.create(title: 'Вилки',
 	                                                rang: '1',
 											                            image_url: Rails.root.join("app/assets/images/data/IMG_7624.jpg").open)
+pod_category = category_6.pod_categories.create(title: 'Столы пасечные',
+	                                                rang: '1',
+											                            image_url: Rails.root.join("app/assets/images/data/IMG_8555.jpg").open)
 
-#7 Инвентарь для ульев
-category_7 = Category.create( title:'Инвентарь для ульев',
-										          rang:'7',
-										          image_url: Rails.root.join("app/assets/images/data/IMG_7794.jpg").open)
-pod_category = category_7.pod_categories.create(title: 'Цифры и другой инвентарь',
+#7 Медогонки
+category_7 = Category.create( title:'Медогонки',
+										          rang:'6',
+										          image_url: Rails.root.join("app/assets/images/data/IMG_8531.jpg").open)
+pod_category = category_7.pod_categories.create(title: 'Поворотные',
 	                                                rang: '1',
-											                            image_url: Rails.root.join("app/assets/images/data/IMG_7794.jpg").open)
-
-#8 Комплектующие для ульев
-category_8 = Category.create( title:'Комплектующие для ульев',
-										          rang:'8',
-										          image_url: Rails.root.join("app/assets/images/data/IMG_7714.jpg").open)
-pod_category = category_8.pod_categories.create(title: 'Ручки ульевые',
-	                                                rang: '1',
-											                            image_url: Rails.root.join("app/assets/images/data/IMG_7712.jpg").open)
-pod_category = category_8.pod_categories.create(title: 'Цифры и другой инвентарь',
-	                                                rang: '1',
-											                            image_url: Rails.root.join("app/assets/images/data/IMG_7792.jpg").open)
-pod_category = category_8.pod_categories.create(title: 'Утеплители и холстики',
-	                                                rang: '1',
-											                            image_url: Rails.root.join("app/assets/images/data/IMG_7788.jpg").open)
-pod_category = category_8.pod_categories.create(title: 'Разделительные решетки',
-	                                                rang: '1',
-											                            image_url: Rails.root.join("app/assets/images/data/IMG_7791.jpg").open)
-pod_category = category_8.pod_categories.create(title: 'Кормушки (поилки)',
-	                                                rang: '1',
-											                            image_url: Rails.root.join("app/assets/images/data/IMG_7849.jpg").open)
-pod_category = category_8.pod_categories.create(title: 'Пыльцесборники',
-	                                                rang: '1',
-											                            image_url: Rails.root.join("app/assets/images/data/IMG_8088.jpg").open)
+											                            image_url: Rails.root.join("app/assets/images/data/IMG_8542.jpg").open)
 
 #9 Комплектующие к медогонкам
 category_9 = Category.create( title:'Комплектующие к медогонкам',
@@ -113,6 +115,12 @@ category_9 = Category.create( title:'Комплектующие к медого�
 pod_category = category_9.pod_categories.create(title: 'Крышки, ноги и другое',
 	                                                rang: '1',
 											                            image_url: Rails.root.join("app/assets/images/data/IMG_7717.jpg").open)
+pod_category = category_9.pod_categories.create(title: 'Ручной привод',
+	                                                rang: '1',
+											                            image_url: Rails.root.join("app/assets/images/data/IMG_8364.jpg").open)
+pod_category = category_9.pod_categories.create(title: 'Электроприводы',
+	                                                rang: '1',
+											                            image_url: Rails.root.join("app/assets/images/data/IMG_8370.jpg").open)
 
 #10 Комплектующие к ульям
 category_10 = Category.create( title:'Комплектующие к ульям',
@@ -121,6 +129,24 @@ category_10 = Category.create( title:'Комплектующие к ульям',
 pod_category = category_10.pod_categories.create(title: 'Летковые заградители',
 	                                                rang: '1',
 											                            image_url: Rails.root.join("app/assets/images/data/IMG_7707.jpg").open)
+pod_category = category_10.pod_categories.create(title: 'Ручки ульевые',
+	                                                rang: '1',
+											                            image_url: Rails.root.join("app/assets/images/data/IMG_7712.jpg").open)
+pod_category = category_10.pod_categories.create(title: 'Цифры и другой инвентарь',
+	                                                rang: '1',
+											                            image_url: Rails.root.join("app/assets/images/data/IMG_7792.jpg").open)
+pod_category = category_10.pod_categories.create(title: 'Утеплители и холстики',
+	                                                rang: '1',
+											                            image_url: Rails.root.join("app/assets/images/data/IMG_7788.jpg").open)
+pod_category = category_10.pod_categories.create(title: 'Разделительные решетки',
+	                                                rang: '1',
+											                            image_url: Rails.root.join("app/assets/images/data/IMG_7791.jpg").open)
+pod_category = category_10.pod_categories.create(title: 'Кормушки (поилки)',
+	                                                rang: '1',
+											                            image_url: Rails.root.join("app/assets/images/data/IMG_7849.jpg").open)
+pod_category = category_10.pod_categories.create(title: 'Пыльцесборники',
+	                                                rang: '1',
+											                            image_url: Rails.root.join("app/assets/images/data/IMG_8088.jpg").open)
 
 #11 Лечение и профилактика болезней пчёл
 category_11 = Category.create( title:'Лечение и профилактика болезней пчёл',
@@ -177,3 +203,6 @@ pod_category = category_14.pod_categories.create(title: 'Рута',
 pod_category = category_14.pod_categories.create(title: 'Лежак',
 	                                                rang: '1',
 											                            image_url: Rails.root.join("app/assets/images/data/IMG_8030.jpg").open)
+pod_category = category_14.pod_categories.create(title: 'Нуклеусы',
+	                                                rang: '1',
+											                            image_url: Rails.root.join("app/assets/images/data/IMG_8421.jpg").open)

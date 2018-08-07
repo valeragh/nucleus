@@ -46,6 +46,6 @@ class DataProduct < ActiveRecord::Base
   end
 
   def handle_exception(error)
-	  ArgumentError.new('Everyone must have a first name.')
+	  ArgumentError.new('Нет данных в базе')
 	end
 end
