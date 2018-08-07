@@ -59,12 +59,6 @@ describe Product do
     expect(product.errors[:price]).to include("не может быть пустым")
   end
 
-  it "is invalid without a factory image_url" do
-    product = build(:product, image_url: nil)
-    product.valid?
-    expect(product.errors[:image_url]).to include("не может быть пустым")
-  end
-
   it "is invalid without a factory identif" do
     product = build(:product, identif: nil)
     product.valid?
@@ -90,7 +84,6 @@ describe Product do
       product = build(:product)
       expect(product.image_url.magazine).to be_no_larger_than(600, 400)
     end
-
 
     it "has the correct format" do
       product = build(:product)
