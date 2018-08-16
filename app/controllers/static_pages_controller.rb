@@ -7,6 +7,10 @@ class StaticPagesController < ApplicationController
   def about_us
   end
 
+  def sitemap_html
+    @posts = Post.all
+  end
+
   def contacts
     @letter = Letter.new
     @contacts = Contact.where("status = 'Показать'")
@@ -19,6 +23,26 @@ class StaticPagesController < ApplicationController
 
   def faqs
     @faqs = Faq.all
+  end
+
+  def terms_of_use
+  end
+
+  def privacy_policy
+  end
+
+  def sitemap
+    path = Rails.root.join("public", "sitemaps", "sitemap.xml")
+    if File.exists?(path)
+      render xml: open(path).read
+    else
+      render text: "Sitemap not found.", status: :not_found
+    end
+  end
+
+  def robots
+    respond_to :text
+    expires_in 6.hours, public: true
   end
 
   private

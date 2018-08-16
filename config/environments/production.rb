@@ -55,7 +55,7 @@ Rails.application.configure do
   # config.action_dispatch.x_sendfile_header = 'X-Accel-Redirect' # for NGINX
 
   # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
-  # config.force_ssl = true
+  config.force_ssl = true
 
   # Use the lowest log level to ensure availability of diagnostic information
   # when problems arise.
@@ -90,7 +90,7 @@ Rails.application.configure do
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
   config.action_mailer.default_url_options = { :host => 'nucleus.com.ua' }
-  config.action_controller.asset_host = "http://nucleus.com.ua"
+  config.action_controller.asset_host = "https://nucleus.com.ua"
   Rails.application.routes.default_url_options[:host] = 'nucleus.com.ua'
   config.active_job.queue_adapter = :sucker_punch
 end

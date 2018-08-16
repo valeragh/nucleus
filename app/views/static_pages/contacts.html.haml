@@ -1,3 +1,14 @@
+- meta :title => "«Nucleus» — интернет-магазин пчеловодства. Контакты и адреса магазинов", :description => "Широкий выбор: пчеловодческого инвентаря, оборудования, лекарственных препаратов и книг для пчеловодов, а также пчелопродуктов. Низкие цены ✓Большой ассортимент ✓Собственное производство"
+= content_for(:meta_og) do
+  %meta{:content => "Nucleus | Контакты и адреса магазинов", :property => "og:title"}/
+  %meta{:content => "website", :property => "og:type"}/
+  %meta{:content => "Nucleus", :property => "og:author"}/
+  %meta{:content => "https://nucleus.com.ua", :property => "og:url"}/
+  %meta{:name=>"twitter:card", :content=>"summary_large_image"}/
+  %meta{:name=>"twitter:title", :content=>"Nucleus | Контакты и адреса магазинов"}/
+  %meta{:name=>"twitter:description", :content=>"Широкий выбор: пчеловодческого инвентаря, оборудования, лекарственных препаратов и книг для пчеловодов, а также пчелопродуктов. Низкие цены ✓Большой ассортимент ✓Собственное производство"}/
+  = tag :meta, property: 'og:image', content: image_url('apple-touch-icon-144x144.png')
+
 %script{:src=>"//maps.google.com/maps/api/js?key=AIzaSyC0PnLepVx35JnMzRebhQBDXbs7tHhCUdM", :type => "text/javascript"}
 %script{:src=>"//cdn.rawgit.com/mahnunchik/markerclustererplus/master/dist/markerclusterer.min.js"}
 %script{:src=>'//cdn.rawgit.com/printercu/google-maps-utility-library-v3-read-only/master/infobox/src/infobox_packed.js', :type=>'text/javascript'}

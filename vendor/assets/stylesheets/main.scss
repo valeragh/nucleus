@@ -261,6 +261,19 @@ form.new_product_import{
     position:absolute;
 }
 
+
+// Sitemap
+
+ul.sitemap{
+  list-style:none;
+  padding-left:0;
+  margin-bottom:5px;
+  li.sitemap-li{padding-left:10px;}
+  a.text-link{color: #f4880a;}
+  a.text-link:hover{color: #ffcf02;}
+}
+
+
 // Home
 
 .card.product{
@@ -330,8 +343,14 @@ form.new_product_import{
 
 // Product
 
+section.product-page{
+  h5{
+    font-size: 1rem;
+  }
+}
 h1.title-product{
   line-height:2rem;
+  font-size: 1.6rem;
   .badge.price-badge{
     font-size:12px;
   }

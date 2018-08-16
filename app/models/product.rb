@@ -33,6 +33,11 @@ class Product < ActiveRecord::Base
 	mount_uploader :image_url, ImageUploader
 
 	STATUS_TYPES = ["В наличие","Под заказ","Скрыть"]
+
+  # Enumerize
+  extend Enumerize
+  enumerize :status, in: ["В наличие","Под заказ","Скрыть"], default: "В наличие"
+  
 	extend FriendlyId
   friendly_id :title, use: :slugged
 
@@ -70,6 +75,14 @@ class Product < ActiveRecord::Base
   def image_plitka
     if self.images.present?
       self.images.first.image_url.category
+    else
+      "android-chrome-512x512.png"
+    end
+  end
+
+  def image
+    if self.images.present?
+      self.images.first.image_url.magazine
     else
       "android-chrome-512x512.png"
     end

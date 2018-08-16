@@ -24,8 +24,8 @@
 				<ul class="footer-link pl-0">
 					<li><%= link_to "Контакты", contacts_path, title: "Контакты" %></li>
 					<li><%= link_to "Написать нам", root_path, title: "Написать нам" %></li>
-					<li><%= link_to "Впросы-ответы", faqs_path, title: "Впросы-ответы" %></li>
-					<li><%= link_to "Карта сайта", root_path, title: "Карта сайта" %></li>
+					<li><%= link_to "Вопросы-ответы", faqs_path, title: "Впросы-ответы" %></li>
+					<li><%= link_to "Карта сайта", sitemap_html_path, title: "Карта сайта" %></li>
 				</ul>
 			</div><!-- col -->
 			<div class="col-6 col-xl-3">
@@ -33,9 +33,9 @@
 		      <%= image_tag "nucleus_logo_for_web.png", alt: "Nucleus",  width: "200", "aria-hidden"=>"true" %>
 		    <%end%>
 				<ul class="social-contacts list-inline d-flex mt-4 flex-row justify-content-start justify-content-xl-center">
-					<li class="mr-3"><a href="https://www.vk.com/" title="Ищите нас в ВКонтакте" class="vk" target="_blank"><%= fa_icon "vk 2x" %></a></li>
-          <li class="mr-3"><a href="https://www.facebook.com/" title="Ищите нас в Facebook" class="facebook" target="_blank"><%= fa_icon "facebook 2x" %></a></li>
-					<li><a href="http://google.com/" title="Ищите нас на Google plus" class="google" target="_blank"><%= fa_icon "google-plus 2x" %></a></li>
+					<li class="mr-3"><a href="https://www.vk.com/" title="Ищите нас в ВКонтакте" class="vk" target="_blank" rel="nofollow"><%= fa_icon "vk 2x" %></a></li>
+          <li class="mr-3"><a href="https://www.facebook.com/" title="Ищите нас в Facebook" class="facebook" target="_blank" rel="nofollow"><%= fa_icon "facebook 2x" %></a></li>
+					<li><a href="http://google.com/" title="Ищите нас на Google plus" class="google" target="_blank" rel="nofollow"><%= fa_icon "google-plus 2x" %></a></li>
 				</ul>
 			</div><!-- col -->
 		</div><!-- row -->
@@ -45,25 +45,25 @@
 	<div class="container">
 		<div class="row">
 			<div class="d-none d-xl-block col-12 mt-3 text-center">
-				<%= link_to "Пользовательское соглашение", root_path, title: "Пользовательское соглашение", class: "mx-2" %>
+				<%= link_to "Пользовательское соглашение", terms_of_use_path, title: "Пользовательское соглашение", class: "mx-2" %>
         <span class="text-orange">|</span>
-        <%= link_to "Политика конфиденциальности", root_path, title: "Политика конфиденциальности", class: "mx-2" %>
+        <%= link_to "Политика конфиденциальности", privacy_policy_path, title: "Политика конфиденциальности", class: "mx-2" %>
 				<span class="text-orange">|</span>
 				<p class="text-white d-inline-flex mx-2">Copyright © 2017 - <%= Time.current.year %> Nucleus Все права защищены</p>
 				<span class="text-orange">|</span>
-				<a href="http://lightwebdesign.com.ua/" title="Built by LWD" target="_blank" class="mx-2 lwd" %>Built by LWD</a>
+				<a href="http://lightwebdesign.com.ua/" title="Built by LWD" target="_blank" class="mx-2 lwd" rel="nofollow" %>Built by LWD</a>
       </div>
       <div class="d-block d-xl-none col-12 col-md-6 mt-3">
-				<%= link_to "Пользовательское соглашение", root_path, title: "Пользовательское соглашение", class: "mx-2" %>
+				<%= link_to "Пользовательское соглашение", terms_of_use_path, title: "Пользовательское соглашение", class: "mx-2" %>
 			</div>
 			<div class="d-block d-xl-none col-12 col-md-6 mt-3">
-				<%= link_to "Политика конфиденциальности", root_path, title: "Политика конфиденциальности", class: "mx-2" %>
+				<%= link_to "Политика конфиденциальности", privacy_policy_path, title: "Политика конфиденциальности", class: "mx-2" %>
 			</div>
       <div class="d-block d-xl-none col-12 col-md-6 mt-3">
 				<p class="text-white d-inline-flex mx-2">Copyright © 2017 - <%= Time.current.year %> Nucleus Все права защищены</p>
 			</div>
 			<div class="d-block d-xl-none col-12 col-md-6 my-3">
-				<a href="http://lightwebdesign.com.ua/" title="Built by LWD" target="_blank" class="mx-2 lwd" %>Built by LWD</a>
+				<a href="http://lightwebdesign.com.ua/" title="Built by LWD" target="_blank" class="mx-2 lwd" rel="nofollow" %>Built by LWD</a>
 			</div>
 		</div>
 	</div>

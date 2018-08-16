@@ -1,3 +1,14 @@
+- meta :title => "«Nucleus» — интернет-магазин пчеловодства. Поиск товаров на сайте", :description => "Широкий выбор: пчеловодческого инвентаря, оборудования, лекарственных препаратов и книг для пчеловодов, а также пчелопродуктов. Низкие цены ✓Большой ассортимент ✓Собственное производство"
+= content_for(:meta_og) do
+  %meta{:content => "Nucleus | Поиск товаров", :property => "og:title"}/
+  %meta{:content => "website", :property => "og:type"}/
+  %meta{:content => "Nucleus", :property => "og:author"}/
+  %meta{:content => "https://nucleus.com.ua", :property => "og:url"}/
+  %meta{:name=>"twitter:card", :content=>"summary_large_image"}/
+  %meta{:name=>"twitter:title", :content=>"Nucleus | Поиск товаров"}/
+  %meta{:name=>"twitter:description", :content=>"Широкий выбор: пчеловодческого инвентаря, оборудования, лекарственных препаратов и книг для пчеловодов, а также пчелопродуктов. Низкие цены ✓Большой ассортимент ✓Собственное производство"}/
+  = tag :meta, property: 'og:image', content: image_url('apple-touch-icon-144x144.png')
+
 .container
   .row
     .col-12.col-lg-4#sidebar.mb-4

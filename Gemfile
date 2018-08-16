@@ -47,6 +47,8 @@ gem 'sucker_punch'
 gem 'ransack'
 gem 'liqpay', '~>1.0.0'
 gem 'figaro'
+gem 'enumerize'
+gem "dynamic_sitemaps"
 
 group :test, :development do
   gem "rspec-rails", "~> 3.6"

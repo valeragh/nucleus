@@ -37,7 +37,7 @@
   <meta name="apple-mobile-web-app-capable" content="yes">
 
   <%= favicon_link_tag 'favicon.png', rel: 'icon' %>
-  <!--[if IE]><link rel="shortcut icon" href="https://shanti-center.com.ua/favicon.ico"><![endif]-->
+  <!--[if IE]><link rel="shortcut icon" href="https://nucleus.com.ua/favicon.ico"><![endif]-->
 
   <meta name="msapplication-square70x70logo" content="<%= image_url 'smalltile.png' %>">
   <meta name="msapplication-square150x150logo" content="<%= image_url 'mediumtile.png' %>">
@@ -76,7 +76,7 @@
     <meta property="og:locale" content="ru">
     <meta property="og:type" content="website">
     <meta property="og:title" content="Nucleus">
-    <meta property="og:url" content="http://nucleus.com.ua/">
+    <meta property="og:url" content="https://nucleus.com.ua/">
     <meta property="fb:app_id" content="">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Nucleus">
@@ -126,18 +126,18 @@
   </script>
   <div itemscope itemtype="https://schema.org/Organization" style="display:none;">
     <meta itemprop="name" content="Инвентарь для пасечников" />
-    <link itemprop="url" href="https://shanti-center.com.ua/" />
+    <link itemprop="url" href="https://nucleus.com.ua/" />
     <link itemprop="logo" href="<%= image_url 'shanti_square.png' %>" />
     <meta itemprop="description" content="Инвентарь для пасечников" /><meta itemprop="email" content="hello@nucleus.com.ua" />
     <div itemprop="address" itemscope itemtype="https://schema.org/PostalAddress">
-    <meta itemprop="addressLocality" content="Старобельск, Украина" />        
+    <meta itemprop="addressLocality" content="Харьков, Украина" />        
     <meta itemprop="postalCode" content="87500" />
-    <meta itemprop="streetAddress" content="проспект Победы, 25" />
+    <meta itemprop="streetAddress" content="вулиця Пушкінська, 37" />
     </div>
     <div itemprop="address" itemscope itemtype="https://schema.org/PostalAddress">
     <meta itemprop="addressLocality" content="Старобельск, Украина" />        
     <meta itemprop="postalCode" content="87504" />
-    <meta itemprop="streetAddress" content="проспект Мира, 87" />
+    <meta itemprop="streetAddress" content="улица Шевченко 33" />
     </div>
     <meta itemprop="telephone" content="+38050-555-55-55" />
     <meta itemprop="telephone" content="+38066-555-55-55" />
@@ -146,9 +146,11 @@
     <link itemprop="sameAs" href="https://www.pinterest.com/" />
     <link itemprop="sameAs" href="https://www.instagram.com/" />
   </div>
-  <meta name="google-site-verification" content="GZ1IsnMNfwRXvMWGFLsmlTQ3dGEQ3f5rMP6lGfzbG6s" />
+  <meta name="google-site-verification" content="wmUMhEiE4pwj85vHC4R4BSVM9fSpsnrHfEUp7B68frA" />
+  <meta name="yandex-verification" content="908a2e0043b188b5" /> 
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= render "layouts/google_analytics" %>
 </head>
 <body>
   <% flash.each do |key, value| %>
@@ -167,5 +169,6 @@
 
   <%= render "layouts/footer" %>
   <%= yield :scripts %>
+  <%= render "layouts/jivo_site" %>
 </body>
 </html>

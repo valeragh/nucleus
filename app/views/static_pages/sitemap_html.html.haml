@@ -1,0 +1,59 @@
+- meta :title => "«Nucleus» — интернет-магазин пчеловодства. Карта сайта", :description => "Широкий выбор: пчеловодческого инвентаря, оборудования, лекарственных препаратов и книг для пчеловодов, а также пчелопродуктов. Низкие цены ✓Большой ассортимент ✓Собственное производство"
+= content_for(:meta_og) do
+  %meta{:content => "Nucleus | Карта сайта", :property => "og:title"}/
+  %meta{:content => "website", :property => "og:type"}/
+  %meta{:content => "Nucleus", :property => "og:author"}/
+  %meta{:content => "https://nucleus.com.ua", :property => "og:url"}/
+  %meta{:name=>"twitter:card", :content=>"summary_large_image"}/
+  %meta{:name=>"twitter:title", :content=>"Nucleus | Карта сайта"}/
+  %meta{:name=>"twitter:description", :content=>"Широкий выбор: пчеловодческого инвентаря, оборудования, лекарственных препаратов и книг для пчеловодов, а также пчелопродуктов. Низкие цены ✓Большой ассортимент ✓Собственное производство"}/
+  = tag :meta, property: 'og:image', content: image_url('apple-touch-icon-144x144.png')
+
+%section.bg-white-yellow.clearfix.pageHeader
+  .container
+    .row
+      .col-12.col-lg-8
+        %ol.breadcrumb.pb-0.pl-0
+          %li.breadcrumb-item
+            = link_to "Главная", root_path
+          %li.breadcrumb-item
+            Карта сайта
+
+%section.my-4
+  .container
+    .row
+      .col-12
+        %ul.sitemap
+          %li
+            = link_to "Главная", root_path, class: "text-link"
+        %ul.sitemap
+          %li
+            = link_to "Пользовательское соглашение", terms_of_use_path, class: "text-link"
+        %ul.sitemap
+          %li
+            = link_to "Политика конфиденциальности", privacy_policy_path, class: "text-link"
+        %ul.sitemap
+          %li
+            = link_to "Контакты", contacts_path, class: "text-link"
+        %ul.sitemap
+          %li
+            = link_to "О нас", about_us_path, class: "text-link"
+        %ul.sitemap
+          Полезная информация
+          - @posts.each do |post|
+            %li
+              = link_to post.title, show_post_path(post), class: "text-link"
+        %ul.sitemap
+          Категория
+          - @categories.each do |category|
+            %li.sitemap-li
+              = link_to category.title, show_category_path(category), class: "text-link"
+              - category.pod_categories.each do |pod_category|
+                %ul.sitemap
+                  Подкатегория - 
+                  = link_to pod_category.title, show_pod_category_path(category,  pod_category), class: "text-link"
+                  %ul.sitemap
+                    Товары
+                    - pod_category.products.each do |product|
+                      %li.sitemap-li
+                        = link_to product.title, show_product_path(category, pod_category, product), class: "text-link"

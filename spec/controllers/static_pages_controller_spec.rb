@@ -55,4 +55,43 @@ RSpec.describe StaticPagesController, type: :controller do
     end
   end
 
+  describe "GET #terms_of_use" do
+    it "returns http success" do
+      get :terms_of_use
+      expect(response).to have_http_status(:success)
+    end
+
+    it "renders the terms_of_use template" do
+      get :terms_of_use
+      expect(response).to render_template("terms_of_use")
+      expect(response.body).to eq ""
+    end
+  end
+
+  describe "GET #privacy_policy" do
+    it "returns http success" do
+      get :privacy_policy
+      expect(response).to have_http_status(:success)
+    end
+
+    it "renders the privacy_policy template" do
+      get :privacy_policy
+      expect(response).to render_template("privacy_policy")
+      expect(response.body).to eq ""
+    end
+  end
+
+  describe "GET #sitemap_html" do
+    it "returns http success" do
+      get :sitemap_html
+      expect(response).to have_http_status(:success)
+    end
+
+    it "renders the sitemap_html template" do
+      get :sitemap_html
+      expect(response).to render_template("sitemap_html")
+      expect(response.body).to eq ""
+    end
+  end
+
 end

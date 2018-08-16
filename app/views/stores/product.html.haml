@@ -1,110 +1,122 @@
-.container
-  .row
-    .col-12.col-lg-4#sidebar.mb-4
-      = render "static_pages/aside_category_hide"
-      = render "reviews/aside_reviews_top"
+- meta :title => "«Nucleus» — интернет-магазин пчеловодства. #{@product.title} для пчеловодов", :description => "#{@product.title} для пчеловодов - описание, цена, отзывы. Низкие цены ✓Большой ассортимент ✓Собственное производство"
+= content_for(:meta_og) do
+  %meta{:content => "Nucleus - #{@product.title} для пчеловодов", :property => "og:title"}/
+  %meta{:content => "website", :property => "og:type"}/
+  %meta{:content => "Nucleus", :property => "og:author"}/
+  %meta{:content => "https://nucleus.com.ua", :property => "og:url"}/
+  %meta{:name=>"twitter:card", :content=>"summary_large_image"}/
+  %meta{:name=>"twitter:title", :content=>"Nucleus - #{@product.title} для пчеловодов"}/
+  %meta{:name=>"twitter:description", :content=>"#{@product.title} для пчеловодов - описание, цена, отзывы. Низкие цены ✓Большой ассортимент ✓Собственное производство"}/
+  = tag :meta, property: 'og:image', content: image_url(@product.image_plitka)
 
-    .col-12.col-lg-8
-      %ol.breadcrumb.pb-0.pl-0
-        %li.breadcrumb-item
-          = link_to "Главная", root_path
-        %li.breadcrumb-item
-          = link_to @product.category.title, show_category_path(@product.category)
-        %li.breadcrumb-item
-          = link_to @product.pod_category.title, show_pod_category_path(@product.category, @product.pod_category)
-        %li.breadcrumb-item.active
-          = @product.title
-      .row
-        .col-12.col-lg-6
-          %h1.text-orange.title-product
+%section.product-page
+  .container
+    .row
+      .col-12.col-lg-4#sidebar.mb-4
+        = render "static_pages/aside_category_hide"
+        = render "reviews/aside_reviews_top"
+
+      .col-12.col-lg-8
+        %ol.breadcrumb.pb-0.pl-0
+          %li.breadcrumb-item
+            = link_to "Главная", root_path
+          %li.breadcrumb-item
+            = link_to @product.category.title, show_category_path(@product.category)
+          %li.breadcrumb-item
+            = link_to @product.pod_category.title, show_pod_category_path(@product.category, @product.pod_category)
+          %li.breadcrumb-item.active
             = @product.title
-            %span{:class=>"price-badge badge badge-#{@product.status_badge}"}
-              = @product.status
-        .col-12.col-lg-6
-          %span.price-badge.badge.badge-warning.mt-4 Цена:
-          %span.text-black.font-weight-bold.product-price 
-            = number_to_currency(@product.price, unit: "грн", separator: ",", precision: 2)
-          = form_for @order_item, remote: true do |f|
-            = f.hidden_field :product_id, value: "#{@product.id}"
-            = f.hidden_field :unit_price, value: "#{@product.price}"
-            = f.hidden_field :quantity, value: "1"
-            = f.submit "В корзину", class: "btn btn-danger btn-block mt-2"
-        .col-12.col-lg-6.border-y-yellow
-          %label.text-black.date.text-center
-            \#
-            = @product.identif
-          = image_tag @product.image_url.magazine, class: "img-fluid", title: "#{@product.title}"
-        .col-12.col-lg-6.border-y-yellow
-          %a{:href=>"#", "data-toggle"=>"modal", "data-target"=>"#backPhoneModal", :title=>"Заказать обратный звонок", :class=>"btn btn-warning btn-block mt-3"} Перезвонить мне
-          %h5.mt-3 
-            Описание
-            = @product.title
-          %p
-            = @product.description
-          .links.mt-4
-            = link_to product_reviews_path(@product), class: "text-orange" do
-              Отзывы -
-              = @product_reviews.count
-            |
-            = link_to "График работы", contacts_path, class: "text-orange"
-            |
-            = link_to "Контакты", contacts_path, class: "text-orange"
-          = link_to "Оставить отзыв", new_product_review_path(@product), class: "btn btn-info btn-block my-3"
+        .row
+          .col-12.col-lg-6
+            %h1.text-orange.title-product
+              = @product.title
+              %span{:class=>"price-badge badge badge-#{@product.status_badge}"}
+                = @product.status
+          .col-12.col-lg-6
+            %span.price-badge.badge.badge-warning.mt-4 Цена:
+            %span.text-black.font-weight-bold.product-price 
+              = number_to_currency(@product.price, unit: "грн", separator: ",", precision: 2)
+            = form_for @order_item, remote: true do |f|
+              = f.hidden_field :product_id, value: "#{@product.id}"
+              = f.hidden_field :unit_price, value: "#{@product.price}"
+              = f.hidden_field :quantity, value: "1"
+              = f.submit "В корзину", class: "btn btn-danger btn-block mt-2"
+          .col-12.col-lg-6.border-y-yellow
+            %label.text-black.date.text-center
+              \#
+              = @product.identif
+            = image_tag @product.image, class: "img-fluid", title: "#{@product.title}"
+          .col-12.col-lg-6.border-y-yellow
+            %a{:href=>"#", "data-toggle"=>"modal", "data-target"=>"#backPhoneModal", :title=>"Заказать обратный звонок", :class=>"btn btn-warning btn-block mt-3"} Перезвонить мне
+            %h5.mt-3 
+              Описание
+              = @product.title
+            %p
+              = @product.description
+            .links.mt-4
+              = link_to product_reviews_path(@product), class: "text-orange" do
+                Отзывы -
+                = @product_reviews.count
+              |
+              = link_to "График работы", contacts_path, class: "text-orange"
+              |
+              = link_to "Контакты", contacts_path, class: "text-orange"
+            = link_to "Оставить отзыв", new_product_review_path(@product), class: "btn btn-info btn-block my-3"
 
-      %h3.my-4.text-center Посмотрите также
-      .row
-        - if @products.present?
-          - @products.each do |product|
-            .col-12.col-md-6.col-xl-4
-              .card.product-card.mb-3
-                .card-header.bg-yellow.d-flex.align-items-center
-                  %h6.text-black.font-weight-bold
-                    = product.title.truncate_words(4)
-                = image_tag product.image_url.category, class: "card-img-top", title: "#{product.title}"
-                %label{:class=>"text-light status #{product.status_class}"}
-                  = product.status 
-                %label.text-black.date.text-center
-                  \#
-                  = product.identif
-                .card-block.p-2
-                  %span.badge.badge-warning Цена:
-                  %p.text-black.font-weight-bold 
-                    = number_to_currency(product.price, unit: "грн", separator: ",", precision: 2)
-                  .buttons-product.my-2
-                    = form_for @order_item, remote: true do |f|
-                      = f.hidden_field :product_id, value: "#{product.id}"
-                      = f.hidden_field :unit_price, value: "#{product.price}"
-                      = f.hidden_field :quantity, value: "1"
-                      = f.submit "В корзину", class: "btn btn-block btn-danger text-light"
+        %h3.my-4.text-center Посмотрите также
+        .row
+          - if @products.present?
+            - @products.each do |product|
+              .col-12.col-md-6.col-xl-4
+                .card.product-card.mb-3
+                  .card-header.bg-yellow.d-flex.align-items-center
+                    %h6.text-black.font-weight-bold
+                      = product.title.truncate_words(4)
+                  = image_tag product.image_plitka, class: "card-img-top", title: "#{product.title}"
+                  %label{:class=>"text-light status #{product.status_class}"}
+                    = product.status 
+                  %label.text-black.date.text-center
+                    \#
+                    = product.identif
+                  .card-block.p-2
+                    %span.badge.badge-warning Цена:
+                    %p.text-black.font-weight-bold 
+                      = number_to_currency(product.price, unit: "грн", separator: ",", precision: 2)
+                    .buttons-product.my-2
+                      = form_for @order_item, remote: true do |f|
+                        = f.hidden_field :product_id, value: "#{product.id}"
+                        = f.hidden_field :unit_price, value: "#{product.price}"
+                        = f.hidden_field :quantity, value: "1"
+                        = f.submit "В корзину", class: "btn btn-block btn-danger text-light"
 
-                    = link_to "Подробней", show_product_path(product.category, product.pod_category, product), class: "mt-2 btn btn-block btn-warning"
-        - else
-          - @some_products.each do |product|
-            .col-12.col-md-6.col-xl-4
-              .card.product-card.mb-3
-                .card-header.bg-yellow.d-flex.align-items-center
-                  %h6.text-black.font-weight-bold
-                    = product.title.truncate_words(4)
-                = image_tag product.image_url.category, class: "card-img-top", title: "#{product.title}"
-                %label{:class=>"text-light status #{product.status_class}"}
-                  = product.status 
-                %label.text-black.date.text-center
-                  \#
-                  = product.identif
-                .card-block.p-2
-                  %span.badge.badge-warning Цена:
-                  %p.text-black.font-weight-bold 
-                    = number_to_currency(product.price, unit: "грн", separator: ",", precision: 2)
-                  .buttons-product.my-2
-                    = form_for @order_item, remote: true do |f|
-                      = f.hidden_field :product_id, value: "#{product.id}"
-                      = f.hidden_field :unit_price, value: "#{product.price}"
-                      = f.hidden_field :quantity, value: "1"
-                      = f.submit "В корзину", class: "btn btn-block btn-danger text-light"
+                      = link_to "Подробней", show_product_path(product.category, product.pod_category, product), class: "mt-2 btn btn-block btn-warning"
+          - else
+            - @some_products.each do |product|
+              .col-12.col-md-6.col-xl-4
+                .card.product-card.mb-3
+                  .card-header.bg-yellow.d-flex.align-items-center
+                    %h6.text-black.font-weight-bold
+                      = product.title.truncate_words(4)
+                  = image_tag product.image_plitka, class: "card-img-top", title: "#{product.title}"
+                  %label{:class=>"text-light status #{product.status_class}"}
+                    = product.status 
+                  %label.text-black.date.text-center
+                    \#
+                    = product.identif
+                  .card-block.p-2
+                    %span.badge.badge-warning Цена:
+                    %p.text-black.font-weight-bold 
+                      = number_to_currency(product.price, unit: "грн", separator: ",", precision: 2)
+                    .buttons-product.my-2
+                      = form_for @order_item, remote: true do |f|
+                        = f.hidden_field :product_id, value: "#{product.id}"
+                        = f.hidden_field :unit_price, value: "#{product.price}"
+                        = f.hidden_field :quantity, value: "1"
+                        = f.submit "В корзину", class: "btn btn-block btn-danger text-light"
 
-                    = link_to "Подробней", show_product_path(product.category, product.pod_category, product), class: "mt-2 btn btn-block btn-warning"
-   
-    = render "reviews/aside_reviews_bottom"
+                      = link_to "Подробней", show_product_path(product.category, product.pod_category, product), class: "mt-2 btn btn-block btn-warning"
+     
+      = render "reviews/aside_reviews_bottom"
 
 .modal.fade#backPhoneModal{:tabindex=>"-1", :role=>"dialog", "aria-labelledby"=>"exampleModalLabel", "aria-hidden"=>"true"}
   .modal-dialog{:role=>"document"}

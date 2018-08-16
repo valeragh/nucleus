@@ -55,7 +55,7 @@ ActiveAdmin.register Product do
     column :identif
     column :title
     column :price
-    column :status
+    tag_column :status, interactive: true
     column :created_at
     actions
   end
@@ -91,7 +91,7 @@ ActiveAdmin.register Product do
       end
       row('Категория') { |b| link_to product.category.title, [:admin, product.category] }
       row('Подкатегория') { |b| link_to product.pod_category.title, [:admin, product.pod_category] }
-      row :status
+      tag_row :status, interactive: true
       row :identif
       row :title
       row :price
