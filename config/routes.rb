@@ -136,6 +136,10 @@ Rails.application.routes.draw do
 
   resources :products, only: [:index] do
     resources :reviews, only: [:index, :show, :new, :create]
+    collection do
+      post :import
+      post :price_import
+    end
   end
   resources :letters, only: [:new, :create]
   resources :back_phones, only: [:new, :create]

@@ -168,6 +168,16 @@ ul.social-contacts{
 }
 
 
+//Form
+form.new_product_import{
+  .alert.alert-error{
+    position: inherit;
+    font-size: 0.8rem;
+    color: red;
+    background-color: white;
+  }
+}
+
 
 //Sidebar
 

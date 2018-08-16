@@ -1,0 +1,81 @@
+%section.bg-white-yellow.clearfix.pageHeader
+  .container
+    .row
+      .col-12.col-lg-8
+        %ol.breadcrumb.pb-0.pl-0
+          %li.breadcrumb-item
+            = link_to "Главная", root_path
+          %li.breadcrumb-item
+            Загрузить товары | Обновить цены
+
+%section.import-flowers.my-4
+  .container
+    .row
+      .col-12
+        .update_products.mb-4.bg-yellow.p-4
+          %h4 Загрузить товары
+          %p 
+            Выберите файл формата CSV* и загузите его.
+            %br
+            %small
+              *Обезательное заполнение всех полей файла. Конвертировать в формат CSV используя резделить "," и двойные ковычки для текста
+          .import-forms.my-4
+            = form_for @import, url: import_products_path, multipart: true do |f| 
+              - if @import.errors.any? 
+                .alert.alert-error
+                  - @import.errors.full_messages.each do |msg| 
+                    %div
+                      = msg 
+            
+              = f.file_field :file, "data-validation" => "required extension", "data-validation-error-msg" => "Выберите файл"
+              = f.submit "Загрузить", class: "btn btn-success"
+
+      .col-6#update_price
+        .update_price.mb-4.bg-yellow.p-4
+          %h4 Обновить цены
+          %p 
+            Выберите файл формата CSV* и загузите его.
+            %br
+            %small
+              *Обезательное заполнение всех полей файла. Конвертировать в формат CSV используя резделить ","
+          .import-forms.my-4
+            = form_for @price_import, url: price_import_products_path, multipart: true do |f| 
+              - if @price_import.errors.any? 
+                .alert.alert-error
+                  - @price_import.errors.full_messages.each do |msg| 
+                    %div
+                      = msg 
+            
+              = f.file_field :file, "data-validation" => "required extension", "data-validation-error-msg" => "Выберите файл"
+              = f.submit "Загрузить", class: "btn btn-success"
+
+      .col-6
+        .update_price.mb-4.bg-yellow.p-4
+          %h4 Скачать прайс
+          %p 
+            Вы можете скачать прайс с всеми товарами в базе
+            %br
+            %small
+              *Обезательное заполнение всех полей файла. Конвертировать в формат CSV используя резделить ","
+          .export-flowers.my-4
+            = link_to "Скачать Прайс", products_path(:format => :csv), class: "btn btn-primary"
+
+      .col-12
+        %table.table.table-striped
+          %thead
+            %tr
+              %th Иден.
+              %th Название
+              %th Стоимость
+              %th Дата обновления
+          %tbody
+            - @products.each do |product|
+              %tr
+                %td
+                  = product.identif
+                %td
+                  = product.title
+                %td
+                  = number_to_currency(product.price, unit: "грн", separator: ",", precision: 2)
+                %td
+                  = l product.updated_at, format: :long

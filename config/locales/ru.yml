@@ -470,6 +470,16 @@ ru:
         few: "Дата БД"
         many: "Дата БД"
         other: "Дата БД"
+      product_image:
+        one: "Фото для товара"
+        few: "Фото для товара"
+        many: "Фото для товара"
+        other: "Фото для товара"
+      image:
+        one: "Фотография"
+        few: "Фотографии"
+        many: "Фотографии"
+        other: "Фотографии"
     attributes:
       faq:
         question: "Вопрос"
@@ -566,6 +576,17 @@ ru:
         updated_at: "Обновлен"
       data_product:
         file_url: "Файл Базы"
+        created_at: "Создан"
+        updated_at: "Обновлен"
+      product_image:
+        image_url: "Изображение"
+        image_id: "Изображение"
+        status: 'Плитка'
+        product_id: 'Товар'
+        created_at: "Создан"
+        updated_at: "Обновлен"
+      image:
+        image_url: "Изображение"
         created_at: "Создан"
         updated_at: "Обновлен"
 

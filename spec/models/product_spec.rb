@@ -69,27 +69,5 @@ describe Product do
     expect(build(:product)).to be_valid
   end
 
-  context 'the all versions version' do
-    it "scales down a landscape image to be exactly 50 by 50 pixels" do
-      product = build(:product)
-      expect(product.image_url.thumb).to have_dimensions(50, 50)
-    end
-
-    it "scales down a large image to to fit within 500 by 500 pixels" do
-      product = build(:product)
-      expect(product.image_url.category).to be_no_larger_than(500, 500)
-    end
-
-    it "scales down a large image to to fit within 600 by 400 pixels" do
-      product = build(:product)
-      expect(product.image_url.magazine).to be_no_larger_than(600, 400)
-    end
-
-    it "has the correct format" do
-      product = build(:product)
-      expect(product.image_url).to be_format('JPEG')
-    end
-  end
-
 end
 

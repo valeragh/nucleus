@@ -66,8 +66,6 @@ RSpec.describe Admin::ProductsController, type: :controller do
       expect(page).to have_field('Приоритет')
       expect(page).to have_field('Подкатегория')
       expect(page).to have_field('Стоимость')
-      expect(page).to have_field('Статус')
-      expect(page).to have_field('Изображение для плитки')
     end
   end
 
@@ -91,8 +89,6 @@ RSpec.describe Admin::ProductsController, type: :controller do
       expect(page).to have_field('Приоритет')
       expect(page).to have_field('Подкатегория')
       expect(page).to have_field('Стоимость')
-      expect(page).to have_field('Статус')
-      expect(page).to have_field('Изображение для плитки')
     end
   end
 
