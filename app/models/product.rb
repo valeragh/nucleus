@@ -28,7 +28,7 @@ class Product < ActiveRecord::Base
   accepts_nested_attributes_for :product_images, allow_destroy: true
 
 	validates :title, :identif, :category_id, :pod_category_id, :description, :price, :status, presence: true
-	#after_commit :create_category_id!, on: [:create, :update]
+	after_commit :create_category_id!, on: [:create, :update]
 	
 	mount_uploader :image_url, ImageUploader
 

@@ -15,5 +15,9 @@ class Review < ActiveRecord::Base
 	belongs_to :product
 	validates :name, :description, :product_id, :status, presence: true
 
+	# Enumerize
+  extend Enumerize
+  enumerize :status, in: ["Показать", "Скрыть"], default: "Скрыть"
+
 	STATUS_TYPES = ['Показать', 'Скрыть']
 end

@@ -1,6 +1,6 @@
 ActiveAdmin.register Product do
 
-  permit_params :title, :rang, :identif, :price, :category_id, :pod_category_id, :description, :image_url, :slug
+  permit_params :title, :rang, :identif, :price, :category_id, :pod_category_id, :description, :image_url, :slug, :status, product_images_attributes: [:id, :_destroy, :product_id, :image_id]
   before_filter :find_resource, :only => [:show, :edit, :update, :destroy]
 
   filter :identif
@@ -55,12 +55,18 @@ ActiveAdmin.register Product do
     column :identif
     column :title
     column :price
+    column("Описание"){|product| product.description.truncate_words(8) }
     tag_column :status, interactive: true
     column :created_at
     actions
   end
 
   show title: :title do
+    panel "Описание" do
+      attributes_table_for product do
+        row :description
+      end
+    end
     panel "Отзывы" do
       table_for product.reviews do
         column do |review|

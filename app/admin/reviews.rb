@@ -25,7 +25,7 @@ ActiveAdmin.register Review do
   	column("Товар"){|review| link_to review.product.title, [:admin, review.product]}
     column :name
     column :description
-    column :status
+    tag_column :status, interactive: true
     column :created_at
     actions
   end
@@ -42,7 +42,7 @@ ActiveAdmin.register Review do
 
   sidebar "Детали", only: :show do
     attributes_table_for review do
-      row :status
+      tag_row :status, interactive: true
       row :created_at
       row :updated_at
     end

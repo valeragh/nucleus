@@ -548,6 +548,7 @@ ru:
         created_at: "Создан"
         updated_at: "Обновлен"
         identif: "Идентификатор"
+        description: "Описание"
       user:
         phone: "Телефон"
         password: "Пароль"
