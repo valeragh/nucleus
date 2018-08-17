@@ -20,7 +20,7 @@ FactoryGirl.define do
     description "MyText"
     email "email@test.com"
     checked_out_at "2018-03-10 09:12:33"
-    status "MyString"
+    status "Новое"
   end
 
   factory :invalid_letter, parent: :letter do

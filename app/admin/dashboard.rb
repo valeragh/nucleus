@@ -22,7 +22,7 @@ ActiveAdmin.register_page "Dashboard" do
             column("Имя"){|letter| letter.name }
             column("Email"){|letter| letter.email}
             column("Сообщение"){|letter| letter.description}
-            column("Статус"){|letter| status_tag(letter.state)}
+            column("Статус"){|letter| status_tag(letter.status)}
           end
         end
 

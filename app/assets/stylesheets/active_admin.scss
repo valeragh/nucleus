@@ -16,8 +16,8 @@
 // For example, to change the default status-tag color:
 //
 //   .status_tag { background: #6090DB; }
-.status_tag.Новый, .status_tag.Неоплаченный, .status_tag.Скрыть { background: red; }
+.status_tag.Новый, .status_tag.Новое, .status_tag.Неоплаченный, .status_tag.Скрыть { background: red; }
 .status_tag.Под { background: #36c; }
-.status_tag.Обработанный, .status_tag.Показать, .status_tag.Оплаченный, .status_tag.Вналичие { 
+.status_tag.Обработанный, .status_tag.Обработанное, .status_tag.Показать, .status_tag.Оплаченный, .status_tag.Вналичие { 
   background: green;
 }

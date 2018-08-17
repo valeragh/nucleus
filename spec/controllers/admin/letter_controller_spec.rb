@@ -25,6 +25,7 @@ RSpec.describe Admin::LettersController, type: :controller do
       expect(page).to have_content(letter.name)
       expect(page).to have_content(letter.description)
       expect(page).to have_content(letter.email)
+      expect(page).to have_content(letter.status)
     end
     let(:filters_sidebar) { page.find('#filters_sidebar_section') }
     it "filter name and email exists" do
@@ -56,34 +57,29 @@ RSpec.describe Admin::LettersController, type: :controller do
       get :edit, id: letter
       expect(assigns(:letter)).to eq(letter)
     end
-    it "should render the form elements" do
-      letter = create(:letter)
-      get :edit, id: letter
-      expect(page).to have_field("Дата ответа", :type => "text")
-    end
   end
 
   describe "PUT #update" do
     context 'with valid params' do
       it 'assigns the letter' do
         letter = create(:letter)
-        @attr = { :checked_out_at => Time.now }
+        @attr = { :status => "Обработанное" }
         put :update, id: letter, :letter => @attr
         expect(assigns(:letter)).to eq(letter)
       end
       it 'returns http redirect' do
         letter = create(:letter)
-        @attr = { :checked_out_at => Time.now }
+        @attr = { :status => "Обработанное" }
         put :update, id: letter, :letter => @attr
         expect(response).to have_http_status(:redirect)
         expect(response).to redirect_to(admin_letter_path(letter))
       end
       it "should update the letter" do
         letter = create(:letter)
-        @attr = { :checked_out_at => "2018-03-18 18:17:35" }
+        @attr = { :status => "Обработанное" }
         put :update, id: letter, :letter => @attr
         letter.reload
-        expect(letter.checked_out_at).to  eq(@attr[:checked_out_at])
+        expect(letter.status).to  eq(@attr[:status])
       end
     end
   end
@@ -105,7 +101,22 @@ RSpec.describe Admin::LettersController, type: :controller do
       expect(page).to have_content(letter.name)
       expect(page).to have_content(letter.description)
       expect(page).to have_content(letter.email)
-      expect(page).to have_content(letter.state)
+      expect(page).to have_content(letter.status)
+    end
+  end
+
+  describe "DELETE #destroy" do
+    it "destroys the requested select_option" do
+      letter = create(:letter)
+      expect {
+        delete :destroy, id: letter
+      }.to change(Letter, :count).by(-1)
+    end
+
+    it "redirects to the field" do
+      letter = create(:letter)
+      delete :destroy, id: letter
+      expect(response).to redirect_to(admin_letters_path)
     end
   end
 

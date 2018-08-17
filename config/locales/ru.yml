@@ -480,7 +480,22 @@ ru:
         few: "Фотографии"
         many: "Фотографии"
         other: "Фотографии"
+      contact:
+        one: "Магазин"
+        few: "Магазины"
+        many: "Магазины"
+        other: "Магазины"
     attributes:
+      contact:
+        title: "Названия магазина"
+        address: "Адрес"
+        phone_one: "Телефон"
+        phone_two: "Телефон два"
+        description: "Описание магазина"
+        status: "Статус"
+        image_url: "Изображение"
+        created_at: "Создан"
+        updated_at: "Обновлен"
       faq:
         question: "Вопрос"
         answer: "Ответ"

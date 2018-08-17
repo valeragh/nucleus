@@ -61,7 +61,7 @@ class Product < ActiveRecord::Base
   end
 
   def self.assign_price_from_row(row)
-    product = Product.find_by_identif(row[:identif])
+    product = Product.where(identif: row[:identif]).first_or_initialize
     product.assign_attributes row.to_hash.slice(:price, :status)
     product
   end

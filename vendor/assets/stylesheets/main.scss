@@ -177,6 +177,14 @@ form.new_product_import{
     background-color: white;
   }
 }
+form.new_product_price_import{
+  .alert.alert-error{
+    position: inherit;
+    font-size: 0.8rem;
+    color: red;
+    background-color: white;
+  }
+}
 
 
 //Sidebar

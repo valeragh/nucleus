@@ -17,18 +17,9 @@ class Letter < ActiveRecord::Base
 
 	validates_format_of :email, :with => /@/
 
-  scope :in_progress, ->{where("letters.checked_out_at IS NULL")}
-  scope :complete, -> {where("letters.checked_out_at IS NOT NULL")}
+  # Enumerize
+  extend Enumerize
+  enumerize :status, in: ["Новое", "Обработанное"], default: "Новое"
+  STATUS_TYPES = ["Новое", "Обработанное"]
 
-  COMPLETE = "обработка"
-  IN_PROGRESS = "новый"
-
-  def checkout!
-    self.checked_out_at = Time.now
-    self.save
-  end
-
-  def state
-    checked_out_at.nil? ? IN_PROGRESS : COMPLETE
-  end
 end
