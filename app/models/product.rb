@@ -32,11 +32,11 @@ class Product < ActiveRecord::Base
 	
 	mount_uploader :image_url, ImageUploader
 
-	STATUS_TYPES = ["В наличие","Под заказ","Скрыть"]
+	STATUS_TYPES = ["В наличии","Под заказ","Скрыть"]
 
   # Enumerize
   extend Enumerize
-  enumerize :status, in: ["В наличие","Под заказ","Скрыть"], default: "В наличие"
+  enumerize :status, in: ["В наличии","Под заказ","Скрыть"], default: "В наличии"
   
 	extend FriendlyId
   friendly_id :title, use: :slugged

@@ -13,6 +13,7 @@ class ProductsController < ApplicationController
   end
 
   def import
+    @price_import = Product::PriceImport.new
   	@import = Product::Import.new product_import_params
 	  if @import.save
 	  	redirect_to products_path, notice: "Загружено #{@import.imported_count} товаров"
