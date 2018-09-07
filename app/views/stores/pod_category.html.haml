@@ -28,7 +28,8 @@
         = @pod_category.title
       .row
         - @products.each do |product|
-          = render "product_row", product: product, order_item: @order_item
+          - cache product do
+            = render "product_row", product: product, order_item: @order_item
 
     = render "reviews/aside_reviews_bottom"
 

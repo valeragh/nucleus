@@ -24,19 +24,20 @@
           Все отзывы
       .list-group.reviews.mb-4
         - @reviews.each do |review|
-          .list-group-item.flex-column.align-items-start
-            .d-flex.w-100.justify-content-between
-              = image_tag review.product.image_url.thumb
-              = link_to show_product_path(review.product.category, review.product.pod_category, review.product), class: "review-link" do
-                %h6.mb-1
-                  = review.product.title
-            %p.mb-1
-              "
-              = review.description
-              "
-            .d-flex.w-100.justify-content-between
-              %small
-                = review.name
-              %small
-                = l review.created_at, format: :long
+          - cache review do
+            .list-group-item.flex-column.align-items-start
+              .d-flex.w-100.justify-content-between
+                = image_tag review.product.image_url.thumb
+                = link_to show_product_path(review.product.category, review.product.pod_category, review.product), class: "review-link" do
+                  %h6.mb-1
+                    = review.product.title
+              %p.mb-1
+                "
+                = review.description
+                "
+              .d-flex.w-100.justify-content-between
+                %small
+                  = review.name
+                %small
+                  = l review.created_at, format: :long
         

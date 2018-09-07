@@ -1,16 +1,17 @@
 - @reviews.each do |review|
-  .col-12.col-md-6.d-lg-none.my-2
-    .card.rewiew.bg-grey
-      .card-header.p-2.text-black
-        %small
-          = l review.created_at, format: :long 
-          \/ 
-          = review.name
-      .card-block.p-3
-        = link_to show_product_path(review.product.category, review.product.pod_category, review.product), class: "review-link" do
-          %h6.card-title
-            = review.product.title
-        %p.card-text.text-black
-          = review.description.truncate_words(10)
-        = link_to "Подробней", product_review_path(review.product, review), class: "btn btn-warning"
+  - cache review do
+    .col-12.col-md-6.d-lg-none.my-2
+      .card.rewiew.bg-grey
+        .card-header.p-2.text-black
+          %small
+            = l review.created_at, format: :long 
+            \/ 
+            = review.name
+        .card-block.p-3
+          = link_to show_product_path(review.product.category, review.product.pod_category, review.product), class: "review-link" do
+            %h6.card-title
+              = review.product.title
+          %p.card-text.text-black
+            = review.description.truncate_words(10)
+          = link_to "Подробней", product_review_path(review.product, review), class: "btn btn-warning"
 

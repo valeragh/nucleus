@@ -26,14 +26,15 @@
         Новости
       .row
         - @posts.each do |post|
-          .col-12.col-md-6
-            .card.mb-4
-              = image_tag post.image_url.magazine, class: "card-img-top"
-              .card-block.p-3
-                %h4.card-title
-                  = post.title
-                %p.card-text
-                  = post.shot_description.truncate_words(15)
-                = link_to "Подробней", show_post_path(post), class: "btn btn-warning"
+          - cache post do
+            .col-12.col-md-6
+              .card.mb-4
+                = image_tag post.image_url.magazine, class: "card-img-top"
+                .card-block.p-3
+                  %h4.card-title
+                    = post.title
+                  %p.card-text
+                    = post.shot_description.truncate_words(15)
+                  = link_to "Подробней", show_post_path(post), class: "btn btn-warning"
 
     = render "reviews/aside_reviews_bottom"

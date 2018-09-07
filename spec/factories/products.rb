@@ -26,7 +26,7 @@ FactoryGirl.define do
     rang 1
     pod_category_id 1
     category_id 1
-    status "В наличие"
+    status "В наличии"
     price "9.99"
     identif "544"
   end

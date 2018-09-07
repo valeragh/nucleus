@@ -49,6 +49,8 @@ gem 'liqpay', '~>1.0.0'
 gem 'figaro'
 gem 'enumerize'
 gem "dynamic_sitemaps"
+gem 'dalli'
+gem 'rack-mini-profiler'
 
 group :test, :development do
   gem "rspec-rails", "~> 3.6"
