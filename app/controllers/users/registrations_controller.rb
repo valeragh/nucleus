@@ -58,11 +58,24 @@ before_action :set_category
   # def after_inactive_sign_up_path_for(resource)
   #   super(resource)
   # end
+  protected
+
+  def update_resource(resource, params)
+    resource.update_without_password(params)
+  end
 
   private
     def set_category
       @categories = Category.all.order(:rang)
       @contact = Contact.first
       @q = Product.search(params[:q])
+    end
+
+    def sign_up_params
+      params.require(:user).permit(:name, :phone, :email, :password, :role, :password_confirmation)
+    end
+
+    def account_update_params
+      params.require(:user).permit(:name, :phone)
     end
 end

@@ -17,6 +17,11 @@
 //= require popper
 //= require bootstrap
 //= require jquery.form-validator
+//= require jquery.inputmask
+//= require jquery.inputmask.extensions
+//= require jquery.inputmask.numeric.extensions
+//= require jquery.inputmask.date.extensions
 //= require underscore
 //= require gmaps/google
+//= require main
 //= require_tree .

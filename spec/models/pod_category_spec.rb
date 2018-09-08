@@ -3,13 +3,17 @@
 # Table name: pod_categories
 #
 #  id          :integer          not null, primary key
-#  title       :string
 #  image_url   :string
 #  rang        :integer
-#  category_id :integer
+#  slug        :string
+#  title       :string
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
-#  slug        :string
+#  category_id :integer
+#
+# Indexes
+#
+#  index_pod_categories_on_slug  (slug) UNIQUE
 #
 
 require 'rails_helper'

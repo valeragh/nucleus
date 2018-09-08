@@ -4,13 +4,19 @@
 #
 #  id          :integer          not null, primary key
 #  quantity    :integer          default(1)
-#  product_id  :integer
-#  order_id    :integer
-#  unit_price  :decimal(12, 3)
 #  total_price :decimal(12, 3)
+#  unit_price  :decimal(12, 3)
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #  cart_id     :integer
+#  order_id    :integer
+#  product_id  :integer
+#
+# Indexes
+#
+#  index_order_items_on_cart_id     (cart_id)
+#  index_order_items_on_order_id    (order_id)
+#  index_order_items_on_product_id  (product_id)
 #
 
 # Read about factories at https://github.com/thoughtbot/factory_girl

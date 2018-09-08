@@ -3,9 +3,14 @@ html {
 }
 
 // link
-
 a:hover{
   text-decoration: none;
+}
+a.text-link{
+  color:#f4880a;
+}
+a.text-link:hover{
+  color:#c10d03;
 }
 
 // Button, Alert, Bg, Text
@@ -545,5 +550,28 @@ section.faqs{
     label{
       top:269px;
     }
+  }
+}
+
+
+//Cabinet
+section.user-data{
+  a.nav-link{
+    color:#f4880a;
+  }
+  a.nav-link:hover{
+    color:#c10d03;
+  }
+}
+section.cabinet-order{
+  .list-group-item.active{
+    background-color: #f4880a;
+    border-color: #f4880a;
+  }
+  a.card-link{
+    color:#f4880a;
+  }
+  a.card-link:hover{
+    color:#c10d03;
   }
 }

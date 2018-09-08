@@ -8,80 +8,134 @@
   %meta{:name=>"twitter:title", :content=>"Nucleus | Ваш кабинет"}/
   %meta{:name=>"twitter:description", :content=>"Широкий выбор: пчеловодческого инвентаря, оборудования, лекарственных препаратов и книг для пчеловодов, а также пчелопродуктов. Низкие цены ✓Большой ассортимент ✓Собственное производство"}/
   = tag :meta, property: 'og:image', content: image_url('apple-touch-icon-144x144.png')
-.container
-  %h1.text-orange Каталог 
-  .row
-    .col-12.col-lg-4#sidebar.mb-4
-      .list-group
-        = render "static_pages/aside_category"
 
-      = render "reviews/aside_reviews_top"
+%section.breadcrumb
+  .container
+    .row
+      .col-12.col-lg-8
+        %ol.breadcrumb.py-0.pl-0
+          %li.breadcrumb-item
+            = link_to "Главная", root_path
+          %li.breadcrumb-item.active
+            Кабинет
 
-    .col-12.col-lg-8
-      .row
+%section.user-data.my-4
+  .container
+    .row
+      .card
+        .card-header
+          %ul.nav.nav-tabs.card-header-tabs
+            %li.nav-item
+              %a.nav-link.active{"data-target" => "#profile", "data-toggle" => "tab", :href => ""} Данные
+            %li.nav-item
+              %a.nav-link{"data-target" => "#edit", "data-toggle" => "tab", :href => ""} Редактировать
+            %li.nav-item
+              %a.nav-link{"data-target" => "#password", "data-toggle" => "tab", :href => ""} Сменить пароль
+        .tab-content
+          .tab-pane.active#profile
+            .card-body
+              %p.card-text.mb-1
+                %strong
+                  Имя:
+                %em 
+                  = @user.name.present? ? @user.name : "Не указано"
+              %p.card-text.mb-1
+                %strong
+                  Телефон:
+                %em 
+                  = @user.phone.present? ? @user.phone : "Не указано"
+              %p.card-text.mb-1
+                %strong
+                  Email:
+                %em 
+                  = @user.email
+              %p.mt-4.mb-1.card-text Вы можете изменить свои данные в вкладке "Редактировать"
+              %p.card-text Сменить пароль вы можете в вкладке "Сменить пароль"
+          .tab-pane#edit
+            .card-body
+              %h5.card-title Заполните ваши данные
+              .form-edit-user
+                = simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| 
+                  = f.error_notification 
+
+                  = f.input :name, input_html: {value: "#{@user.try(:name)}", placeholder: "Ваше Имя"}, label: false
+                  = f.input :phone, input_html: {value: "#{@user.try(:phone)}", placeholder: "Ваш Телефон", id: "phone_mask_user"}, label: false
+                  = f.button :button, 'Редактировать', class: "btn btn-warning btn-block", data: {disable_with: "<i class='fa fa-spinner fa-spin'></i> Отправка..."}
+          .tab-pane#password
+            .card-body
+              %h5.card-title Заполните ваши данные
+              .form-edit-user
+                = simple_form_for(@user, :url => { :action => "update_password", :controller=>"users" }) do |f| 
+                  = f.error_notification 
+                  = f.input :password, input_html: { autocomplete: "off", placeholder: "Новый пароль", required: false, "data-validation" => "required", "data-validation-error-msg" => "Заполните поле"}, label: false
+                  = f.input :password_confirmation, input_html: { autocomplete: "off", placeholder: "Новый пароль еще раз", "data-validation" => "required", "data-validation-error-msg" => "Заполните поле", required: false}, label: false
+                  = f.button :button, 'Сменить пароль', class: "btn btn-warning btn-block", data: {disable_with: "<i class='fa fa-spinner fa-spin'></i> Отправка..."}
+
+
+
+
+  %hr
+
+%section.cabinet-order.my-4
+  .container
+    .row
+      .col-12
         - if @orders.present?
-          - @orders.each do |order|
-            .col-12
-              %h2.text-orange.title-product.text-center
-                Ваш заказ №
-                = order.id
-                %span{:class => "badge badge-#{order.status_class}" }
-                  = order.status
-              - order.order_items.each do |order_item|
-                .item-cart.p-3.border-yellow
-                  .cart-title.d-flex.justify-content-between
-                    - if order_item.product.present?
-                      = image_tag order_item.product.image_url.thumb, class: "img-thumbnail"
-                    - else 
-                      Товара нет в базе
-                    %label.text-orange.date.text-center
-                      \#
-                      = order_item.product.present? ? order_item.product.identif : ""
-                    %p.ml-2.lh-1
-                      %strong
-                        = order_item.product.present? ? order_item.product.title : "Товара нет в базе"
-                  .d-flex.justify-content-between.mt-1
-                    %strong.text-black Цена:
-                    %span.cart-price
-                      - if order_item.product.present?
-                        = number_to_currency(order_item.product.price, unit: "грн", separator: ",", precision: 2)
-                        за ед.
-                      - else
-                        Товара нет в базе
-                  .d-flex.justify-content-between.mt-1
-                    %strong.text-black Количество:
-                    %span.cart-price
-                      = order_item.quantity
-                      ед.
-                  .d-flex.justify-content-between.mt-1
-                    %strong.text-black Итого:
-                    %span.cart-price
-                      = number_to_currency(order_item.total_price, unit: "грн", separator: ",", precision: 2)
-              .product-total.d-flex.justify-content-between.my-3
-                %strong Всего к оплате:
-                %strong.cart-price-total
-                  = number_to_currency order.total, unit: "грн", separator: ",", precision: 2
-              .product-total.d-flex.justify-content-between.mt-3
-                %strong Доставка:
-                %strong.cart-price-total
-                  = order.delivery
-              %p
-                = order.description
-              - if order.payment_status == 'Неоплаченный'
-                = link_to "Посмотреть и оплатить", order_path(order), class: "btn btn-success btn-block"
-              - elsif order.payment_status == 'Ошибка'
-                %span.text-red
-                  Ошибка при оплате, свяжитесь с менеджером по телефонам
-                  = @contact.phone_one
-                  или
-                  = @contact.phone_two
-              - else
-                Заказ оплачен, наши администраторы свяжутся с Вами в ближайшее время
+          %h2.text-orange.title-product.text-center.mb-4
+            Ваши заказы
+          .row
+            - @orders.each do |order|
+              .col-12.col-md-4.col-lg-3
+                .card.shadow.card-order-cabinet.mb-4
+                  = link_to order_path(order) do
+                    = image_tag "android-chrome-512x512.png", class: "card-img-top", alt: "#{order.id}"
+                  .card-body
+                    = link_to order_path(order), class: "text-link" do
+                      %h5.card-title
+                        Заказ №
+                        = order.id
+                    %p.card-text
+                      %small Наши менеджеры пытаются обслужить вас как можно быстрее
+                  %ul.list-group.list-group-flush
+                    - order.order_items.each do |order_item|
+                      %li{:class => "list-group-item active"}
+                        %small.title
+                          = order_item.product.present? ? order_item.product.title.truncate_words(5) : "Нет в базе"
+                      %li{:class => "list-group-item d-flex justify-content-between"}
+                        .price
+                          %small
+                            = number_to_currency(order_item.unit_price, unit: "грн", separator: ",", precision: 0) 
+                        .quantity
+                          %small
+                            = order_item.quantity
+                            шт.
+                  %ul.list-group.list-group-flush
+                    %li{:class => "list-group-item list-group-item-#{order.status_class}" }
+                      Статус заказа - 
+                      = order.status
+                    %li{:class => "list-group-item list-group-item-#{order.payment_status_class}" }
+                      Статус оплаты - 
+                      = order.payment_status
+                  .card-body
+                    %a{:href=>"#", "data-toggle"=>"modal", "data-target"=>"#backPhoneModal", :title=>"Заказать обратный звонок", :class=>"card-link"}
+                      = fa_icon "phone", class: "mr-1"
+                      Перезвонить мне
+
         - else
           %h2
             У вас нет заказов
 
-    = render "reviews/aside_reviews_bottom"
+.modal.fade#backPhoneModal{:tabindex=>"-1", :role=>"dialog", "aria-labelledby"=>"exampleModalLabel", "aria-hidden"=>"true"}
+  .modal-dialog{:role=>"document"}
+    .modal-content
+      .modal-header
+        %h5.modal-title#exampleModalLabel Заполните поля
+        %button{:type=>"button", :class=>"close", "data-dismiss"=>"modal", "aria-label"=>"Close"}
+          %span{"aria-hidden"=>"true"} &times;
+      .modal-body
+        = render "back_phones/form"
+      .modal-footer
+        %button{:type=>"button", :class=>"btn btn-secondary", "data-dismiss"=>"modal"} Отмена
 
 
 

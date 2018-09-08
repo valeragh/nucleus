@@ -3,12 +3,16 @@
 # Table name: categories
 #
 #  id         :integer          not null, primary key
-#  title      :string
+#  image_url  :string
 #  rang       :integer
+#  slug       :string
+#  title      :string
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
-#  image_url  :string
-#  slug       :string
+#
+# Indexes
+#
+#  index_categories_on_slug  (slug) UNIQUE
 #
 
 # Read about factories at https://github.com/thoughtbot/factory_girl

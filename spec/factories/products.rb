@@ -3,18 +3,22 @@
 # Table name: products
 #
 #  id              :integer          not null, primary key
-#  title           :string
 #  description     :text
+#  identif         :integer
 #  image_url       :string
+#  price           :decimal(8, 2)
 #  rang            :integer
-#  pod_category_id :integer
-#  category_id     :integer
-#  status          :string           default("В наличие")
+#  slug            :string
+#  status          :string           default(NULL)
+#  title           :string
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
-#  slug            :string
-#  price           :decimal(8, 2)
-#  identif         :integer
+#  category_id     :integer
+#  pod_category_id :integer
+#
+# Indexes
+#
+#  index_products_on_slug  (slug) UNIQUE
 #
 
 # Read about factories at https://github.com/thoughtbot/factory_girl

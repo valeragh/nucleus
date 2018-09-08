@@ -34,7 +34,7 @@ class OrdersController < ApplicationController
     respond_to do |format|
       if @order.save
         AdminMailer.order_admin_confirmation(@order).deliver_later
-        #UserMailer.order_confirmation(@order).deliver
+        UserMailer.order_user_confirmation(@order).deliver_later
         Cart.destroy(session[:cart_id])
         session[:cart_id] = nil
         format.html { redirect_to @order }

@@ -141,6 +141,11 @@ Rails.application.routes.draw do
       post :price_import
     end
   end
+  resource :user, only: [:show] do
+    collection do
+      patch 'update_password'
+    end
+  end
   resources :letters, only: [:new, :create]
   resources :back_phones, only: [:new, :create]
   resource :cart, only: [:show]
@@ -159,13 +164,13 @@ Rails.application.routes.draw do
   match '/faqs', to: 'static_pages#faqs', via: 'get'
   match '/reviews', to: 'reviews#all_reviews', via: 'get'
   match '/posts', to: 'posts#index', via: 'get'
-  match 'cabinet', to: 'cabinets#show', via: 'get'
+  match '/cabinet', to: 'cabinets#show', via: 'get'
   match '/search', to: 'stores#search', via: 'get'
   match '/terms_of_use', to: 'static_pages#terms_of_use', via: 'get'
   match '/privacy_policy', to: 'static_pages#privacy_policy', via: 'get'
   match '/sitemap_html', to: 'static_pages#sitemap_html', via: 'get'
   get '/robots.:format' => 'static_pages#robots'
-  get 'sitemap.xml' => 'static_pages#sitemap', format: :xml, as: :sitemap, controller: 'static_pages', action: 'sitemap'
+  get '/sitemap.xml' => 'static_pages#sitemap', format: :xml, as: :sitemap, controller: 'static_pages', action: 'sitemap'
   get '/:id', to: 'stores#category', as: :show_category
   get '/:category_id/:id', to: 'stores#pod_category', as: :show_pod_category
   get '/:category_id/:pod_category_id/:id', to: 'stores#product', as: :show_product

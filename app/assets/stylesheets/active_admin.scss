@@ -1,23 +1,14 @@
 // SASS variable overrides must be declared before loading up Active Admin's styles.
 //
 // To view the variables that Active Admin provides, take a look at
-// `app/assets/stylesheets/active_admin/mixins/_variables.scss` in the
-// Active Admin source.
-//
-// For example, to change the sidebar width:
-// $sidebar-width: 242px;
-
-// Active Admin's got SASS!
 @import "active_admin/mixins";
 @import "active_admin/base";
 @import "activeadmin_addons/all";
+@import 'activeadmin/trumbowyg/ui/sass/trumbowyg';
+@import 'activeadmin/trumbowyg_input';
 
-// Overriding any non-variable SASS must be done after the fact.
-// For example, to change the default status-tag color:
-//
-//   .status_tag { background: #6090DB; }
 .status_tag.Новый, .status_tag.Новое, .status_tag.Неоплаченный, .status_tag.Скрыть { background: red; }
 .status_tag.Под { background: #36c; }
-.status_tag.Обработанный, .status_tag.Обработанное, .status_tag.Показать, .status_tag.Оплаченный, .status_tag.Вналичие { 
+.status_tag.Обработанный, .status_tag.Обработанное, .status_tag.Показать, .status_tag.Оплаченный, .status_tag.Вналичии { 
   background: green;
 }

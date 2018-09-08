@@ -21,7 +21,7 @@
       - @order_items.each do |order_item|
         .item-cart.p-3.border-yellow
           .cart-title.d-flex.justify-content-between
-            = image_tag order_item.product.image_url.thumb, class: "img-thumbnail"
+            = image_tag order_item.product.image_plitka_thumb, class: "img-thumbnail"
             %label.text-orange.date.text-center
               \#
               = order_item.product.identif

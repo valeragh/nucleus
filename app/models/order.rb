@@ -3,26 +3,30 @@
 # Table name: orders
 #
 #  id              :integer          not null, primary key
-#  order_status_id :integer
-#  user_id         :integer
-#  total           :decimal(12, 3)
+#  data            :text
 #  delivery        :string
-#  created_at      :datetime         not null
-#  updated_at      :datetime         not null
-#  phone           :string
 #  description     :text
 #  email           :string
-#  status          :string
-#  data            :text
 #  payment_status  :string           default("Неоплаченный")
+#  phone           :string
+#  status          :string
+#  total           :decimal(12, 3)
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
+#  order_status_id :integer
+#  user_id         :integer
+#
+# Indexes
+#
+#  index_orders_on_order_status_id  (order_status_id)
 #
 
 class Order < ActiveRecord::Base
   belongs_to :user
   has_many :order_items, :dependent => :destroy
   before_create :set_order_status
-  before_save :update_subtotal
-  before_save :set_user
+  before_save :update_subtotal, if: :new_record?
+  before_save :set_user, if: :new_record?
 
   validates :phone, :email, :delivery, presence: true
   validates_format_of :email, :with => /@/
@@ -69,10 +73,19 @@ class Order < ActiveRecord::Base
 	  end
 
     def set_user
+      generated_password = Devise.friendly_token[0,8]
       user = User.where(email: self[:email]).first_or_create do |user|
         user.email = self[:email]
-        user.password = Devise.friendly_token[0,20]
+        user.password = generated_password
+        user.send_password = false
+        user.name = self[:name]
+        user.phone = self[:phone]
       end
       self[:user_id] = user.id
+      unless user.send_password?
+        DelayJob.perform_in(5, user, generated_password)
+      end
+      user.send_password = true
+      user.save
     end
 end

@@ -7,4 +7,11 @@ class UserMailer < ApplicationMailer
     mail to: @order.user.email, subject: "Спасибо за ваш заказ №#{@order.id}"
   end
 
+  def welcome(user, generated_password)
+  	@user = user
+  	@password = generated_password
+
+  	mail to: @user.email, subject: "Регистрация в магазине Nucleus"
+  end
+
 end

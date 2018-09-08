@@ -3,13 +3,14 @@ class CabinetsController < ApplicationController
   before_action :authenticate_user!
 
   def show
+    @user = current_user
   	@orders = current_user.orders
+    @back_phone = BackPhone.new
   end
 
   private
     def set_category
       @categories = Category.all.order(:rang)
-      @reviews = Review.where("status = 'Показать'").sample(3)
       @contact = Contact.first
       @q = Product.search(params[:q])
     end

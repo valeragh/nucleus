@@ -1,8 +1,8 @@
 = simple_form_for @back_phone, :html => {:class => 'mb-4'} do |f|
   .form-group
-    = f.input :name, input_html: { type: 'text', :placeholder => "Имя", class: "form-control", "data-validation" => "required", "data-validation-error-msg" => "Заполните поле"}, label: false
+    = f.input :name, input_html: { value: "#{current_user.try(:name)}", type: 'text', :placeholder => "Имя", class: "form-control", "data-validation" => "required", "data-validation-error-msg" => "Заполните поле"}, label: false
   .form-group
-    = f.input :phone, input_html: { type: 'phone', :placeholder => "Телефон", class: "form-control", "data-validation" => "required", "data-validation-error-msg" => "Заполните поле"}, label: false
+    = f.input :phone, input_html: { value: "#{current_user.try(:phone)}", type: 'phone', :placeholder => "Телефон", class: "form-control", "data-validation" => "required", "data-validation-error-msg" => "Заполните поле", id: "phone_mask"}, label: false
     %small#emailHelp.form-text.text-muted 
       Нажимая на кнопку "Отправить" Вы соглашаетесь с
       = link_to "условиями конфиденциальности", root_path

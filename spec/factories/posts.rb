@@ -3,13 +3,17 @@
 # Table name: posts
 #
 #  id               :integer          not null, primary key
-#  title            :string
 #  description      :text
 #  image_url        :string
+#  shot_description :string
+#  slug             :string
+#  title            :string
 #  created_at       :datetime         not null
 #  updated_at       :datetime         not null
-#  slug             :string
-#  shot_description :string
+#
+# Indexes
+#
+#  index_posts_on_slug  (slug) UNIQUE
 #
 
 # Read about factories at https://github.com/thoughtbot/factory_girl

@@ -3,18 +3,22 @@
 # Table name: orders
 #
 #  id              :integer          not null, primary key
-#  order_status_id :integer
-#  user_id         :integer
-#  total           :decimal(12, 3)
+#  data            :text
 #  delivery        :string
-#  created_at      :datetime         not null
-#  updated_at      :datetime         not null
-#  phone           :string
 #  description     :text
 #  email           :string
-#  status          :string
-#  data            :text
 #  payment_status  :string           default("Неоплаченный")
+#  phone           :string
+#  status          :string
+#  total           :decimal(12, 3)
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
+#  order_status_id :integer
+#  user_id         :integer
+#
+# Indexes
+#
+#  index_orders_on_order_status_id  (order_status_id)
 #
 
 require 'rails_helper'
