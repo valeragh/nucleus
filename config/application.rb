@@ -20,6 +20,7 @@ module Nucleus
         request_specs: false
       g.fixture_replacement :factory_girl, dir: "spec/factories"
     end
+    config.exceptions_app = self.routes
     config.assets.paths << Rails.root.join("app", "assets", "fonts")
     config.assets.precompile << /\.(?:svg|eot|woff|ttf)\z/
     config.active_record.raise_in_transactional_callbacks = true
