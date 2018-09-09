@@ -2,6 +2,7 @@ html {
   font-size: 14px;
 }
 
+
 // link
 a:hover{
   text-decoration: none;
@@ -13,8 +14,17 @@ a.text-link:hover{
   color:#c10d03;
 }
 
-// Button, Alert, Bg, Text
 
+//Text
+td.first-cap:first-letter {
+  text-transform: uppercase;
+}
+.w-10{
+  width: 10%;
+}
+
+
+// Button, Alert, Bg, Text
 .bg-red{background-color:#c10404 !important;}
 .bg-black{background-color:#212529 !important;}
 .bg-orange{background-color:#f4880a !important;}
@@ -76,6 +86,10 @@ span.help-block.form-error{color:#f26c4f;}
     border-color: #ffcf01;}
 .badge-warning{color:#212529;background-color:#ffcf01;}
 .badge-danger{color:#ffffff;background-color:#c10404;}
+.shadow{
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+
 
 // Breadcrumb
 .breadcrumb{
@@ -100,7 +114,6 @@ span.help-block.form-error{color:#f26c4f;}
 
 
 // Navbar
-
 .right-all a{color:#212529}
 .right-all a:hover{color:#f4880a}
 .second-navbar{margin-top:166px;}

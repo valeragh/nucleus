@@ -29,6 +29,19 @@ RSpec.describe StaticPagesController, type: :controller do
     end
   end
 
+  describe "GET #price" do
+    it "returns http success" do
+      get :price
+      expect(response).to have_http_status(:success)
+    end
+
+    it "renders the price template" do
+      get :price
+      expect(response).to render_template("price")
+      expect(response.body).to eq ""
+    end
+  end
+
   describe "GET #contacts" do
     it "returns http success" do
       get :contacts

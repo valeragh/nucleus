@@ -169,6 +169,7 @@ Rails.application.routes.draw do
   match '/terms_of_use', to: 'static_pages#terms_of_use', via: 'get'
   match '/privacy_policy', to: 'static_pages#privacy_policy', via: 'get'
   match '/sitemap_html', to: 'static_pages#sitemap_html', via: 'get'
+  match '/price', to: 'static_pages#price', via: 'get'
   match "/404", :to => "errors#not_found", :via => :all
   match "/500", :to => "errors#internal_server_error", :via => :all
 

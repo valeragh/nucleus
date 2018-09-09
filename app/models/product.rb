@@ -123,8 +123,19 @@ class Product < ActiveRecord::Base
 
     CSV.generate(headers: true) do |csv|
       csv << attributes    
-      all.each do |flower|
-        csv << flower.attributes.values_at(*attributes)
+      all.each do |product|
+        csv << product.attributes.values_at(*attributes)
+      end
+    end
+  end
+
+  def self.to_user_csv
+    attributes = %w{identif title price}
+
+    CSV.generate(headers: true) do |csv|
+      csv << attributes    
+      all.each do |product|
+        csv << product.attributes.values_at(*attributes)
       end
     end
   end

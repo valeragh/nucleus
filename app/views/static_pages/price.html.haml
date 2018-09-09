@@ -1,0 +1,66 @@
+- meta :title => "«Nucleus» — интернет-магазин пчеловодства. Прайс-лист", :description => "Прайс-лист. Широкий выбор: пчеловодческого инвентаря, оборудования, лекарственных препаратов и книг для пчеловодов, а также пчелопродуктов. Низкие цены ✓Большой ассортимент ✓Собственное производство"
+= content_for(:meta_og) do
+  %meta{:content => "Nucleus | Прайс-лист", :property => "og:title"}/
+  %meta{:content => "website", :property => "og:type"}/
+  %meta{:content => "Nucleus", :property => "og:author"}/
+  %meta{:content => "https://nucleus.com.ua", :property => "og:url"}/
+  %meta{:name=>"twitter:card", :content=>"summary_large_image"}/
+  %meta{:name=>"twitter:title", :content=>"Nucleus | Прайс-лист"}/
+  %meta{:name=>"twitter:description", :content=>"Прайс-лист. Широкий выбор: пчеловодческого инвентаря, оборудования, лекарственных препаратов и книг для пчеловодов, а также пчелопродуктов. Низкие цены ✓Большой ассортимент ✓Собственное производство"}/
+  = tag :meta, property: 'og:image', content: image_url('apple-touch-icon-144x144.png')
+
+%section.breadcrumb
+  .container
+    .row
+      .col-12.col-lg-8
+        %ol.breadcrumb.py-0.pl-0
+          %li.breadcrumb-item
+            = link_to "Главная", root_path
+          %li.breadcrumb-item.active
+            Прайс-лист
+
+%section.download-price.my-4
+  .container
+    .row.d-flex.justify-content-md-center
+      .col-12.col-md-8.col-lg-6
+        .update_price.mb-4.bg-yellow.p-4.shadow
+          %h4 Скачать прайс
+          %p 
+            Вы можете скачать прайс с всеми товарами
+            %br
+            %small
+              *Конвертация в любой формат используя резделить ","
+          .export-flowers.my-4
+            = link_to "Скачать Прайс", price_path(:format => :csv), class: "btn btn-warning"
+
+%section.price.my-4
+  .container
+    .row.d-flex.justify-content-md-center
+      .col-12.col-md-8.col-lg-6
+        - @categories.each do |category|
+          - cache category do
+            %h4
+              %span.badge.badge-warning
+                = category.title
+            %table.table
+              %thead.thead-dark
+                %tr
+                  %th.p-2.w-10
+                    Идентиф.
+                  %th.p-2
+                    Название
+                  %th.p-2
+                    Цена
+              %tbody
+                - category.products.each do |product|
+                  - cache product do
+                    %tr
+                      %td.p-1
+                        %small
+                          = product.identif
+                      %td.first-cap.p-1
+                        %small
+                          = link_to product.title, show_product_path(product.category, product.pod_category, product), class: "text-link"
+                      %td.p-1
+                        %small
+                          = number_to_currency(product.price, unit: "грн", separator: ",", precision: 0)

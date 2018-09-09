@@ -11,6 +11,14 @@ class StaticPagesController < ApplicationController
     @posts = Post.all
   end
 
+  def price
+    @products = Product.all.order(updated_at: :desc)
+    respond_to do |format|
+      format.html
+      format.csv { send_data @products.to_user_csv, filename: "price-#{Date.today}.csv" }
+    end
+  end
+
   def contacts
     @letter = Letter.new
     @contacts = Contact.where("status = 'Показать'")
