@@ -17,7 +17,7 @@
 #
 
 class Post < ActiveRecord::Base
-	validates :title, :image_url, :description, presence: true
+	validates :title, :image_url, :description, :shot_description, presence: true
 
 	mount_uploader :image_url, ImageUploader
 

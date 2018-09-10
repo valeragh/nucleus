@@ -22,6 +22,18 @@ td.first-cap:first-letter {
 .w-10{
   width: 10%;
 }
+.devided{  
+  &:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-image: linear-gradient(to bottom right, #ffc107, #6e1e62);
+    opacity: .6;
+  }
+}
 
 
 // Button, Alert, Bg, Text
@@ -586,5 +598,16 @@ section.cabinet-order{
   }
   a.card-link:hover{
     color:#c10d03;
+  }
+}
+
+
+//Service
+.card.card-service{
+  h5.card-title{
+    color: #fff;
+  }
+  h5.card-title:hover{
+    color: #f4880a;
   }
 }

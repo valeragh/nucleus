@@ -1,0 +1,39 @@
+- meta :title => "«Nucleus» — интернет-магазин пчеловодства. #{@service.title}", :description => "#{@service.title}. Низкие цены ✓Большой ассортимент ✓Собственное производство"
+= content_for(:meta_og) do
+  %meta{:content => "Nucleus - #{@service.title}", :property => "og:title"}/
+  %meta{:content => "website", :property => "og:type"}/
+  %meta{:content => "Nucleus", :property => "og:author"}/
+  %meta{:content => "https://nucleus.com.ua", :property => "og:url"}/
+  %meta{:name=>"twitter:card", :content=>"summary_large_image"}/
+  %meta{:name=>"twitter:title", :content=>"Nucleus - #{@service.title}"}/
+  %meta{:name=>"twitter:description", :content=>"#{@service.title}. Низкие цены ✓Большой ассортимент ✓Собственное производство"}/
+  = tag :meta, property: 'og:image', content: image_url(@service.image_url.magazine)
+
+.container
+  .row
+    .col-12.col-lg-4#sidebar.mb-4
+      = render "static_pages/aside_category_hide"
+
+      = render "reviews/aside_reviews_top"
+
+    .col-12.col-lg-8
+      %ol.breadcrumb.pb-0.pl-0
+        %li.breadcrumb-item
+          = link_to "Главная", root_path
+        %li.breadcrumb-item
+          = link_to "Услуги", services_path
+        %li.breadcrumb-item.active
+          = @service.title
+      %h1.text-orange
+        = @service.title
+      %p.pt-4
+        = raw(@service.description)
+      - if @services.present?
+        %h2.text-orange.my-4
+          Посмотрите также
+        .row
+          - @services.each do |service|
+            - cache service do
+              = render partial: "services/service", locals: { service: service }
+
+    = render "reviews/aside_reviews_bottom"

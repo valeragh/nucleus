@@ -14,9 +14,11 @@
         </li>
       </ul>
       <%= search_form_for @q, url: search_path, html: {class: "form-inline ml-auto"} do |f| %>
-        <%= f.search_field :title_or_description_cont, placeholder: "Поиск...", class: "form-control border-dark" %>
-        <div class="input-group-append">
-          <button class="btn btn-danger" type="submit"><i class="fa fa-search"></i></button>
+        <div class="input-group">
+          <%= f.search_field :title_or_description_cont, placeholder: "Поиск...", class: "form-control", "aria-label"=>"Search", "aria-describedby"=>"search-addon" %>
+          <div class="input-group-append">
+            <button class="btn btn-danger" type="submit"><i class="fa fa-search"></i></button>
+          </div>
         </div>
       <%end%>
       <div class="total-card mt-2">
@@ -60,7 +62,7 @@
           <%= link_to "Контакты", contacts_path, class: "nav-link", title: "Контакты" %>
         </li>
         <li class="nav-item <%= active_class(about_us_path) %>">
-          <%= link_to "Услуги", root_path, class: "nav-link", title: "Услуги" %>
+          <%= link_to "Услуги", services_path, class: "nav-link", title: "Услуги" %>
         </li>
       </ul>
     </div>

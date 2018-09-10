@@ -13,7 +13,7 @@
 			<div class="col-6 col-xl-3">
 				<p class="footer-link-header font-weight-bold">Покупателям</p>
 				<ul class="footer-link pl-0">
-					<li><%= link_to "Как заказать", root_path, title: "Как заказать" %></li>
+					<li><%= link_to "Каталог", root_path, title: "Как заказать" %></li>
 					<li><%= link_to "Оплата", root_path, title: "Оплата" %></li>
 					<li><%= link_to "Доставка", root_path, title: "Доставка" %></li>
 					<li><%= link_to "Прайс-лист", price_path, title: "Прайс-лист" %></li>
@@ -23,7 +23,7 @@
 				<p class="footer-link-header font-weight-bold">Будьте на связи</p>
 				<ul class="footer-link pl-0">
 					<li><%= link_to "Контакты", contacts_path, title: "Контакты" %></li>
-					<li><%= link_to "Написать нам", root_path, title: "Написать нам" %></li>
+					<li><%= link_to "Написать нам", contacts_path(:anchor => "letterForm"), title: "Написать нам" %></li>
 					<li><%= link_to "Вопросы-ответы", faqs_path, title: "Впросы-ответы" %></li>
 					<li><%= link_to "Карта сайта", sitemap_html_path, title: "Карта сайта" %></li>
 				</ul>

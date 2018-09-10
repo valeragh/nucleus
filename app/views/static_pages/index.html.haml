@@ -23,9 +23,9 @@
         - @categories.each do |category|
           - cache category do
             .col-3
-              = link_to show_category_path(category), class: "product-link" do
+              = link_to show_category_path(category), class: "product-link", title: "#{category.title}" do
                 .card.product.mb-2
-                  = image_tag category.image_url.category, class: "card-img-top", title: "#{category.title}"
+                  = image_tag category.image_url.category, class: "card-img-top", alt: "#{category.title}"
                   .card-block.d-flex.align-items-center.align-self-center
                     %p.p-2.card-title.text-center.mb-0.lh-1
                       %small

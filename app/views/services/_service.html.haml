@@ -1,0 +1,8 @@
+.col-12.col-md-6.col-lg-4
+  = link_to service_path(service), class: "service-link" do
+    .card.card-service.shadow.mb-2
+      .devided
+      = image_tag service.image_url.magazine, class: "card-img service-image", alt: "#{service.title}"
+      .card-img-overlay.d-flex.align-items-center
+        %h5.card-title.text-center 
+          = service.title

@@ -8,12 +8,14 @@ RSpec.describe "static_pages/sitemap_html" do
       pod_category = create(:pod_category, category_id: category_one.id, title: 'Первая подкатегория'),
       product = create(:product, category_id: category_one.id, pod_category_id: pod_category.id, title: 'Первый продукт'),
       @contact = create(:contact, phone_one: '12345678', phone_two: '78945612'),
-      @posts = [create(:post, title: 'Первая новость')]
+      @posts = [create(:post, title: 'Первая новость')],
+      @services = [create(:service, title: 'Первая услуга')]
     ])
     @q = Product.search(params[:q])
 
     render "layouts/header"
     render
+    render "layouts/footer"
 
     expect(rendered).to match /Карта сайта/
     expect(rendered).to match /Первая категория/
@@ -21,6 +23,7 @@ RSpec.describe "static_pages/sitemap_html" do
     expect(rendered).to match /Первая подкатегория/
     expect(rendered).to match /Первый продукт/
     expect(rendered).to match /Первая новость/
+    expect(rendered).to match /Первая услуга/
     expect(rendered).to match /12345678/
     expect(rendered).to match /78945612/
   end

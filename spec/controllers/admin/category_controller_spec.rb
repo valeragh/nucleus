@@ -59,7 +59,55 @@ RSpec.describe Admin::CategoriesController, type: :controller do
     end
   end
 
-  
+  describe "POST create" do
+    context "with valid params" do
+      it "creates a new Category" do
+        @attr = { 
+          :title => 'test',
+          :rang => 1,
+          :image_url => Rack::Test::UploadedFile.new(File.open(File.join(Rails.root, '/spec/fixtures/myfiles/homemini.jpeg')))
+        }
+        expect {
+          post :create, :category => @attr
+        }.to change(Category, :count).by(1)
+      end
+
+      it "assigns a newly created category as @category" do
+        @attr = { 
+          :title => 'test',
+          :rang => 1,
+          :image_url => Rack::Test::UploadedFile.new(File.open(File.join(Rails.root, '/spec/fixtures/myfiles/homemini.jpeg')))
+        }
+        post :create, :category => @attr
+        expect(assigns(:category)).to be_a(Category)
+        expect(assigns(:category)).to be_persisted
+      end
+
+      it "redirects to the created category" do
+        @attr = { 
+          :title => 'test',
+          :rang => 1,
+          :image_url => Rack::Test::UploadedFile.new(File.open(File.join(Rails.root, '/spec/fixtures/myfiles/homemini.jpeg')))
+        }
+        post :create, :category => @attr
+        expect(response).to have_http_status(:redirect)
+        expect(response).to redirect_to(admin_category_path(Category.last))
+      end
+
+      it 'should create the category' do
+        @attr = { 
+          :title => 'test',
+          :rang => 1,
+          :image_url => Rack::Test::UploadedFile.new(File.open(File.join(Rails.root, '/spec/fixtures/myfiles/homemini.jpeg')))
+        }
+        post :create, :category => @attr
+        category = Category.last
+
+        expect(category.title).to  eq(@attr[:title])
+        expect(category.rang).to  eq(@attr[:rang])
+      end
+    end
+  end
 
   describe "GET edit" do
     it 'returns http success' do

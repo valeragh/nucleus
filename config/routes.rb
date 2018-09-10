@@ -149,6 +149,8 @@ Rails.application.routes.draw do
   resources :letters, only: [:new, :create]
   resources :back_phones, only: [:new, :create]
   resource :cart, only: [:show]
+  resources :posts, only: [:show, :index]
+  resources :services, only: [:show, :index]
   resources :order_items, only: [:create, :update, :destroy]
   resources :orders, only: [:new, :create, :show]
   resources :orders, :only => [:create], :shallow => true do
@@ -163,7 +165,6 @@ Rails.application.routes.draw do
   match '/about_us', to: 'static_pages#about_us', via: 'get'
   match '/faqs', to: 'static_pages#faqs', via: 'get'
   match '/reviews', to: 'reviews#all_reviews', via: 'get'
-  match '/posts', to: 'posts#index', via: 'get'
   match '/cabinet', to: 'cabinets#show', via: 'get'
   match '/search', to: 'stores#search', via: 'get'
   match '/terms_of_use', to: 'static_pages#terms_of_use', via: 'get'
@@ -178,5 +179,4 @@ Rails.application.routes.draw do
   get '/:id', to: 'stores#category', as: :show_category
   get '/:category_id/:id', to: 'stores#pod_category', as: :show_pod_category
   get '/:category_id/:pod_category_id/:id', to: 'stores#product', as: :show_product
-  get '/:id', to: 'posts#show', as: :show_post
 end

@@ -42,7 +42,12 @@
           Полезная информация
           - @posts.each do |post|
             %li
-              = link_to post.title, show_post_path(post), class: "text-link"
+              = link_to post.title, post_path(post), class: "text-link"
+        %ul.sitemap
+          Услуги
+          - @services.each do |service|
+            %li
+              = link_to service.title, service_path(service), class: "text-link"
         %ul.sitemap
           Категория
           - @categories.each do |category|

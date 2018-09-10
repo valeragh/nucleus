@@ -1,0 +1,32 @@
+- meta :title => "«Nucleus» — интернет-магазин пчеловодства. Услуги, полезные материалы для пчеловодов", :description => "Услуги для пчеловодов. Широкий выбор: пчеловодческого инвентаря, оборудования, лекарственных препаратов и книг для пчеловодов, а также пчелопродуктов. Низкие цены ✓Большой ассортимент ✓Собственное производство"
+= content_for(:meta_og) do
+  %meta{:content => "Nucleus | Услуги, полезные материалы для пчеловодов", :property => "og:title"}/
+  %meta{:content => "website", :property => "og:type"}/
+  %meta{:content => "Nucleus", :property => "og:author"}/
+  %meta{:content => "https://nucleus.com.ua", :property => "og:url"}/
+  %meta{:name=>"twitter:card", :content=>"summary_large_image"}/
+  %meta{:name=>"twitter:title", :content=>"Nucleus | Услуги, полезные материалы для пчеловодов"}/
+  %meta{:name=>"twitter:description", :content=>"Услуги для пчеловодов. Широкий выбор: пчеловодческого инвентаря, оборудования, лекарственных препаратов и книг для пчеловодов, а также пчелопродуктов. Низкие цены ✓Большой ассортимент ✓Собственное производство"}/
+  = tag :meta, property: 'og:image', content: image_url('apple-touch-icon-144x144.png')
+
+.container
+  .row
+    .col-12.col-lg-4#sidebar.mb-4
+      = render "static_pages/aside_category_hide"
+
+      = render "reviews/aside_reviews_top"
+
+    .col-12.col-lg-8
+      %ol.breadcrumb.pb-0.pl-0
+        %li.breadcrumb-item
+          = link_to "Главная", root_path
+        %li.breadcrumb-item.active
+          Услуги
+      %h1.text-orange
+        Услуги
+      .row
+        - @services.each do |service|
+          - cache service do
+            = render partial: "services/service", locals: { service: service }
+
+    = render "reviews/aside_reviews_bottom"

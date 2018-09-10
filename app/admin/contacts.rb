@@ -4,7 +4,6 @@ ActiveAdmin.register Contact do
   config.filters = false
 
   menu :priority => 3
-  actions :all
 
   form do |f|
   	f.inputs 'Названия магазина' do

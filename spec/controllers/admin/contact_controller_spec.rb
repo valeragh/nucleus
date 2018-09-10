@@ -48,6 +48,86 @@ RSpec.describe Admin::ContactsController, type: :controller do
     end
   end
 
+  describe "POST create" do
+    context "with valid params" do
+      it "creates a new Contact" do
+        @attr = { 
+          :title => 'test',
+          :description => 'test',
+          :phone_one => 'test',
+          :phone_two => 'test',
+          :address => 'test',
+          :longitude => 1.5,
+          :latitude => 1.5,
+          :status => 'Показать',
+          :image_url => Rack::Test::UploadedFile.new(File.open(File.join(Rails.root, '/spec/fixtures/myfiles/homemini.jpeg')))
+        }
+        expect {
+          post :create, :contact => @attr
+        }.to change(Contact, :count).by(1)
+      end
+
+      it "assigns a newly created contact as @contact" do
+        @attr = { 
+          :title => 'test',
+          :description => 'test',
+          :phone_one => 'test',
+          :phone_two => 'test',
+          :address => 'test',
+          :longitude => 1.5,
+          :latitude => 1.5,
+          :status => 'Показать',
+          :image_url => Rack::Test::UploadedFile.new(File.open(File.join(Rails.root, '/spec/fixtures/myfiles/homemini.jpeg')))
+        }
+        post :create, :contact => @attr
+        expect(assigns(:contact)).to be_a(Contact)
+        expect(assigns(:contact)).to be_persisted
+      end
+
+      it "redirects to the created contact" do
+        @attr = { 
+          :title => 'test',
+          :description => 'test',
+          :phone_one => 'test',
+          :phone_two => 'test',
+          :address => 'test',
+          :longitude => 1.5,
+          :latitude => 1.5,
+          :status => 'Показать',
+          :image_url => Rack::Test::UploadedFile.new(File.open(File.join(Rails.root, '/spec/fixtures/myfiles/homemini.jpeg')))
+        }
+        post :create, :contact => @attr
+        expect(response).to have_http_status(:redirect)
+        expect(response).to redirect_to(admin_contact_path(Contact.last))
+      end
+
+      it 'should create the contact' do
+        @attr = { 
+          :title => 'test',
+          :description => 'test',
+          :phone_one => 'test',
+          :phone_two => 'test',
+          :address => 'test',
+          :longitude => 1.5,
+          :latitude => 1.5,
+          :status => 'Показать',
+          :image_url => Rack::Test::UploadedFile.new(File.open(File.join(Rails.root, '/spec/fixtures/myfiles/homemini.jpeg')))
+        }
+        post :create, :contact => @attr
+        contact = Contact.last
+
+        expect(contact.title).to  eq(@attr[:title])
+        expect(contact.description).to  eq(@attr[:description])
+        expect(contact.phone_one).to  eq(@attr[:phone_one])
+        expect(contact.phone_two).to  eq(@attr[:phone_two])
+        expect(contact.address).to  eq(@attr[:address])
+        expect(contact.longitude).to  eq(@attr[:longitude])
+        expect(contact.latitude).to  eq(@attr[:latitude])
+        expect(contact.status).to  eq(@attr[:status])
+      end
+    end
+  end
+
   describe "GET edit" do
     it 'returns http success' do
       contact = create(:contact)

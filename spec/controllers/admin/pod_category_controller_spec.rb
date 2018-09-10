@@ -64,7 +64,64 @@ RSpec.describe Admin::PodCategoriesController, type: :controller do
     end
   end
 
-  
+  describe "POST create" do
+    context "with valid params" do
+      it "creates a new PodCategory" do
+        category = create(:category)
+        @attr = { 
+          :title => 'test',
+          :category_id => category.id,
+          :rang => 1,
+          :image_url => Rack::Test::UploadedFile.new(File.open(File.join(Rails.root, '/spec/fixtures/myfiles/homemini.jpeg')))
+        }
+        expect {
+          post :create, :pod_category => @attr
+        }.to change(PodCategory, :count).by(1)
+      end
+
+      it "assigns a newly created pod_category as @pod_category" do
+        category = create(:category)
+        @attr = { 
+          :title => 'test',
+          :category_id => category.id,
+          :rang => 1,
+          :image_url => Rack::Test::UploadedFile.new(File.open(File.join(Rails.root, '/spec/fixtures/myfiles/homemini.jpeg')))
+        }
+        post :create, :pod_category => @attr
+        expect(assigns(:pod_category)).to be_a(PodCategory)
+        expect(assigns(:pod_category)).to be_persisted
+      end
+
+      it "redirects to the created pod_category" do
+        category = create(:category)
+        @attr = { 
+          :title => 'test',
+          :category_id => category.id,
+          :rang => 1,
+          :image_url => Rack::Test::UploadedFile.new(File.open(File.join(Rails.root, '/spec/fixtures/myfiles/homemini.jpeg')))
+        }
+        post :create, :pod_category => @attr
+        expect(response).to have_http_status(:redirect)
+        expect(response).to redirect_to(admin_pod_category_path(PodCategory.last))
+      end
+
+      it 'should create the pod_category' do
+        category = create(:category)
+        @attr = { 
+          :title => 'test',
+          :category_id => category.id,
+          :rang => 1,
+          :image_url => Rack::Test::UploadedFile.new(File.open(File.join(Rails.root, '/spec/fixtures/myfiles/homemini.jpeg')))
+        }
+        post :create, :pod_category => @attr
+        pod_category = PodCategory.last
+
+        expect(pod_category.title).to  eq(@attr[:title])
+        expect(pod_category.category_id).to  eq(@attr[:category_id])
+        expect(pod_category.rang).to  eq(@attr[:rang])
+      end
+    end
+  end
 
   describe "GET edit" do
     it 'returns http success' do
@@ -143,10 +200,12 @@ RSpec.describe Admin::PodCategoriesController, type: :controller do
     it "should render the form elements" do
       category = create(:category)
       pod_category = create(:pod_category, category_id: category.id)
+      product = create(:product, pod_category_id: pod_category.id)
       get :show, id: pod_category
       expect(page).to have_content(pod_category.title)
       expect(page).to have_content(pod_category.rang)
       expect(page).to have_content(category.title)
+      expect(page).to have_content(product.title)
     end
   end
 

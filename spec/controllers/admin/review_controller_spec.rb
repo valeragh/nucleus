@@ -48,7 +48,62 @@ RSpec.describe Admin::ReviewsController, type: :controller do
       expect(page).to have_field('Статус')
     end
   end
+  
+  describe "POST create" do
+    context "with valid params" do
+      it "creates a new Review" do
+        @attr = { 
+          :name => 'test',
+          :description => 'test',
+          :product_id => 1,
+          :status => 'Показать',
+        }
+        expect {
+          post :create, :review => @attr
+        }.to change(Review, :count).by(1)
+      end
 
+      it "assigns a newly created review as @review" do
+        @attr = { 
+          :name => 'test',
+          :description => 'test',
+          :product_id => 1,
+          :status => 'Показать',
+        }
+        post :create, :review => @attr
+        expect(assigns(:review)).to be_a(Review)
+        expect(assigns(:review)).to be_persisted
+      end
+
+      it "redirects to the created review" do
+        @attr = { 
+          :name => 'test',
+          :description => 'test',
+          :product_id => 1,
+          :status => 'Показать',
+        }
+        post :create, :review => @attr
+        expect(response).to have_http_status(:redirect)
+        expect(response).to redirect_to(admin_review_path(Review.last))
+      end
+
+      it 'should create the review' do
+        @attr = { 
+          :name => 'test',
+          :description => 'test',
+          :product_id => 1,
+          :status => 'Показать',
+        }
+        post :create, :review => @attr
+        review = Review.last
+
+        expect(review.name).to  eq(@attr[:name])
+        expect(review.description).to  eq(@attr[:description])
+        expect(review.product_id).to  eq(@attr[:product_id])
+        expect(review.status).to  eq(@attr[:status])
+      end
+    end
+  end
 
   describe "GET edit" do
     it 'returns http success' do

@@ -9,6 +9,7 @@ class StaticPagesController < ApplicationController
 
   def sitemap_html
     @posts = Post.all
+    @services = Service.where(status: "Показать")
   end
 
   def price

@@ -485,6 +485,11 @@ ru:
         few: "Магазины"
         many: "Магазины"
         other: "Магазины"
+      service:
+        one: "Услуга"
+        few: "Услуги"
+        many: "Услуги"
+        other: "Услуги"
     attributes:
       contact:
         title: "Названия магазина"
@@ -537,6 +542,14 @@ ru:
         title: "Заголовок"
         image_url: "Изображение для слайда"
         description: "Статья"
+        shot_description: 'Вступление'
+        created_at: "Создан"
+        updated_at: "Обновлен"
+      service:
+        title: "Заголовок"
+        image_url: "Изображение для слайда"
+        description: "Описание"
+        status: 'Статус'
         created_at: "Создан"
         updated_at: "Обновлен"
       category:

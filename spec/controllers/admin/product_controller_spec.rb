@@ -69,7 +69,87 @@ RSpec.describe Admin::ProductsController, type: :controller do
     end
   end
 
-  
+  describe "POST create" do
+    context "with valid params" do
+      it "creates a new Product" do
+        category = create(:category)
+        pod_category = create(:pod_category, category_id: category.id)
+        @attr = { 
+          :title => 'test',
+          :category_id => category.id,
+          :pod_category_id => pod_category.id,
+          :identif => Faker::Number.number(6),
+          :price => 1.99,
+          :rang => 1,
+          :description => 'test',
+          :status => 'В наличии'
+        }
+        expect {
+          post :create, :product => @attr
+        }.to change(Product, :count).by(1)
+      end
+
+      it "assigns a newly created product as @product" do
+        category = create(:category)
+        pod_category = create(:pod_category, category_id: category.id)
+        @attr = { 
+          :title => 'test',
+          :category_id => category.id,
+          :pod_category_id => pod_category.id,
+          :identif => Faker::Number.number(6),
+          :price => 1.99,
+          :rang => 1,
+          :description => 'test',
+          :status => 'В наличии'
+        }
+        post :create, :product => @attr
+        expect(assigns(:product)).to be_a(Product)
+        expect(assigns(:product)).to be_persisted
+      end
+
+      it "redirects to the created product" do
+        category = create(:category)
+        pod_category = create(:pod_category, category_id: category.id)
+        @attr = { 
+          :title => 'test',
+          :category_id => category.id,
+          :pod_category_id => pod_category.id,
+          :identif => Faker::Number.number(6),
+          :price => 1.99,
+          :rang => 1,
+          :description => 'test',
+          :status => 'В наличии'
+        }
+        post :create, :product => @attr
+        expect(response).to have_http_status(:redirect)
+        expect(response).to redirect_to(admin_product_path(Product.last))
+      end
+
+      it 'should create the product' do
+        category = create(:category)
+        pod_category = create(:pod_category, category_id: category.id)
+        @attr = { 
+          :title => 'test',
+          :category_id => category.id,
+          :pod_category_id => pod_category.id,
+          :identif => Faker::Number.number(6),
+          :price => 1.99,
+          :rang => 1,
+          :description => 'test',
+          :status => 'В наличии'
+        }
+        post :create, :product => @attr
+        product = Product.last
+
+        expect(product.title).to  eq(@attr[:title])
+        expect(product.description).to  eq(@attr[:description])
+        expect(product.pod_category_id).to  eq(@attr[:pod_category_id])
+        expect(product.identif.to_s).to  eq(@attr[:identif])
+        expect(product.rang).to  eq(@attr[:rang])
+        expect(product.status).to  eq(@attr[:status])
+      end
+    end
+  end
 
   describe "GET edit" do
     it 'returns http success' do
@@ -109,10 +189,23 @@ RSpec.describe Admin::ProductsController, type: :controller do
       end
       it "should update the product" do
         product = create(:product)
-        @attr = { :title => 'test', :rang=>'1' }
+        @attr = { 
+          :title => 'MyString',
+          :pod_category_id => 1,
+          :identif => Faker::Number.number(6),
+          :price => 1.99,
+          :rang => 1,
+          :description => 'test',
+          :status => 'В наличии' }
         put :update, id: product, :product => @attr
         product.reload
         expect(product.title).to  eq(@attr[:title])
+        expect(product.pod_category_id).to  eq(@attr[:pod_category_id])
+        expect(product.identif.to_s).to  eq(@attr[:identif])
+        expect(product.price).to  eq(@attr[:price])
+        expect(product.rang).to  eq(@attr[:rang])
+        expect(product.description).to  eq(@attr[:description])
+        expect(product.status).to  eq(@attr[:status])
       end
     end
     context 'with invalid params' do

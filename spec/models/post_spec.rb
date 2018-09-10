@@ -34,6 +34,12 @@ describe Post do
     expect(post.errors[:description]).to include("не может быть пустым")
   end
 
+  it "is invalid without a factory shot_description" do
+    post = build(:post, shot_description: nil)
+    post.valid?
+    expect(post.errors[:shot_description]).to include("не может быть пустым")
+  end
+
   it "is invalid without a factory image_url" do
     post = build(:post, image_url: nil)
     post.valid?

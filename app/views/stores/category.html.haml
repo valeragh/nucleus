@@ -28,9 +28,9 @@
         - @pod_categories.each do |pod_category|
           - cache pod_category do
             .col-4.col-lg-3
-              = link_to show_pod_category_path(@category, pod_category), class: "product-link" do
+              = link_to show_pod_category_path(@category, pod_category), class: "product-link", title: "#{pod_category.title}" do
                 .card.product.mb-2
-                  = image_tag pod_category.image_url.category, class: "card-img-top", title: "#{pod_category.title}"
+                  = image_tag pod_category.image_url.category, class: "card-img-top", alt: "#{pod_category.title}"
                   .card-block.d-flex.align-items-center.align-self-center
                     %p.p-2.card-title.text-center.mb-0.lh-1
                       = pod_category.title

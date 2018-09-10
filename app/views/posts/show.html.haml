@@ -32,5 +32,12 @@
           = @post.shot_description
       %p.pt-4
         = @post.description
+      - if @posts.present?
+        %h2.text-orange.my-4
+          Посмотрите также
+        .row
+          - @posts.each do |post|
+            - cache post do
+              = render partial: "posts/post", locals: { post: post }
 
     = render "reviews/aside_reviews_bottom"

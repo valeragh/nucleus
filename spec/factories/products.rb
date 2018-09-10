@@ -32,6 +32,6 @@ FactoryGirl.define do
     category_id 1
     status "В наличии"
     price "9.99"
-    identif "544"
+    identif { Faker::Number.number(6) }
   end
 end
