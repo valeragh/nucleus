@@ -1,15 +1,3 @@
-# По умолчанию для дистрибуции проектов используется Bundler.
-# Эта строка включает автоматическое обновление и установку
-# недостающих gems, указанных в вашем Gemfile.
-#
-## !!! Не забудьте добавить
-# gem 'capistrano'
-# gem 'unicorn'
-#
-# в ваш Gemfile.
-#
-# Если вы используете другую систему управления зависимостями,
-# закомментируйте эту строку.
 require 'bundler/capistrano'
 
 ## Чтобы не хранить database.yml в системе контроля версий, поместите
@@ -58,7 +46,7 @@ set :application,     "nucleus"
 
 # Сервер размещения проекта.
 set :deploy_server,   "titanium.locum.ru"
-
+set :keep_releases, 3
 # Не включать в поставку разработческие инструменты и пакеты тестирования.
 set :bundle_without,  [:development, :test]
 
@@ -120,3 +108,5 @@ namespace :deploy do
     run "[ -f #{unicorn_pid} ] && kill -USR2 `cat #{unicorn_pid}` || #{unicorn_start_cmd}"
   end
 end
+
+after "deploy:restart", "deploy:cleanup"
