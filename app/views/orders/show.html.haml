@@ -52,15 +52,6 @@
           = @order.delivery
       %p
         = @order.description
-      - if @order.payment_status == 'Неоплаченный'
-        = liqpay_button @liqpay_request do
-          = link_to 'Оплатить', '#', onclick: 'document.forms[0].submit();', class: "btn btn-success btn-block"
-      - elsif @order.payment_status == 'Ошибка'
-        %span.text-red
-          Ошибка при оплате, свяжитесь с менеджером по телефонам
-          = @contact.phone_one
-          или
-          = @contact.phone_two
-      - else
-        Заказ оплачен, наши администраторы свяжутся с Вами в ближайшее время
+      %p
+        Заказ принят, наши администраторы свяжутся с Вами в ближайшее время
       = link_to "Личный кабинет", cabinet_path, class: "my-2 btn btn-block btn-warning"
